@@ -1,0 +1,24 @@
+<h1>Editing workout_history</h1>
+
+<% form_for(@workout_history) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :actual_reps %><br />
+    <%= f.text_field :actual_reps %>
+  </p>
+  <p>
+    <%= f.label :actual_sets %><br />
+    <%= f.text_field :actual_sets %>
+  </p>
+  <p>
+    <%= f.label :calories %><br />
+    <%= f.text_field :calories %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @workout_history %> |
+<%= link_to 'Back', workout_histories_path %>

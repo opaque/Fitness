@@ -1,0 +1,20 @@
+<h1>Editing workout_session</h1>
+
+<% form_for(@workout_session) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :estimated_reps %><br />
+    <%= f.text_field :estimated_reps %>
+  </p>
+  <p>
+    <%= f.label :estimated_sets %><br />
+    <%= f.text_field :estimated_sets %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @workout_session %> |
+<%= link_to 'Back', workout_sessions_path %>

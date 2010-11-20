@@ -1,0 +1,22 @@
+<h1>Listing workout_sessions</h1>
+
+<table>
+  <tr>
+    <th>Estimated reps</th>
+    <th>Estimated sets</th>
+  </tr>
+
+<% @workout_sessions.each do |workout_session| %>
+  <tr>
+    <td><%=h workout_session.estimated_reps %></td>
+    <td><%=h workout_session.estimated_sets %></td>
+    <td><%= link_to 'Show', workout_session %></td>
+    <td><%= link_to 'Edit', edit_workout_session_path(workout_session) %></td>
+    <td><%= link_to 'Destroy', workout_session, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New workout_session', new_workout_session_path %>

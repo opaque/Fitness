@@ -1667,3 +1667,47 @@ Processing LandingController#index (for 127.0.0.1 at 2010-11-19 15:24:57) [GET]
 Rendering landing/index
   [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '4') LIMIT 1[0m
 Completed in 60ms (View: 53, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing LandingController#index (for 127.0.0.1 at 2010-11-19 15:48:05) [GET]
+  Parameters: {"action"=>"index", "controller"=>"landing"}
+Rendering landing/index
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '4') LIMIT 1[0m
+Completed in 63ms (View: 57, DB: 1) | 200 OK [http://localhost/]
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20101119201805)
+Migrating to CreateExercises (20101120001926)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCREATE TABLE "exercises" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101120001926')[0m
+Migrating to CreateWorkoutSessions (20101120002134)
+  [4;35;1mSQL (1.0ms)[0m   [0mCREATE TABLE "workout_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "estimated_reps" integer, "estimated_sets" integer, "user_id" integer, "event_id" integer, "exercise_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101120002134')[0m
+Migrating to CreateWorkoutHistories (20101120002216)
+  [4;35;1mSQL (3.0ms)[0m   [0mCREATE TABLE "workout_histories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "actual_reps" integer, "actual_sets" integer, "calories" integer, "workout_session_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101120002216')[0m
+Migrating to CreateEvents (20101120002858)
+  [4;35;1mSQL (3.0ms)[0m   [0mCREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "name" varchar(255), "type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101120002858')[0m
+Migrating to CreateProfiles (20101120003015)
+  [4;35;1mSQL (3.0ms)[0m   [0mCREATE TABLE "profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "height" integer, "weight" integer, "first_name" varchar(255), "last_name" varchar(255), "gender" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101120003015')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("events")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("exercises")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("profiles")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("workout_histories")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("workout_sessions")[0m

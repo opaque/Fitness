@@ -1,0 +1,18 @@
+<p>
+  <b>Actual reps:</b>
+  <%=h @workout_history.actual_reps %>
+</p>
+
+<p>
+  <b>Actual sets:</b>
+  <%=h @workout_history.actual_sets %>
+</p>
+
+<p>
+  <b>Calories:</b>
+  <%=h @workout_history.calories %>
+</p>
+
+
+<%= link_to 'Edit', edit_workout_history_path(@workout_history) %> |
+<%= link_to 'Back', workout_histories_path %>

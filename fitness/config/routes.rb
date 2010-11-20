@@ -1,4 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :profiles
+
+  map.resources :events
+
+  map.resources :workout_histories
+
+  map.resources :workout_sessions
+
+  map.resources :exercises
+
   # The priority is based upon order of creation: first created -> highest priority.
   map.resources :users
   
