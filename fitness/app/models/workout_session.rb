@@ -1,6 +1,6 @@
 class WorkoutSession < ActiveRecord::Base
-  belongs_to: exercises
-  belongs_to: events
+  belongs_to: exercise
+  belongs_to: event
   has_one: workout_history
   belongs_to: user
 end
