@@ -46,13 +46,21 @@ class WorkoutSessionsController < ApplicationController
 
   # POST /workout_sessions
   # POST /workout_sessions.xml
-  def create
+   def create
 	@event = Event.find(params[:event_id])
     @workout_session = @event.workout_sessions.build(params[:workout_session])
+	@workout_history = WorkoutHistory.new(params[:workout_history])
+
     respond_to do |format|
       if @workout_session.save
-        format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully created.') }
-        format.xml  { render :xml => @workout_session, :status => :created, :location => @workout_session }
+	    @workout_history.workout_session_id = @workout_session.id
+		if @workout_history.save
+          format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully created.') }
+          format.xml  { render :xml => @workout_session, :status => :created, :location => @workout_session }
+		else
+		  format.html { render :action => "new" }
+          format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
+		end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
