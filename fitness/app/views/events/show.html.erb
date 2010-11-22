@@ -62,8 +62,5 @@
 <%= link_to 'Add Exercise', new_event_workout_session_path(@event) %> |
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Remove', @event, :confirm => 'Are you sure?', :method => :delete %> | 
-<%= link_to 'Back', events_path %> 
-<% if !@event.workout_sessions %>
-|
+<%= link_to 'Back', events_path %> |
 <%= link_to 'Add Actual Reps and Sets', event_workout_history_path(@event) %>
-<% end %>
