@@ -1,10 +1,12 @@
 class EventsController < ApplicationController
+  
+  before_filter :require_user
 
   # GET /events
   # GET /events.xml
   def index
     @date = Time.parse("#{params[:start_date]} || Time.now.utc")
-    @date = @date - (@date.wday==0 ? 6 : @date.wday-1).days
+    @date = @date - (@date.wday==0 ? 0 : @date.wday).days
     @start_date = Date.new(@date.year, @date.month, @date.day)
     @end_date = @start_date + 7
     @events = Event.find(:all, :conditions => ['(start_at between ? and ?) or (end_at between ? and ?) or (start_at < ? and end_at > ?)',
