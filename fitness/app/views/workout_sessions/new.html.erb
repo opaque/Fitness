@@ -8,7 +8,7 @@
 	<% @exercise_list << [e.name, e] %>
 <% end %>
 
-<% form_for(@workout_session) do |f| %>
+<% form_for([@event, @workout_session]) do |f| %>
   <%= f.error_messages %>
   
   <p>

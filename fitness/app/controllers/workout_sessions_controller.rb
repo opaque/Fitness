@@ -42,7 +42,8 @@ class WorkoutSessionsController < ApplicationController
   # POST /workout_sessions
   # POST /workout_sessions.xml
   def create
-    @workout_session = WorkoutSession.new(params[:workout_session])
+	@event = Event.find(params[:event_id])
+    @workout_session = @event.workout_sessions.build(params[:workout_session])
     respond_to do |format|
       if @workout_session.save
         format.html { redirect_to(@workout_session, :notice => 'WorkoutSession was successfully created.') }
