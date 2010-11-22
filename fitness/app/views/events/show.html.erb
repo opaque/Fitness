@@ -21,6 +21,9 @@
 <Table>
 <tr>
 	<th>Exercise</th>
+	<th>User Id</th>
+	<th>Event Id</th>
+	<th>Exercise Id</th>
 	<th>Expected Sets</th>
 	<th>Expected Reps</th>
 	<th>Show</th>
@@ -34,6 +37,9 @@
 		<% if @exercise_list.member?(session) %>
 			<tr>
 			<td><%=h exercise.name %></td>
+			<td><%=h session.user_id %></td>
+			<td><%=h session.event_id %></td>
+			<td><%=h session.exercise_id %></td>
 			<% @exercise_list.delete(session) %>
 			<td><%=h session.estimated_reps %></td>
 			<td><%=h session.estimated_sets %></td>
@@ -55,4 +61,6 @@
 <%= link_to 'Add Exercise', new_event_workout_session_path(@event) %> |
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Remove', @event, :confirm => 'Are you sure?', :method => :delete %> | 
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', events_path %> |
+<%= link_to 'Edit Actual Reps and Sets', event_workout_history_path(@event) %>
+
