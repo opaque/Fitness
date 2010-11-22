@@ -13,6 +13,23 @@
   <%=h @event.type %>
 </p>
 
+<% @event.exercises.each do |exercise| %>
+	<tr>
+	<td><%=h exercise.name %></td>
+	<% exercise.workout_sessions.each do |session| %>
+		<% if @event.workout_sessions.member?(session) %>
+			<td><%=h session.estimated_reps %></td>
+			<td><%=h session.estimated_sets %></td>
+		<% end %>
+	<% end %>
+	</tr>
+<% end %>
 
+
+
+
+
+
+<%= link_to 'Add Exercise', add_exercise_path(@event) %> |
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
