@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
   end
 
   # GET /profiles/1/edit
-  def edit
+  def edit   
     @profile = Profile.find(params[:id])
   end
 
@@ -60,7 +60,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
+        format.html { redirect_to(root_url, :notice => 'Profile was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

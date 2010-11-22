@@ -7,6 +7,7 @@
     <th>First name</th>
     <th>Last name</th>
     <th>Gender</th>
+	<th>user</th>
   </tr>
 
 <% @profiles.each do |profile| %>
@@ -16,6 +17,7 @@
     <td><%=h profile.first_name %></td>
     <td><%=h profile.last_name %></td>
     <td><%=h profile.gender %></td>
+	<td><%=h profile.user_id %></td>
     <td><%= link_to 'Show', profile %></td>
     <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
     <td><%= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete %></td>

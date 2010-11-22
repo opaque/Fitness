@@ -4,14 +4,6 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :height %><br />
-    <%= f.text_field :height %>
-  </p>
-  <p>
-    <%= f.label :weight %><br />
-    <%= f.text_field :weight %>
-  </p>
-  <p>
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </p>
@@ -20,13 +12,19 @@
     <%= f.text_field :last_name %>
   </p>
   <p>
+    <%= f.label :height %><br />
+    <%= f.text_field :height %>
+  </p>
+  <p>
+    <%= f.label :weight %><br />
+    <%= f.text_field :weight %>
+  </p>
+  <p>
     <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
+	<%= f.select :gender, %w{Male Female} %>
   </p>
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @profile %> |
-<%= link_to 'Back', profiles_path %>
+<%= link_to 'Back', root_url %>

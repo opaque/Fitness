@@ -1,6 +1,11 @@
 <p>
-  <b>Date:</b>
-  <%=h @event.date %>
+  <b>Start:</b>
+  <%=h @event.start_at %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%=h @event.end_at %>
 </p>
 
 <p>
@@ -10,7 +15,7 @@
 
 <p>
   <b>Type:</b>
-  <%=h @event.type %>
+  <%=h @event.event_type %>
 </p>
 
 <% @event.exercises.each do |exercise| %>
@@ -32,4 +37,5 @@
 
 <%= link_to 'Add Exercise', add_exercise_path(@event) %> |
 <%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Remove', @event, :confirm => 'Are you sure?', :method => :delete %> | 
 <%= link_to 'Back', events_path %>

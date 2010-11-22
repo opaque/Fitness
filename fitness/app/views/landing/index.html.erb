@@ -1,14 +1,14 @@
-<h1> This is the landing page </h1>
-
-<br />
-
 <% if !current_user %>
   <%= link_to "Register", new_user_path %> |
   <%= link_to "Log In", login_path %> 
 <% else %>
-<%= current_user.id %>
-  <%= link_to "My Account", root_path %> |
-  <%= link_to "Logout", logout_path, :confirm => "Are you sure you want to logout?" %>
+<%= link_to "Home", root_path %> |
+<%= link_to "Graph", workout_histories_path %> | 
+<%= link_to "Calendar", events_path %> |
+ <%= link_to "My Profile", edit_profile_path(current_user.id) %> <br />
+<br />
+<%= link_to "existing profiles", profiles_path %><br />
+<%= link_to "Logout", logout_path, :confirm => "Are you sure you want to logout?" %>
 <% end %>
 
 <p style="color: green"><%= flash[:notice] %></p>

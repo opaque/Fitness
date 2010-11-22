@@ -19,6 +19,8 @@ ActionController::Routing::Routes.draw do |map|
   map.add_exercise 'events/:id/workout_sessions/new', :controller => 'workout_sessions', :action => 'new'
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
+
+  map.workout_history "graph", :controller => "workout_histories", :action => "graph"
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action

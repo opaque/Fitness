@@ -1,9 +1,14 @@
 class EventsController < ApplicationController
+
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.all
-
+    @date = Time.parse("#{params[:start_date]} || Time.now.utc")
+    @date = @date - (@date.wday==0 ? 6 : @date.wday-1).days
+    @start_date = Date.new(@date.year, @date.month, @date.day)
+    @end_date = @start_date + 7
+    @events = Event.find(:all, :conditions => ['(start_at between ? and ?) or (end_at between ? and ?) or (start_at < ? and end_at > ?)',
+                                                @start_date, @end_date, @start_date, @end_date, @start_date, @end_date])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
@@ -44,8 +49,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
-        format.xml  { render :xml => @event, :status => :created, :location => @event }
+        format.html { redirect_to(events_path, :notice => 'Event was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
