@@ -12,7 +12,8 @@
 ActiveRecord::Schema.define(:version => 20101120003015) do
 
   create_table "events", :force => true do |t|
-    t.datetime "date"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.string   "name"
     t.string   "type"
     t.datetime "created_at"

@@ -1,24 +1,18 @@
-<h1>Listing events</h1>
-
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Name</th>
-    <th>Type</th>
-  </tr>
-
-<% @events.each do |event| %>
-  <tr>
-    <td><%=h event.date %></td>
-    <td><%=h event.name %></td>
-    <td><%=h event.type %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
+<h1>Calendar</h1>
+<%= link_to 'New event', new_event_path %>
 <br />
 
-<%= link_to 'New event', new_event_path %>
+
+<%= stylesheet_link_tag 'weekly_vertical_calendar' %>
+
+<% weekly_vertical_calendar_links(:date => @date) %>
+<% weekly_vertical_calendar(@events, :date => @date) do |w| %>
+    <% w.week do |event| %>
+        <% if event.start_at.strftime('%j') == event.end_at.strftime('%j') %>
+            <%= event.start_at.strftime('%I:%M %p') %> -<%= event.end_at.strftime('%I:%M %p') %>
+        <% else %>
+            <%= event.start_at.strftime('%I:%M %d.%m %p') %> - <%= event.end_at.strftime('%I:%M %d.%m %p') %>
+        <% end %>
+        <%= link_to truncate(event.name), nil %>
+    <% end -%>
+<% end -%>
