@@ -27,7 +27,7 @@
 	<th>Edit</th>
 	<th>Destroy</th>
 
-<% @exercise_list = @event.workout_sessions %>
+<% @exercise_list = @event.workout_sessions.dup %>
 
 <% @event.exercises.each do |exercise| %>
 	<tr>
@@ -37,7 +37,7 @@
 			<% @exercise_list.delete(session) %>
 			<td><%=h session.estimated_reps %></td>
 			<td><%=h session.estimated_sets %></td>
-			<td><%= link_to 'X', session %></td>
+			<td><%= link_to 'X', event_workout_session_path(@event,session) %></td>
 			<td><%= link_to 'X', edit_event_workout_session_path(@event, session) %></td>
 			<td><%= link_to 'X', [@event, session], :confirm => 'Are you sure?', :method => :delete %></td>
 		<% end %>

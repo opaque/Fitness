@@ -83,7 +83,7 @@ class WorkoutSessionsController < ApplicationController
     @workout_session.destroy
 
     respond_to do |format|
-      format.html { redirect_to(event_workout_sessions_url(@event)) }
+      format.html { redirect_to(event_path(@event)) }
       format.xml  { head :ok }
     end
   end
