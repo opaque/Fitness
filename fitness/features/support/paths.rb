@@ -16,6 +16,18 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
+	when /register page/
+	  '/users/new'
+	when /edit workout schedule page for schedule (\d+) for user (\d+)/
+	  '/users/' + $1 + '/workouts/' + $2 +'/edit'
+	when /edit profile page for profile (\d+)/ 
+	  '/profiles/' + $1 +'/edit'
+	when /the calendar page for user (\d+)/
+	  '/users/'+ $1 + '/calendar'
+	when /the profile page for user (\d+)/
+	  '/users/' + $1 + 'show'
+	when /the new workout schedule page for user (\d+)/
+	  '/users/'+ $1 + '/workouts/new'
 
     else
       begin
