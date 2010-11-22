@@ -1,0 +1,6 @@
+<%= link_to "Home", root_path %> |
+<%= link_to "Graph", workout_histories_path %> | 
+<%= link_to "Calendar", events_path %> |
+ <%= link_to "My Profile", edit_profile_path(current_user.id) %> |
+<%= link_to "Logout", logout_path, :confirm => "Are you sure you want to logout?" %>
+<br />
