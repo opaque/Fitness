@@ -8,8 +8,9 @@
 <%= stylesheet_link_tag 'weekly_vertical_calendar' %>
 
 <% weekly_vertical_calendar_links(:date => @date) %>
-<% weekly_vertical_calendar(@events, :date => @date) do |w| %>
+<% weekly_vertical_calendar(@event, :date => @date) do |w| %>
     <% w.week do |event| %>
+		<% if @event.workout_sessions.first.user_id == current_user.id %>
         <% if event.start_at.strftime('%j') == event.end_at.strftime('%j') %>
             <%= event.start_at.strftime('%H:%M') %> -<%= event.end_at.strftime('%H:%M') %>
         <% else %>
