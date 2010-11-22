@@ -10,8 +10,15 @@ class WeeklyVerticalCalendar::Builder
     concat(tag("div", :id => "hours"))
     concat(content_tag("div", "&nbsp;", :id => "hour_header"))
     (0..23).each do |hour|
-
-      concat(content_tag("div", "#{hour}:00", :id => "hour"))
+      merediem = "am"
+      fixedHour = hour % 12
+      if fixedHour == 0 
+        fixedHour=12
+      end
+      if hour >= 12 
+        merediem = "pm"
+      end
+      concat(content_tag("div", "#{fixedHour}:00"+merediem, :id => "hour"))
     end
     concat("</div>")
 
