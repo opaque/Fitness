@@ -8,9 +8,14 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    if @user.save
-      flash[:notice] = "Account registered!"
-      redirect_back_or_default root_url
+	@profile = Profile.new(params[:profile])
+	
+    if @user.save 
+	  @profile.user_id = @user.id
+	  if @profile.save
+        flash[:notice] = "Account and profile registered!"
+        redirect_back_or_default root_url
+	  end
     else
       render :action => :new
     end
