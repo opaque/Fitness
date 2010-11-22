@@ -23,23 +23,31 @@
 	<th>Exercise</th>
 	<th>Expected Sets</th>
 	<th>Expected Reps</th>
+	<th>Actual Sets</th>
+	<th>Actual Reps</th>
 	<th>Show</th>
 	<th>Edit</th>
 	<th>Destroy</th>
-
+	
 <% @exercise_list = @event.workout_sessions.dup %>
 <% @event.exercises.each do |exercise| %>
 	<% @session_list = exercise.workout_sessions.select do |session| %>
 		<% if @exercise_list.member?(session) %>
+			<% @history_list = @event.workout_histories.select do |history| %>
+				<% if session.id == history.workout_session_id %>
 			<tr>
 			<td><%=h exercise.name %></td>
 			<% @exercise_list.delete(session) %>
-			<td><%=h session.estimated_reps %></td>
 			<td><%=h session.estimated_sets %></td>
+			<td><%=h session.estimated_reps %></td>
+			<td><%=h history.actual_sets %></td>
+			<td><%=h history.actual_reps %></td>
 			<td><%= link_to 'X', event_workout_session_path(@event,session) %></td>
 			<td><%= link_to 'X', edit_event_workout_session_path(@event, session) %></td>
 			<td><%= link_to 'X', [@event, session], :confirm => 'Are you sure?', :method => :delete %></td>
 			</tr>
+				<% end %>
+			<% end %>
 		<% end %>
 	<% end %>
 	
@@ -54,4 +62,5 @@
 <%= link_to 'Add Exercise', new_event_workout_session_path(@event) %> |
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Remove', @event, :confirm => 'Are you sure?', :method => :delete %> | 
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', events_path %> |
+<%= link_to 'Add Actual Reps and Sets', event_workout_history_path(@event) %>
