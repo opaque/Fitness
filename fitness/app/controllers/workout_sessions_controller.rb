@@ -26,7 +26,8 @@ class WorkoutSessionsController < ApplicationController
   # GET /workout_sessions/new
   # GET /workout_sessions/new.xml
   def new
-    @workout_session = WorkoutSession.new :event_id => params[:id]
+	@event = Event.find(params[:event_id])
+    @workout_session = @event.workout_sessions.build
 
     respond_to do |format|
       format.html # new.html.erb

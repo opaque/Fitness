@@ -18,6 +18,8 @@
   <%=h @event.event_type %>
 </p>
 
+
+
 <% @event.exercises.each do |exercise| %>
 	<tr>
 	<td><%=h exercise.name %></td>
@@ -35,7 +37,7 @@
 
 
 
-<%= link_to 'Add Exercise', add_exercise_path(@event) %> |
+<%= link_to 'Add Exercise', new_event_workout_session_path(@event) %> |
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Remove', @event, :confirm => 'Are you sure?', :method => :delete %> | 
 <%= link_to 'Back', events_path %>

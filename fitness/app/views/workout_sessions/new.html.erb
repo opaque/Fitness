@@ -5,7 +5,7 @@
 <% @exercises  = Exercise.find(:all) %>
 <% @exercise_list = [] %>
 <% @exercises.each do |e| %>
-	<% @exercise_list << [e.name, e] %>
+	<% @exercise_list << [e.name, e.id] %>
 <% end %>
 
 <% form_for([@event, @workout_session]) do |f| %>
@@ -25,7 +25,7 @@
     <%= f.label :estimated_sets %><br />
     <%= f.text_field :estimated_sets %>
   </p>
-	<% f.hidden_field :event_id %>
+	
   <p>
     <%= f.submit 'Create' %>
   </p>
