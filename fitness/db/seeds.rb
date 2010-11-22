@@ -5,3 +5,10 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+
+exercises = [{ :name => 'curl', :exercise_type => 'bicep' }, { :name => 'squat', :exercise_type => 'quadraceps' }, { :name => 'bench press', :exercise_type => 'chest/pectoralis major' }, { :name => 'calf raises', :exercise_type => 'calfs' }, { :name => 'military press', :exercise_type => 'shoulders' }, { :name => ' reverse pulls up', :exercise_type => 'latissimus dorsi' }, { :name => 'jogging', :exercise_type => 'cardio' }, { :name => 'swimming', :exercise_type => 'cardio' }]
+
+exercises.each do |e|
+	Exercise.create(e)
+end
+	

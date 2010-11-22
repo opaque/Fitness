@@ -1,8 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+
+  
   map.resources :profiles
 
   map.resources :events
-
+  
   map.resources :workout_histories
 
   map.resources :workout_sessions
@@ -14,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :user_session
   
+  map.add_exercise 'events/:id/workout_sessions/new', :controller => 'workout_sessions', :action => 'new'
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
   # Sample of regular route:
