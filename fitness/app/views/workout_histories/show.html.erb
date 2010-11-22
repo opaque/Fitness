@@ -13,6 +13,12 @@
   <%=h @workout_history.calories %>
 </p>
 
+<p>
+  <b>Workout Session Id:</b>
+  <%=h @workout_history.workout_session_id %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_workout_history_path(@workout_history) %> |
-<%= link_to 'Back', workout_histories_path %>
+<%= link_to 'Back', events_path %>
