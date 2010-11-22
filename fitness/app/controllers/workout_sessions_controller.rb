@@ -1,10 +1,15 @@
 class WorkoutSessionsController < ApplicationController
 
+  before_filter :get_event
+  
+  def get_event
+	@event = Event.find(params[:event_id])
+  end
   
   # GET /workout_sessions
   # GET /workout_sessions.xml
   def index
-    @workout_sessions = WorkoutSession.all
+    @workout_sessions = @event.workout_sessions
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +20,7 @@ class WorkoutSessionsController < ApplicationController
   # GET /workout_sessions/1
   # GET /workout_sessions/1.xml
   def show
-    @workout_session = WorkoutSession.find(params[:id])
+    @workout_session = @event.workout_sessions.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +31,6 @@ class WorkoutSessionsController < ApplicationController
   # GET /workout_sessions/new
   # GET /workout_sessions/new.xml
   def new
-	@event = Event.find(params[:event_id])
     @workout_session = @event.workout_sessions.build
 
     respond_to do |format|
@@ -37,7 +41,7 @@ class WorkoutSessionsController < ApplicationController
 
   # GET /workout_sessions/1/edit
   def edit
-    @workout_session = WorkoutSession.find(params[:id])
+    @workout_session = @event.workout_sessions.find(params[:id])
   end
 
   # POST /workout_sessions
@@ -47,7 +51,7 @@ class WorkoutSessionsController < ApplicationController
     @workout_session = @event.workout_sessions.build(params[:workout_session])
     respond_to do |format|
       if @workout_session.save
-        format.html { redirect_to(@workout_session, :notice => 'WorkoutSession was successfully created.') }
+        format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully created.') }
         format.xml  { render :xml => @workout_session, :status => :created, :location => @workout_session }
       else
         format.html { render :action => "new" }
@@ -59,7 +63,7 @@ class WorkoutSessionsController < ApplicationController
   # PUT /workout_sessions/1
   # PUT /workout_sessions/1.xml
   def update
-    @workout_session = WorkoutSession.find(params[:id])
+    @workout_session = @eventworkout_sessions.find(params[:id])
 
     respond_to do |format|
       if @workout_session.update_attributes(params[:workout_session])
@@ -75,11 +79,11 @@ class WorkoutSessionsController < ApplicationController
   # DELETE /workout_sessions/1
   # DELETE /workout_sessions/1.xml
   def destroy
-    @workout_session = WorkoutSession.find(params[:id])
+    @workout_session = @event.workout_sessions.find(params[:id])
     @workout_session.destroy
 
     respond_to do |format|
-      format.html { redirect_to(workout_sessions_url) }
+      format.html { redirect_to(event_workout_sessions_url(@event)) }
       format.xml  { head :ok }
     end
   end

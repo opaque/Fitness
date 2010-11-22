@@ -18,22 +18,35 @@
   <%=h @event.event_type %>
 </p>
 
+<Table>
+<tr>
+	<th>Exercise</th>
+	<th>Expected Sets</th>
+	<th>Expected Reps</th>
+	<th>Show</th>
+	<th>Edit</th>
+	<th>Destroy</th>
 
+<% @exercise_list = @event.workout_sessions %>
 
 <% @event.exercises.each do |exercise| %>
 	<tr>
 	<td><%=h exercise.name %></td>
 	<% exercise.workout_sessions.each do |session| %>
-		<% if @event.workout_sessions.member?(session) %>
+		<% if @exercise_list.member?(session) %>
+			<% @exercise_list.delete(session) %>
 			<td><%=h session.estimated_reps %></td>
 			<td><%=h session.estimated_sets %></td>
+			<td><%= link_to 'X', session %></td>
+			<td><%= link_to 'X', edit_event_workout_session_path(@event, session) %></td>
+			<td><%= link_to 'X', [@event, session], :confirm => 'Are you sure?', :method => :delete %></td>
 		<% end %>
 	<% end %>
 	</tr>
 <% end %>
 
 
-
+</Table>
 
 
 

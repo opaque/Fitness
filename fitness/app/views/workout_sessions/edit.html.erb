@@ -16,5 +16,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @workout_session %> |
-<%= link_to 'Back', workout_sessions_path %>
+<%= link_to 'Back', [@event, @workout_session] %> |
+<%= link_to 'Go to Events', event_path(@event) %>
