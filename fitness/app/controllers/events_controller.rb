@@ -86,4 +86,9 @@ class EventsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def event_workout_history
+    @event = Event.find(params[:id])
+  end
+  
 end
