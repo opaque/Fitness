@@ -1,4 +1,6 @@
 class WorkoutSessionsController < ApplicationController
+
+  
   # GET /workout_sessions
   # GET /workout_sessions.xml
   def index
@@ -24,7 +26,7 @@ class WorkoutSessionsController < ApplicationController
   # GET /workout_sessions/new
   # GET /workout_sessions/new.xml
   def new
-    @workout_session = WorkoutSession.new
+    @workout_session = WorkoutSession.new :event_id => params[:id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,7 +43,6 @@ class WorkoutSessionsController < ApplicationController
   # POST /workout_sessions.xml
   def create
     @workout_session = WorkoutSession.new(params[:workout_session])
-
     respond_to do |format|
       if @workout_session.save
         format.html { redirect_to(@workout_session, :notice => 'WorkoutSession was successfully created.') }

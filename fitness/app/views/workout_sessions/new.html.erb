@@ -1,8 +1,22 @@
 <h1>New workout_session</h1>
 
+
+
+<% @exercises  = Exercise.find(:all) %>
+<% @exercise_list = [] %>
+<% @exercises.each do |e| %>
+	<% @exercise_list << [e.name, e] %>
+<% end %>
+
 <% form_for(@workout_session) do |f| %>
   <%= f.error_messages %>
-
+  
+  <p>
+    <%= f.label :exercise %><br />
+    <%= f.select (:exercise_id, @exercise_list) %>
+  </p>
+	
+  
   <p>
     <%= f.label :estimated_reps %><br />
     <%= f.text_field :estimated_reps %>
@@ -11,6 +25,7 @@
     <%= f.label :estimated_sets %><br />
     <%= f.text_field :estimated_sets %>
   </p>
+	<% f.hidden_field :event_id %>
   <p>
     <%= f.submit 'Create' %>
   </p>

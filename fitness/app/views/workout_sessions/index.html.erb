@@ -2,12 +2,14 @@
 
 <table>
   <tr>
+	<th>Event ID</th>
     <th>Estimated reps</th>
     <th>Estimated sets</th>
   </tr>
 
 <% @workout_sessions.each do |workout_session| %>
   <tr>
+	<td><%=h workout_session.event_id %></td>
     <td><%=h workout_session.estimated_reps %></td>
     <td><%=h workout_session.estimated_sets %></td>
     <td><%= link_to 'Show', workout_session %></td>

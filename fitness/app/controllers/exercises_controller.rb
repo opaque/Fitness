@@ -1,4 +1,5 @@
 class ExercisesController < ApplicationController
+	
   # GET /exercises
   # GET /exercises.xml
   def index
