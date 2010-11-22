@@ -63,11 +63,11 @@ class WorkoutSessionsController < ApplicationController
   # PUT /workout_sessions/1
   # PUT /workout_sessions/1.xml
   def update
-    @workout_session = @eventworkout_sessions.find(params[:id])
+    @workout_session = @event.workout_sessions.find(params[:id])
 
     respond_to do |format|
       if @workout_session.update_attributes(params[:workout_session])
-        format.html { redirect_to(@workout_session, :notice => 'WorkoutSession was successfully updated.') }
+        format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
