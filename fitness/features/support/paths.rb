@@ -26,16 +26,16 @@ module NavigationHelpers
 	  '/graph'
 	when /the calendar page/
 	  '/events'
-	when /edit workout schedule page for schedule (\d+) for user (\d+)/
-	  '/users/' + $1 + '/workouts/' + $2 +'/edit'
+	when /the new event page/
+	  '/events/new'
+	when /new exercise page for event (\d+)/
+	  '/events/' + $1 + '/workout_sessions/new'
+	when /edit workout page for workout session (\d+) of event (\d+)/
+	  '/events/' + $1 + '/workout_sessions/' + $1 + '/edit'
+	when /edit workout history page for workout session (\d+)/
+	  '/workout_sessions/' + $1 + '/workout_history/edit'
 	when /edit profile page for profile (\d+)/ 
 	  '/profiles/' + $1 +'/edit'
-	when /the calendar page for user (\d+)/
-	  '/users/'+ $1 + '/calendar'
-	when /the profile page for user (\d+)/
-	  '/users/' + $1 + 'show'
-	when /the new workout schedule page for user (\d+)/
-	  '/users/'+ $1 + '/workouts/new'
 
     else
       begin
