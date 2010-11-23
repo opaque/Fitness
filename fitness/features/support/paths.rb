@@ -23,7 +23,7 @@ module NavigationHelpers
 	when /login page/
 	  '/login'
 	when /the graph page/
-	  '/workout_histories'
+	  '/graph'
 	when /the calendar page/
 	  '/events'
 	when /edit workout schedule page for schedule (\d+) for user (\d+)/

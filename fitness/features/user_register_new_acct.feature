@@ -11,6 +11,6 @@ Feature: User register new account
 		  And I fill in "password" with "password"
 		  And I fill in "user_password_confirmation" with "password"
 		  And I press "Register"
-		Then I should see "Account and profile registered!"
+		Then I will see "Account and profile registered!"
 				
 	

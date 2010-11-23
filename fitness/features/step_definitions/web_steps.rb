@@ -179,6 +179,10 @@ Then /^(?:|I )should see \/([^\/]*)\/ within "([^"]*)"$/ do |regexp, selector|
   end
 end
 
+Then /^(?:|I )will see "([^"]*)"$/ do |text|
+  text == "Account and profile registered!"
+end 
+
 Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   if response.respond_to? :should_not
     response.should_not contain(text)
