@@ -1,0 +1,216 @@
+Using the default profile...
+Feature: User create workout session
+  As a user
+  I can navigate to the calendar page
+  And create a new event with a workout session
+
+  Scenario: User goes to calendar page                              # features\user_creates_workout_session.feature:8
+    Given I am the registered user "user1" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                        # features/step_definitions/login_steps.rb:11
+    Then I should be on the landing page                            # features/step_definitions/web_steps.rb:261
+    When I follow "Calendar"                                        # features/step_definitions/web_steps.rb:27
+    Then I should be on the calendar page                           # features/step_definitions/web_steps.rb:261
+
+  Scenario: User creates a new event                                       # features\user_creates_workout_session.feature:16
+    Given I am the registered user "user1" with password "password"        # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                             # features/step_definitions/web_steps.rb:15
+    And I login with "user1" and "password"                                # features/step_definitions/login_steps.rb:11
+    When I am on the new event page                                        # features/step_definitions/web_steps.rb:15
+    And I select "November 25, 2010 10:00" as the "Start at" date and time # features/step_definitions/web_steps.rb:79
+    And I select "November 25, 2010 11:00" as the "End at" date and time   # features/step_definitions/web_steps.rb:79
+    And I fill in "Daily Exercise" for "name"                              # features/step_definitions/web_steps.rb:39
+    And I press "Create"                                                   # features/step_definitions/web_steps.rb:23
+    Then I should see "Event was successfully created."                    # features/step_definitions/web_steps.rb:143
+
+  Scenario: User creates workout session for existing event         # features\user_creates_workout_session.feature:27
+    Given I am the registered user "user1" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    And I login with "user1" and "password"                         # features/step_definitions/login_steps.rb:11
+    And event 1 exists                                              # features/step_definitions/workout_sess_steps.rb:2
+    When I am on the new exercise page for event 1                  # features/step_definitions/web_steps.rb:15
+    And I fill in "20" for "Estimated reps"                         # features/step_definitions/web_steps.rb:39
+    And I fill in "20" for "Estimated sets"                         # features/step_definitions/web_steps.rb:39
+    And I press "Create"                                            # features/step_definitions/web_steps.rb:23
+    Then I should see "WorkoutSession was successfully created."    # features/step_definitions/web_steps.rb:143
+
+Feature: User edit profile
+  As a user
+  I can view and edit my profile data
+  So that I can view it later
+
+  Scenario: User views correct data in profile                      # features\user_edit_profile.feature:8
+    Given I am the registered user "user1" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                        # features/step_definitions/login_steps.rb:11
+    And profile 1 exists                                            # features/step_definitions/profile_steps.rb:2
+    When I am on the edit profile page for profile 1                # features/step_definitions/web_steps.rb:15
+    Then "first_name" should be "John"                              # features/step_definitions/profile_steps.rb:10
+    And "last_name" should be "Smith"                               # features/step_definitions/profile_steps.rb:10
+    And "weight" should be "150"                                    # features/step_definitions/profile_steps.rb:10
+    And "height" should be "70"                                     # features/step_definitions/profile_steps.rb:10
+    And "gender" should be "Male"                                   # features/step_definitions/profile_steps.rb:10
+
+  Scenario: User edits data in profile                              # features\user_edit_profile.feature:20
+    Given I am the registered user "user1" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                        # features/step_definitions/login_steps.rb:11
+    And profile 1 exists                                            # features/step_definitions/profile_steps.rb:2
+    When I am on the edit profile page for profile 1                # features/step_definitions/web_steps.rb:15
+    And I fill in "weight" with "145"                               # features/step_definitions/web_steps.rb:35
+    And I press "Update"                                            # features/step_definitions/web_steps.rb:23
+    Then I should see "Profile was successfully updated."           # features/step_definitions/web_steps.rb:143
+
+Feature: User input profile
+  As a user
+  I can input my profile data
+  So that I can view it later
+
+  Scenario: User completes profile                                  # features\user_input_profile.feature:8
+    Given I am the registered user "user1" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                        # features/step_definitions/login_steps.rb:11
+    And blank profile 1 exists                                      # features/step_definitions/profile_steps.rb:6
+    When I am on the edit profile page for profile 1                # features/step_definitions/web_steps.rb:15
+    And I fill in "profile_first_name" with "John"                  # features/step_definitions/web_steps.rb:35
+    And I fill in "profile_last_name" with "Smith"                  # features/step_definitions/web_steps.rb:35
+    And I fill in "weight" with "150"                               # features/step_definitions/web_steps.rb:35
+    And I fill in "height" with "70"                                # features/step_definitions/web_steps.rb:35
+    And I select "Male" from "gender"                               # features/step_definitions/web_steps.rb:60
+    And I press "Update"                                            # features/step_definitions/web_steps.rb:23
+    Then I should see "Profile was successfully updated."           # features/step_definitions/web_steps.rb:143
+
+  Scenario: User partially completes profile                        # features\user_input_profile.feature:22
+    Given I am the registered user "user1" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                        # features/step_definitions/login_steps.rb:11
+    And blank profile 1 exists                                      # features/step_definitions/profile_steps.rb:6
+    When I am on the edit profile page for profile 1                # features/step_definitions/web_steps.rb:15
+    And I fill in "profile_first_name" with "John"                  # features/step_definitions/web_steps.rb:35
+    And I fill in "profile_last_name" with "Smith"                  # features/step_definitions/web_steps.rb:35
+    And I select "Male" from "gender"                               # features/step_definitions/web_steps.rb:60
+    And I press "Update"                                            # features/step_definitions/web_steps.rb:23
+    Then I should see "Profile was successfully updated."           # features/step_definitions/web_steps.rb:143
+
+Feature: User login
+  As a user
+  I can input my profile data
+  So that I can view it later
+
+  Scenario: Login successful                                        # features\user_login.feature:8
+    Given I am the registered user "user1" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                        # features/step_definitions/login_steps.rb:11
+    Then I should be on the landing page                            # features/step_definitions/web_steps.rb:261
+
+  Scenario: Login unsuccessful                                      # features\user_login.feature:14
+    Given I am the registered user "user2" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    When I login with "user2" and "password2"                       # features/step_definitions/login_steps.rb:11
+    Then I should not be logged in                                  # features/step_definitions/login_steps.rb:17
+
+Feature: User navigates using navigation bar
+  As a user
+  I can click links in the navigation bar
+  So that I can go to different pages of my account
+
+  Scenario: User goes to graph page                                 # features\user_navigate_navigation_bar.feature:8
+    Given I am the registered user "user1" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                        # features/step_definitions/login_steps.rb:11
+    Then I should be on the landing page                            # features/step_definitions/web_steps.rb:261
+    When I follow "Graph"                                           # features/step_definitions/web_steps.rb:27
+    Then I should be on the graph page                              # features/step_definitions/web_steps.rb:261
+
+  Scenario: User goes to calendar page                              # features\user_navigate_navigation_bar.feature:16
+    Given I am the registered user "user1" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                        # features/step_definitions/login_steps.rb:11
+    Then I should be on the landing page                            # features/step_definitions/web_steps.rb:261
+    When I follow "Calendar"                                        # features/step_definitions/web_steps.rb:27
+    Then I should be on the calendar page                           # features/step_definitions/web_steps.rb:261
+
+  Scenario: User goes to profile page                               # features\user_navigate_navigation_bar.feature:24
+    Given I am the registered user "user1" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                        # features/step_definitions/login_steps.rb:11
+    Then I should be on the landing page                            # features/step_definitions/web_steps.rb:261
+    When profile 1 exists                                           # features/step_definitions/profile_steps.rb:2
+    And I follow "My Profile"                                       # features/step_definitions/web_steps.rb:27
+    Then I should be on the edit profile page for profile 1         # features/step_definitions/web_steps.rb:261
+
+  Scenario: User goes to home page                                  # features\user_navigate_navigation_bar.feature:33
+    Given I am the registered user "user1" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                        # features/step_definitions/login_steps.rb:11
+    Then I should be on the landing page                            # features/step_definitions/web_steps.rb:261
+    When I follow "Home"                                            # features/step_definitions/web_steps.rb:27
+    Then I should be on the landing page                            # features/step_definitions/web_steps.rb:261
+
+Feature: User register new account
+  As a user
+  I can input new login and password
+  So that I can create a new account
+
+  Scenario: User successfully registers new account            # features\user_register_new_acct.feature:8
+    Given I am on the register page                            # features/step_definitions/web_steps.rb:15
+    When I fill in "login" with "user1"                        # features/step_definitions/web_steps.rb:35
+    And I fill in "password" with "password"                   # features/step_definitions/web_steps.rb:35
+    And I fill in "user_password_confirmation" with "password" # features/step_definitions/web_steps.rb:35
+    And I press "Register"                                     # features/step_definitions/web_steps.rb:23
+    Then I will see "Account and profile registered!"          # features/step_definitions/web_steps.rb:182
+
+Feature: User update workout session
+  As a user
+  I can navigate to the calendar page
+  And create a new event with a workout session
+
+  Scenario: User views existing workout session                         # features\user_updates_workout_session.feature:8
+    Given I am the registered user "user1" with password "password"     # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                          # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                            # features/step_definitions/login_steps.rb:11
+    And event 1 exists                                                  # features/step_definitions/workout_sess_steps.rb:2
+    And workout session 1 exists under event 1                          # features/step_definitions/workout_sess_steps.rb:6
+    When I am on the edit workout page for workout session 1 of event 1 # features/step_definitions/web_steps.rb:15
+    Then "Estimated reps" should be "10"                                # features/step_definitions/profile_steps.rb:10
+    And "Estimated sets" should be "10"                                 # features/step_definitions/profile_steps.rb:10
+
+  Scenario: User edits "expected" workout data                          # features\user_updates_workout_session.feature:18
+    Given I am the registered user "user1" with password "password"     # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                          # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                            # features/step_definitions/login_steps.rb:11
+    And event 1 exists                                                  # features/step_definitions/workout_sess_steps.rb:2
+    And workout session 1 exists under event 1                          # features/step_definitions/workout_sess_steps.rb:6
+    When I am on the edit workout page for workout session 1 of event 1 # features/step_definitions/web_steps.rb:15
+    And I fill in "Estimated reps" with "20"                            # features/step_definitions/web_steps.rb:35
+    Then I will see "WorkoutSession was successfully updated."          # features/step_definitions/web_steps.rb:182
+
+  Scenario: User adds "actual" workout data                          # features\user_updates_workout_session.feature:28
+    Given I am the registered user "user1" with password "password"  # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                       # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                         # features/step_definitions/login_steps.rb:11
+    And event 1 exists                                               # features/step_definitions/workout_sess_steps.rb:2
+    And workout session 1 exists under event 1                       # features/step_definitions/workout_sess_steps.rb:6
+    When I am on the edit workout history page for workout session 1 # features/step_definitions/web_steps.rb:15
+    And I fill in "20" for "Actual reps"                             # features/step_definitions/web_steps.rb:39
+    And I fill in "20" for "Actual sets"                             # features/step_definitions/web_steps.rb:39
+    And I press "Update"                                             # features/step_definitions/web_steps.rb:23
+    Then I will see "WorkoutHistory was successfully created."       # features/step_definitions/web_steps.rb:182
+
+Feature: User login
+  As a user
+  I can navigate to the graph page
+  And view the graph of my data
+
+  Scenario: User views graph                                        # features\user_view_graph.feature:8
+    Given I am the registered user "user1" with password "password" # features/step_definitions/login_steps.rb:2
+    And I am on the login page                                      # features/step_definitions/web_steps.rb:15
+    When I login with "user1" and "password"                        # features/step_definitions/login_steps.rb:11
+    Then I should be on the landing page                            # features/step_definitions/web_steps.rb:261
+    When I follow "Graph"                                           # features/step_definitions/web_steps.rb:27
+    Then I should be on the graph page                              # features/step_definitions/web_steps.rb:261
+    And I should see 1 image                                        # features/step_definitions/graph_steps.rb:1
+
+18 scenarios (18 passed)
+136 steps (136 passed)
+0m2.668s
