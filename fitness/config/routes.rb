@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :profiles
 
-  map.resources :events, :has_many => [:workout_sessions]  
+  map.resources :events, :has_many => [:workout_sessions, :workout_histories]  
   
   map.resources :workout_histories
 
@@ -13,6 +13,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :exercises
 
   map.event_workout_history "events/:id/event_workout_history", :controller => "events", :action => "event_workout_history"
+  
+  #map.graph "graph", :controller => "user", :action => "graph"
   
   # The priority is based upon order of creation: first created -> highest priority.
   map.resources :users
