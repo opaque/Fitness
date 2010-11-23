@@ -21,11 +21,12 @@
 <Table>
 <tr>
 	<th>Exercise</th>
-	<th>User Id</th>
 	<th>Event Id</th>
 	<th>Exercise Id</th>
-	<th>Expected Sets</th>
 	<th>Expected Reps</th>
+	<th>Expected Sets</th>
+	<th>Actual Reps</th>
+	<th>Actual Sets</th>
 	<th>Show</th>
 	<th>Edit</th>
 	<th>Destroy</th>
@@ -35,18 +36,23 @@
 <% @event.exercises.each do |exercise| %>
 	<% @session_list = exercise.workout_sessions.select do |session| %>
 		<% if @exercise_list.member?(session) %>
+			<% @history_list = @event.workout_histories.select do |history| %>
+				<% if history.workout_session_id == session.id %>
 			<tr>
 			<td><%=h exercise.name %></td>
-			<td><%=h session.user_id %></td>
 			<td><%=h session.event_id %></td>
 			<td><%=h session.exercise_id %></td>
 			<% @exercise_list.delete(session) %>
 			<td><%=h session.estimated_reps %></td>
 			<td><%=h session.estimated_sets %></td>
+			<td><%=h history.actual_reps %></td>
+			<td><%=h history.actual_sets %></td>
 			<td><%= link_to 'X', event_workout_session_path(@event,session) %></td>
 			<td><%= link_to 'X', edit_event_workout_session_path(@event, session) %></td>
 			<td><%= link_to 'X', [@event, session], :confirm => 'Are you sure?', :method => :delete %></td>
 			</tr>
+				<% end %>
+			<% end %>
 		<% end %>
 	<% end %>
 	
