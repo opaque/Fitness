@@ -66,7 +66,11 @@ class UsersController < ApplicationController
                      :legend => ["Actual Reps", "Estimate Reps"],
                      :axis_with_labels => ['x','y'],
 					 :size => '600x400')
-	 
+	
+	if (@actual_data.size == 1 || @estimated_data.size == 1)
+		flash[:notification] = "No data yet-- please add data!"
+	end
+	
 	respond_to do |format|
 		format.html # graph.html.erb
 		#format.xml  { render xml => @workout_histories }
