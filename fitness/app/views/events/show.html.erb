@@ -67,6 +67,6 @@
 <%= link_to 'Add Exercise', new_event_workout_session_path(@event) %> |
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Remove', @event, :confirm => 'Are you sure?', :method => :delete %> | 
-<%= link_to 'Back', events_path %> |
-<%= link_to 'Edit Actual Reps and Sets', event_workout_history_path(@event) %>
+<%= link_to 'Back to Calendar', events_path %> |
+<%= link_to 'Edit Actual Reps and Sets', event_workout_histories_path(@event) %>
 
