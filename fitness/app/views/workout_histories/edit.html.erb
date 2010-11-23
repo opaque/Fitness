@@ -2,7 +2,7 @@
 
 
 
-<% form_for([@workout_session, @workout_history]) do |f| %>
+<% form_for([@workout_session, @workout_history], :url => workout_session_workout_history_url(@workout_session)) do |f| %>
   <%= f.error_messages %>
 
   <p>

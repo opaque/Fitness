@@ -84,7 +84,7 @@ class WorkoutHistoriesController < ApplicationController
 	
     respond_to do |format|
       if @workout_history.update_attributes(params[:workout_history])
-        format.html { redirect_to(root_path, :notice => 'WorkoutHistory was successfully updated.') }
+        format.html { redirect_to(event_path(@event), :notice => 'WorkoutHistory was successfully updated.') }
         format.xml  { head :ok }
       else
         #format.html { render :action => "edit" }
