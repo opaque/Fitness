@@ -1,21 +1,10 @@
+require 'gchart'
+
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [ :new, :create]
   before_filter :require_user, :only => [:show, :edit, :update, :graph]
   
-  /
-  def index
-	@users = User.find(:all)
 
-	respond_to do |format|
-/
-
-    #  format.html # index.html.erb 
-	/
-      format.xml  { render :xml => @users }
-    end
-  end
-  
-  /
   
   def new
     @user = User.new
