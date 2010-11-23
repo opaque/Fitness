@@ -39,5 +39,9 @@ class UsersController < ApplicationController
     end
   end
   
+  def graph
+ 
+  end
+  
   
 end
