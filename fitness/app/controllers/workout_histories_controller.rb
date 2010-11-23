@@ -1,8 +1,7 @@
 require 'gchart'
 
 class WorkoutHistoriesController < ApplicationController
-
-   before_filter :get_event
+   before_filter :require_user, :get_event
   
   def get_event
 	@workout_session = WorkoutSession.find(params[:workout_session_id])
