@@ -40,7 +40,38 @@ class UsersController < ApplicationController
   end
   
   def graph
- 
+	@user = @curret_user
+	
+	@events = Event.find(:all, :conditions => ['user_id = ?', current_user.id])
+	
+	@actual_data = Array.new
+	@actual_data.push(0)
+	@estimated_data = Array.new
+	@estimated_data.push(0)
+	
+	@events.each do |event|
+		@workout_sess = event.workout_sessions
+		@workout_sess.each do |workout_sess|
+			@estimated_data.push(workout_sess.estimated_reps)
+		end
+		@workout_histories = event.workout_histories
+		@workout_histories.each do |workout_history|
+			@actual_data.push(workout_history.actual_reps)
+		end
+	end
+	
+	@g = Gchart.line(:title => "Actual vs Estimated Reps",
+                     :data => [@actual_data, @estimated_data],
+                     :line_colors => 'FF0000,00FF00',
+                     :legend => ["Actual Reps", "Estimate Reps"],
+                     :axis_with_labels => ['x','y'],
+					 :size => '600x400')
+	 
+	respond_to do |format|
+		format.html # graph.html.erb
+		#format.xml  { render xml => @workout_histories }
+		format.xml  { render xml => @g }
+    end
   end
   
   
