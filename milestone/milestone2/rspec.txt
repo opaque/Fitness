@@ -1,0 +1,74 @@
+(in C:/Users/schock/Desktop/School Stuff/CS169/OnlineFitness/onlinefitness)
+.............*....*...................................*******************.*
+
+Pending:
+
+Workout when updating a workout should flash a notice saying 'Arguments are invalid' when an update fails (Not Yet Implemented)
+./spec/models/workout_spec.rb:107
+
+Workout when creating a workout should flash a notice saying 'Arguments are invalid' when a it fails to create a new workout (Not Yet Implemented)
+./spec/models/workout_spec.rb:80
+
+/workouts/show.html.erb renders attributes in <p> (routing issue)
+./spec/views/workouts/show.html.erb_spec.rb:16
+
+/workouts/new.html.erb renders new workout form (routing issues)
+./spec/views/workouts/new.html.erb_spec.rb:18
+
+/workouts/index.html.erb renders a list of workouts (routing issues)
+./spec/views/workouts/index.html.erb_spec.rb:27
+
+WorkoutsController DELETE destroy destroys the requested workout (routing issues)
+./spec/controllers/workouts_controller_spec.rb:145
+
+WorkoutsController DELETE destroy redirects to the workouts list (routing issues)
+./spec/controllers/workouts_controller_spec.rb:153
+
+WorkoutsController PUT update with invalid params updates the requested workout (routing issues)
+./spec/controllers/workouts_controller_spec.rb:117
+
+WorkoutsController PUT update with invalid params assigns the workout as @workout (routing issues)
+./spec/controllers/workouts_controller_spec.rb:125
+
+WorkoutsController PUT update with invalid params re-renders the 'edit' template (routing issues)
+./spec/controllers/workouts_controller_spec.rb:133
+
+WorkoutsController PUT update with valid params updates the requested workout (routing issues)
+./spec/controllers/workouts_controller_spec.rb:91
+
+WorkoutsController PUT update with valid params assigns the requested workout as @workout (routing issues)
+./spec/controllers/workouts_controller_spec.rb:99
+
+WorkoutsController PUT update with valid params redirects to the workout (routing issues)
+./spec/controllers/workouts_controller_spec.rb:107
+
+WorkoutsController POST create with invalid params assigns a newly created but unsaved workout as @workout (routing issues)
+./spec/controllers/workouts_controller_spec.rb:69
+
+WorkoutsController POST create with invalid params re-renders the 'new' template (routing issues)
+./spec/controllers/workouts_controller_spec.rb:77
+
+WorkoutsController POST create with valid params assigns a newly created workout as @workout (routing issues)
+./spec/controllers/workouts_controller_spec.rb:51
+
+WorkoutsController POST create with valid params redirects to the created workout (routing issues)
+./spec/controllers/workouts_controller_spec.rb:59
+
+WorkoutsController GET edit assigns the requested workout as @workout (routing issues)
+./spec/controllers/workouts_controller_spec.rb:39
+
+WorkoutsController GET new assigns a new workout as @workout (routing issues)
+./spec/controllers/workouts_controller_spec.rb:29
+
+WorkoutsController GET show assigns the requested workout as @workout (routing issues)
+./spec/controllers/workouts_controller_spec.rb:20
+
+WorkoutsController GET index assigns all workouts as @workouts (routing issues)
+./spec/controllers/workouts_controller_spec.rb:10
+
+/workouts/edit.html.erb renders the edit workout form (routing issues)
+./spec/views/workouts/edit.html.erb_spec.rb:18
+
+Finished in 3.903 seconds
+
+75 examples, 0 failures, 22 pending

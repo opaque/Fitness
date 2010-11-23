@@ -3,12 +3,17 @@ require 'spec_helper'
 describe EventsController do
 
   def mock_event(stubs={})
-    @mock_event ||= mock_model(Event, stubs)
+    @mock_event ||= mock_model(Event, {:user_id= => 1}.merge(stubs)) # make the user_id default at 1
+  end
+  
+  before (:each) do
+    login
+    @mock_event.stub!(:user_id=).with(:all).and_return(1)
   end
 
   describe "GET index" do
     it "assigns all events as @events" do
-      Event.stub(:find).with(:all).and_return([mock_event])
+      Event.stub(:find).with(:all, :conditions).and_return([mock_event])
       get :index
       assigns[:events].should == [mock_event]
     end
@@ -50,7 +55,7 @@ describe EventsController do
       it "redirects to the created event" do
         Event.stub(:new).and_return(mock_event(:save => true))
         post :create, :event => {}
-        response.should redirect_to(event_url(mock_event))
+        response.should redirect_to(events_url)
       end
     end
 
