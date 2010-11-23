@@ -6,7 +6,10 @@ Feature: User input profile
 	So that I can view it later
 	
 	Scenario: User completes profile
-		Given blank profile 1 exists
+		Given I am the registered user "user1" with password "password"
+			And I am on the login page
+		When I login with "user1" and "password"
+			And blank profile 1 exists
 		When I am on the edit profile page for profile 1
 		  And I fill in "profile_first_name" with "John"
 		  And I fill in "profile_last_name" with "Smith"
@@ -17,7 +20,10 @@ Feature: User input profile
 		Then I should see "Profile was successfully updated."
 	
 	Scenario: User partially completes profile
-		Given blank profile 1 exists
+		Given I am the registered user "user1" with password "password"
+			And I am on the login page
+		When I login with "user1" and "password"
+			And blank profile 1 exists
 		When I am on the edit profile page for profile 1
 		  And I fill in "profile_first_name" with "John"
 		  And I fill in "profile_last_name" with "Smith"
