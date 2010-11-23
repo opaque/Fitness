@@ -25,16 +25,14 @@ describe UsersController do
   end
   
   
-	/#
+	
   describe "GET index" do
 	
-    it "assigns all users as @users" do
-      User.stub(:find).with(:all).and_return([mock_user])
-      get :index
-      assigns[:users].should == [mock_user]
-    end
+    it "assigns all users as @users" 
+    
+    
   end
-#/
+
   describe "GET show" do
     it "assigns the requested user as @user" do
       User.stub(:find).with("37").and_return(mock_user)

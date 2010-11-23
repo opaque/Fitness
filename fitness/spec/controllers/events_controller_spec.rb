@@ -6,10 +6,10 @@ describe EventsController do
     @mock_event ||= mock_model(Event, {:user_id= => 1}.merge(stubs)) # make the user_id default at 1
   end
   
-  before (:each) do
-    login
-    @mock_event.stub!(:user_id=).with(:all).and_return(1)
-  end
+  before {login} #do
+    
+    #@mock_event.stub!(:user_id=).with(:all).and_return(1)
+  #end
 
   describe "GET index" do
     it "assigns all events as @events" do
