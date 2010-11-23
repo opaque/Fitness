@@ -11,7 +11,7 @@ class WorkoutHistoriesController < ApplicationController
   # GET /workout_histories
   # GET /workout_histories.xml  
   def index
-    @workout_histories = @workout_session.workout_histories
+    @workout_histories = @workout_session.workout_history
 	respond_to do |format|
 		format.html # index.html.erb
 		format.xml  { render :xml => @workout_histories }

@@ -46,7 +46,7 @@ class WorkoutSessionsController < ApplicationController
   # POST /workout_sessions
   # POST /workout_sessions.xml
    def create
-	@event = Event.find(params[:event_id])
+	
     @workout_session = @event.workout_sessions.build(params[:workout_session])
 	@workout_history = WorkoutHistory.new(params[:workout_history])
     respond_to do |format|
