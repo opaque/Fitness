@@ -5,7 +5,7 @@ Feature: User input profile
 	I can input my profile data
 	So that I can view it later
 	
-	Scenario: User inputs data into profile
+	Scenario: User completes profile
 		Given blank profile 1 exists
 		When I am on the edit profile page for profile 1
 		  And I fill in "profile_first_name" with "John"
@@ -15,5 +15,13 @@ Feature: User input profile
 		  And I select "Male" from "gender"
 		  And I press "Update"
 		Then I should see "Profile was successfully updated."
-				
+	
+	Scenario: User partially completes profile
+		Given blank profile 1 exists
+		When I am on the edit profile page for profile 1
+		  And I fill in "profile_first_name" with "John"
+		  And I fill in "profile_last_name" with "Smith"
+		  And I select "Male" from "gender"
+		  And I press "Update"
+		Then I should see "Profile was successfully updated."
 	
