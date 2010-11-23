@@ -1,0 +1,5 @@
+The Tubed it had a feature where you can like and dislike a show in a specific category. I found
+this ot be very clever, along with the fact that the shows auto sort based on the nubmer of likes/dislike. However,
+the dislikes can't go under 1, which I find to be very artificial. Also any individual can vote dislike
+or like multiple times, which would allow voting manipulation to increase the popularity of a 
+specific tv show. 
