@@ -12,8 +12,8 @@
     <td><%=h workout_history.actual_reps %></td>
     <td><%=h workout_history.actual_sets %></td>
     <td><%=h workout_history.calories %></td>
-    <td><%= link_to 'Show', workout_history %></td>
-    <td><%= link_to 'Edit', edit_event_workout_history_path(@event,workout_history) %></td>
+    <td><%= link_to 'Show', [@event, workout_history] %></td>
+    <td><%= link_to 'Edit', edit_event_workout_history_path(@event, workout_history) %></td>
     <td><%= link_to 'Destroy', workout_history, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

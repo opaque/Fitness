@@ -30,6 +30,7 @@
 	<th>Show</th>
 	<th>Edit</th>
 	<th>Destroy</th>
+	<th>Edit Completed</th>
 
 </tr>
 <% @exercise_list = @event.workout_sessions.dup %>
@@ -50,6 +51,7 @@
 			<td><%= link_to 'X', event_workout_session_path(@event,session) %></td>
 			<td><%= link_to 'X', edit_event_workout_session_path(@event, session) %></td>
 			<td><%= link_to 'X', [@event, session], :confirm => 'Are you sure?', :method => :delete %></td>
+			<td><%= link_to 'X',  edit_workout_session_workout_history_path(session)%></td>
 			</tr>
 				<% end %>
 			<% end %>
@@ -68,5 +70,5 @@
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Remove', @event, :confirm => 'Are you sure?', :method => :delete %> | 
 <%= link_to 'Back to Calendar', events_path %> |
-<%= link_to 'Edit Actual Reps and Sets', event_workout_histories_path(@event) %>
+
 

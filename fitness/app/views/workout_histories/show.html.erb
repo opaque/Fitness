@@ -1,4 +1,9 @@
 <p>
+  <b>Workout Session id:</b>
+  <%=h @workout_history.workout_session_id %>
+</p>
+
+<p>
   <b>Actual reps:</b>
   <%=h @workout_history.actual_reps %>
 </p>
@@ -21,4 +26,4 @@
 
 
 <%= link_to 'Edit', edit_workout_history_path(@workout_history) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', events_path(@event) %>

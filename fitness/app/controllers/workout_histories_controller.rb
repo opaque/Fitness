@@ -5,13 +5,14 @@ class WorkoutHistoriesController < ApplicationController
    before_filter :get_event
   
   def get_event
-	@event = Event.find(params[:event_id]) 	
+	@workout_session = WorkoutSession.find(params[:workout_session_id])
+	@event = Event.find(:all, :conditions => ['id = ?', @workout_session.event_id])
   end
   
   # GET /workout_histories
   # GET /workout_histories.xml  
   def index
-    @workout_histories = @event.workout_histories
+    @workout_histories = @workout_session.workout_histories
 	respond_to do |format|
 		format.html # index.html.erb
 		format.xml  { render :xml => @workout_histories }
@@ -23,7 +24,7 @@ class WorkoutHistoriesController < ApplicationController
   # GET /workout_histories/1
   # GET /workout_histories/1.xml
   def show
-    @workout_history = @event.workout_histories.find(params[:id])
+    @workout_history = @workout_session.workout_history
 
     respond_to do |format|
       format.html # show.html.erb
@@ -48,7 +49,7 @@ class WorkoutHistoriesController < ApplicationController
   # GET /workout_histories/new
   # GET /workout_histories/new.xml
   def new
-    @workout_history = @event.workout_histories.build
+    @workout_history = @workout_session.workout_histories.build
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @workout_history }
@@ -57,13 +58,13 @@ class WorkoutHistoriesController < ApplicationController
 
   # GET /workout_histories/1/edit
   def edit
-    @workout_history = @event.workout_histories.find(params[:id])
+    @workout_history = @workout_session.workout_history
   end
 
   # POST /workout_histories
   # POST /workout_histories.xml
   def create
-    @workout_history = @event.workout_histories.build(params[:workout_history])
+    @workout_history = @workout_session.workout_histories.build(params[:workout_history])
 
     respond_to do |format|
       if @workout_history.save
@@ -79,15 +80,16 @@ class WorkoutHistoriesController < ApplicationController
   # PUT /workout_histories/1
   # PUT /workout_histories/1.xml
   def update
-    @workout_history = @event.workout_histories.find(params[:id])
-
+    @workout_history = @workout_session.workout_history
+	
     respond_to do |format|
       if @workout_history.update_attributes(params[:workout_history])
-        format.html { redirect_to(event_workout_histories_path(@event, @workout_history), :notice => 'WorkoutHistory was successfully updated.') }
+        format.html { redirect_to(root_path, :notice => 'WorkoutHistory was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @workout_history.errors, :status => :unprocessable_entity }
+        #format.html { render :action => "edit" }
+        format.html { redirect_to(event_path(@event), :notice => 'failed' ) }
+		format.xml  { render :xml => @workout_history.errors, :status => :unprocessable_entity }
       end
     end
   end

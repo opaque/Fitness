@@ -1,6 +1,8 @@
 <h1>Editing workout_history</h1>
 
-<% form_for(@workout_history) do |f| %>
+
+
+<% form_for([@workout_session, @workout_history]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -21,4 +23,5 @@
 <% end %>
 
 
-<%= link_to 'Back to Event', event_path(@event)%>
+
+<%= link_to 'Back to Event', event_path(@event) %>
