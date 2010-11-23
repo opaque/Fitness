@@ -4,11 +4,11 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :profiles
 
-  map.resources :events, :has_many => [:workout_sessions, :workout_histories]  
+  map.resources :events, :has_many => [:workout_sessions]  
   
   map.resources :workout_histories
 
-  map.resources :workout_sessions
+  map.resources :workout_sessions, :has_one => [:workout_history]
 
   map.resources :exercises
 
