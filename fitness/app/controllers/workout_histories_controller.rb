@@ -1,37 +1,29 @@
 require 'gchart'
 
 class WorkoutHistoriesController < ApplicationController
-  # GET /workout_histories
-  # GET /workout_histories.xml
-  def index
-    @workout_histories = WorkoutHistory.all
-	
-	@actual_data = Array.new
-	@estimated_data = Array.new
-	
-	@workout_histories.each do |workout_history|
-		@actual_data.push(workout_history[:actual_reps])
-		@workout_sess = WorkoutSession.find(workout_history[:workout_session_id])
-		@estimated_data.push(@workout_sess[:estimated_reps])
-	end
-	
-	@g = Gchart.line(:title => "Actual vs Estimated Reps",
-           :data => [@actual_data, @estimated_data], 
-           :line_colors => 'FF0000,00FF00',
-		   :legend => ["Actual Reps", "Estimate Reps"],
-		   :axis_with_labels => ['x', 'y', 'r'])
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @workout_histories }
-	  format.xml  { render :xml => @g }
-    end
+   before_filter :get_event
+  
+  def get_event
+	@event = Event.find(params[:event_id]) 	
+  end
+  
+  # GET /workout_histories
+  # GET /workout_histories.xml  
+  def index
+    @workout_histories = @event.workout_histories
+	respond_to do |format|
+		format.html # index.html.erb
+		format.xml  { render :xml => @workout_histories }
+
+	
+	end
   end
 
   # GET /workout_histories/1
   # GET /workout_histories/1.xml
   def show
-    @workout_history = WorkoutHistory.find(params[:id])
+    @workout_history = @event.workout_histories.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -56,8 +48,7 @@ class WorkoutHistoriesController < ApplicationController
   # GET /workout_histories/new
   # GET /workout_histories/new.xml
   def new
-    @workout_history = WorkoutHistory.new
-
+    @workout_history = @event.workout_histories.build
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @workout_history }
@@ -66,13 +57,13 @@ class WorkoutHistoriesController < ApplicationController
 
   # GET /workout_histories/1/edit
   def edit
-    @workout_history = WorkoutHistory.find(params[:id])
+    @workout_history = @event.workout_histories.find(params[:id])
   end
 
   # POST /workout_histories
   # POST /workout_histories.xml
   def create
-    @workout_history = WorkoutHistory.new(params[:workout_history])
+    @workout_history = @event.workout_histories.build(params[:workout_history])
 
     respond_to do |format|
       if @workout_history.save
