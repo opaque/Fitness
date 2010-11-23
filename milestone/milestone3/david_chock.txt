@@ -1,0 +1,9 @@
+Group: Rotten Cucumber
+Feature: They allow users to enter in their SMS for notification.
+
+The core functionality seems to support SMS, authlogic, and a mail plugin. I really like the idea of SMS
+because it is a good idea to notify people by phone with shared event. However, a lot of their pages still
+seem to cause the web page to crash, and after entering in my SMS number that field disappeared and never
+resurfaced again. Even though it states that completing tasks is a feature, I am unable to run it. It seems 
+like their design is ripe for the composite pattern as there are individual users and actions and group of 
+users and their actions. 

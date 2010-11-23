@@ -1,0 +1,9 @@
+Group: Rides
+Feature: Queries Google Maps API to check whether an input address is an actual address
+
+I noticed that this project uses Google Maps jquery plugin. The application works so that a user can 
+create a trip, and invite others to join the trip. Features are very well documented and structured into 
+folders. It is interesting how they have a vehicle model that tracks what vehicles each user drives. This 
+could have a really good social aspect as many people are attracted to nice cars. Personal preferences 
+also has a good base that checks for compatibility between the people in one trip. 
+
