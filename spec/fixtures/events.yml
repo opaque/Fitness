@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  start_at: 2010-11-21 17:43:37
+  end_at: 2010-11-21 17:43:37
+  name: MyString
+  event_type: MyString
+
+two:
+  start_at: 2010-11-21 17:43:37
+  end_at: 2010-11-21 17:43:37
+  name: MyString
+  event_type: MyString
