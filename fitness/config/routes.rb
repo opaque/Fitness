@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.event_workout_history "events/:id/event_workout_history", :controller => "events", :action => "event_workout_history"
   
-  #map.graph "graph", :controller => "user", :action => "graph"
+  map.graph "graph", :controller => "users", :action => "graph"
   
   # The priority is based upon order of creation: first created -> highest priority.
   map.resources :users
