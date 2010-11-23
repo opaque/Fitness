@@ -1,0 +1,53 @@
+Using the default profile...
+....................................UUUUU............................UUUUUU
+
+13 scenarios (3 undefined, 10 passed)
+75 steps (11 undefined, 64 passed)
+0m3.738s
+
+You can implement step definitions for undefined steps with these snippets:
+
+Given /^I am a user$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^I have a registered account$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I enter in the correct username and password$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I click "([^"]*)"$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see my home page$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^I am not yet on the graph page$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I click on the graph tab$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see my workout data presented on the default graph$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^I am in the graph tab$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I click on an alternative graph link$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see my workout data presented in that format$/ do
+  pending # express the regexp above with the code you wish you had
+end
+

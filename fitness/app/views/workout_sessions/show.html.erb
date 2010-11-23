@@ -1,0 +1,19 @@
+<p>
+  <b>Event ID:</b>
+  <%=h @workout_session.event_id %>
+</p>
+
+
+<p>
+  <b>Estimated reps:</b>
+  <%=h @workout_session.estimated_reps %>
+</p>
+
+<p>
+  <b>Estimated sets:</b>
+  <%=h @workout_session.estimated_sets %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_workout_session_path(@event,@workout_session) %> |
+<%= link_to 'Back to Event', event_path(@event) %>
