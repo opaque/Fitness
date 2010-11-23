@@ -79,11 +79,11 @@ class WorkoutHistoriesController < ApplicationController
   # PUT /workout_histories/1
   # PUT /workout_histories/1.xml
   def update
-    @workout_history = WorkoutHistory.find(params[:id])
+    @workout_history = @event.workout_histories.find(params[:id])
 
     respond_to do |format|
       if @workout_history.update_attributes(params[:workout_history])
-        format.html { redirect_to(@workout_history, :notice => 'WorkoutHistory was successfully updated.') }
+        format.html { redirect_to(event_workout_histories_path(@event, @workout_history), :notice => 'WorkoutHistory was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
