@@ -11,12 +11,12 @@
 <% weekly_vertical_calendar(@event, :date => @date) do |w| %>
     <% w.week do |event| %>
 		<% if event.user_id == current_user.id %>
-        <% if event.start_at.strftime('%j') == event.end_at.strftime('%j') %>
-            <%= event.start_at.strftime('%H:%M') %> -<%= event.end_at.strftime('%H:%M') %>
-        <% else %>
-            <%= event.start_at.strftime('%H:%M %d.%m') %> - <%= event.end_at.strftime('%H:%M %d.%m') %>
-        <% end %>
-        <%= link_to truncate(event.name), nil %>
+			<% if event.start_at.strftime('%j') == event.end_at.strftime('%j') %>
+				<%= event.start_at.strftime('%H:%M') %> -<%= event.end_at.strftime('%H:%M') %>
+			<% else %>
+				<%= event.start_at.strftime('%H:%M %d.%m') %> - <%= event.end_at.strftime('%H:%M %d.%m') %>
+			<% end %>
+			<%= link_to truncate(event.name), nil %>
 		<% end %>
     <% end -%>
 <% end -%>

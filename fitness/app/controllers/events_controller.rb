@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   
   before_filter :require_user
-
+  
   # GET /events
   # GET /events.xml
   def index
@@ -9,8 +9,8 @@ class EventsController < ApplicationController
     @date = @date - (@date.wday==0 ? 0 : @date.wday).days
     @start_date = Date.new(@date.year, @date.month, @date.day)
     @end_date = @start_date + 7
-    @event = Event.find(:all, :conditions => ['(start_at between ? and ?) or (end_at between ? and ?) or (start_at < ? and end_at > ?)',
-                                                @start_date, @end_date, @start_date, @end_date, @start_date, @end_date])
+    @event = Event.find(:all, :conditions => ['((start_at between ? and ?) or (end_at between ? and ?) or (start_at < ? and end_at > ?)) and (user_id = ? )',
+                                                @start_date, @end_date, @start_date, @end_date, @start_date, @end_date, current_user.id])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
