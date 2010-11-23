@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe ProfilesController do
 
+  before { login }
+  
+  
   def mock_profile(stubs={})
     @mock_profile ||= mock_model(Profile, stubs)
   end
@@ -88,7 +91,7 @@ describe ProfilesController do
       it "redirects to the profile" do
         Profile.stub(:find).and_return(mock_profile(:update_attributes => true))
         put :update, :id => "1"
-        response.should redirect_to(profile_url(mock_profile))
+        response.should redirect_to(root_path)
       end
     end
 
