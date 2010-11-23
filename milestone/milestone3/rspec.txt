@@ -1,0 +1,390 @@
+(in C:/Users/Edward/Fitness/fitness)
+EventsController
+  GET index
+    assigns all events as @events (PENDING: Not Yet Implemented)
+  GET show
+    assigns the requested event as @event
+  GET new
+    assigns a new event as @event
+  GET edit
+    assigns the requested event as @event
+  POST create
+    with valid params
+      assigns a newly created event as @event
+      redirects to the created event
+    with invalid params
+      assigns a newly created but unsaved event as @event
+      re-renders the 'new' template
+  PUT update
+    with valid params
+      updates the requested event
+      assigns the requested event as @event
+      redirects to the event
+    with invalid params
+      updates the requested event
+      assigns the event as @event
+      re-renders the 'edit' template
+  DELETE destroy
+    destroys the requested event
+    redirects to the events list
+ExercisesController
+  GET index
+    assigns all exercises as @exercises
+  GET show
+    assigns the requested exercise as @exercise
+  GET new
+    assigns a new exercise as @exercise
+  GET edit
+    assigns the requested exercise as @exercise
+  POST create
+    with valid params
+      assigns a newly created exercise as @exercise
+      redirects to the created exercise
+    with invalid params
+      assigns a newly created but unsaved exercise as @exercise
+      re-renders the 'new' template
+  PUT update
+    with valid params
+      updates the requested exercise
+      assigns the requested exercise as @exercise
+      redirects to the exercise
+    with invalid params
+      updates the requested exercise
+      assigns the exercise as @exercise
+      re-renders the 'edit' template
+  DELETE destroy
+    destroys the requested exercise
+    redirects to the exercises list
+LandingController
+  GET index
+    assigns all landings as @landings
+ProfilesController
+  GET index
+    assigns all profiles as @profiles
+  GET show
+    assigns the requested profile as @profile
+  GET new
+    assigns a new profile as @profile
+  GET edit
+    assigns the requested profile as @profile
+  POST create
+    with valid params
+      assigns a newly created profile as @profile
+      redirects to the created profile
+    with invalid params
+      assigns a newly created but unsaved profile as @profile
+      re-renders the 'new' template
+  PUT update
+    with valid params
+      updates the requested profile
+      assigns the requested profile as @profile
+      redirects to the profile
+    with invalid params
+      updates the requested profile
+      assigns the profile as @profile
+      re-renders the 'edit' template
+  DELETE destroy
+    destroys the requested profile
+    redirects to the profiles list
+UsersController
+  GET index
+    assigns all users as @users (PENDING: Not Yet Implemented)
+  GET show
+    assigns the requested user as @user
+  GET new
+    assigns a new user as @user (PENDING: Not Yet Implemented)
+  GET edit
+    assigns the requested user as @user
+  POST create
+    with valid params
+      assigns a newly created user as @user (PENDING: Not Yet Implemented)
+      redirects to the created user (PENDING: Not Yet Implemented)
+    with invalid params
+      assigns a newly created but unsaved user as @user (PENDING: Not Yet Implemented)
+      re-renders the 'new' template (PENDING: Not Yet Implemented)
+  PUT update
+    with valid params
+      updates the requested user (PENDING: Not Yet Implemented)
+      assigns the requested user as @user
+      redirects to the user
+    with invalid params
+      updates the requested user
+      assigns the user as @user
+      re-renders the 'edit' template
+UserSessionsController
+  GET new
+    assigns a new usersession as @usersession (PENDING: Not Yet Implemented)
+  POST create
+    with valid params
+      assigns a newly created usersession as @usersession (PENDING: Not Yet Implemented)
+      redirects to the created usersession
+WorkoutHistoriesController
+  GET index
+    assigns all workout_histories as @workout_histories
+  GET show
+    assigns the requested workout_history as @workout_history
+  GET new
+    assigns a new workout_history as @workout_history
+  GET edit
+    assigns the requested workout_history as @workout_history
+  POST create
+    with valid params
+      assigns a newly created workout_history as @workout_history
+      redirects to the created workout_history (PENDING: Not Yet Implemented)
+    with invalid params
+      assigns a newly created but unsaved workout_history as @workout_history
+      re-renders the 'new' template
+  PUT update
+    with valid params
+      updates the requested workout_history
+      assigns the requested workout_history as @workout_history
+      redirects to the workout_history
+    with invalid params
+      updates the requested workout_history
+      assigns the workout_history as @workout_history
+      re-renders the 'edit' template
+  DELETE destroy
+    destroys the requested workout_history
+    redirects to the workout_histories list
+WorkoutSessionsController
+  GET index
+    assigns all workout_sessions as @workout_sessions
+  GET show
+    assigns the requested workout_session as @workout_session
+  GET new
+    assigns a new workout_session as @workout_session
+  GET edit
+    assigns the requested workout_session as @workout_session
+  POST create
+    with valid params
+      assigns a newly created workout_session as @workout_session
+      redirects to the created workout_session
+    with invalid params
+      assigns a newly created but unsaved workout_session as @workout_session
+      re-renders the 'new' template
+      also re-renders the 'new' templateif history is invalid
+  PUT update
+    with valid params
+      updates the requested workout_session
+      assigns the requested workout_session as @workout_session
+      redirects to the workout_session
+    with invalid params
+      updates the requested workout_session
+      assigns the workout_session as @workout_session
+      re-renders the 'edit' template
+  DELETE destroy
+    destroys the requested workout_session
+    redirects to the workout_sessions list
+EventsHelper
+  is included in the helper object
+ExercisesHelper
+  is included in the helper object
+ProfilesHelper
+  is included in the helper object
+UsersHelper
+  is included in the helper object
+WorkoutHistoriesHelper
+  is included in the helper object
+WorkoutSessionsHelper
+  is included in the helper object
+Event
+  should create a new instance given valid attributes
+Exercise
+  should create a new instance given valid attributes
+Profile
+  should create a new instance given valid attributes
+WorkoutHistory
+  should create a new instance given valid attributes
+WorkoutSession
+  should create a new instance given valid attributes
+EventsController
+  routing
+    recognizes and generates #index
+    recognizes and generates #new
+    recognizes and generates #show
+    recognizes and generates #edit
+    recognizes and generates #create
+    recognizes and generates #update
+    recognizes and generates #destroy
+ExercisesController
+  routing
+    recognizes and generates #index
+    recognizes and generates #new
+    recognizes and generates #show
+    recognizes and generates #edit
+    recognizes and generates #create
+    recognizes and generates #update
+    recognizes and generates #destroy
+ProfilesController
+  routing
+    recognizes and generates #index
+    recognizes and generates #new
+    recognizes and generates #show
+    recognizes and generates #edit
+    recognizes and generates #create
+    recognizes and generates #update
+    recognizes and generates #destroy
+UsersController
+  routing
+    recognizes and generates #index
+    recognizes and generates #new
+    recognizes and generates #show
+    recognizes and generates #edit
+    recognizes and generates #create
+    recognizes and generates #update
+    recognizes and generates #destroy
+WorkoutHistoriesController
+  routing
+    recognizes and generates #index
+    recognizes and generates #new
+    recognizes and generates #show
+    recognizes and generates #edit
+    recognizes and generates #create
+    recognizes and generates #update
+    recognizes and generates #destroy
+WorkoutSessionsController
+  routing
+    recognizes and generates #index
+    recognizes and generates #new
+    recognizes and generates #show
+    recognizes and generates #edit
+    recognizes and generates #create
+    recognizes and generates #update
+    recognizes and generates #destroy
+/events/edit.html.erb
+  renders the edit event form
+/events/index.html.erb
+  renders a list of events (FAILED - 1)
+/events/new.html.erb
+  renders new event form
+/events/show.html.erb
+  renders attributes in <p>
+/exercises/edit.html.erb
+  renders the edit exercise form
+/exercises/index.html.erb
+  renders a list of exercises
+/exercises/new.html.erb
+  renders new exercise form
+/exercises/show.html.erb
+  renders attributes in <p>
+/profiles/edit.html.erb
+  renders the edit profile form
+/profiles/index.html.erb
+  renders a list of profiles
+/profiles/new.html.erb
+  renders new profile form
+/profiles/show.html.erb
+  renders attributes in <p>
+/users/edit.html.erb
+  renders the edit user form (PENDING: Not Yet Implemented)
+/users/index.html.erb
+  renders a list of users
+/users/new.html.erb
+  renders new user form
+/users/show.html.erb
+  renders attributes in <p>
+/workout_histories/edit.html.erb
+  renders the edit workout_history form (PENDING: Not Yet Implemented)
+/workout_histories/index.html.erb
+  renders a list of workout_histories (PENDING: Not Yet Implemented)
+/workout_histories/new.html.erb
+  renders new workout_history form
+/workout_histories/show.html.erb
+  renders attributes in <p>
+/workout_sessions/edit.html.erb
+  renders the edit workout_session form (PENDING: Not Yet Implemented)
+/workout_sessions/index.html.erb
+  renders a list of workout_sessions
+/workout_sessions/new.html.erb
+  renders new workout_session form
+/workout_sessions/show.html.erb
+  renders attributes in <p> (PENDING: Not Yet Implemented)
+
+Pending:
+
+EventsController GET index assigns all events as @events (Not Yet Implemented)
+./spec/controllers/events_controller_spec.rb:15
+
+UsersController GET index assigns all users as @users (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:31
+
+UsersController GET new assigns a new user as @user (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:45
+
+UsersController POST create with valid params assigns a newly created user as @user (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:59
+
+UsersController POST create with valid params redirects to the created user (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:61
+
+UsersController POST create with invalid params assigns a newly created but unsaved user as @user (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:65
+
+UsersController POST create with invalid params re-renders the 'new' template (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:67
+
+UsersController PUT update with valid params updates the requested user (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:75
+
+UserSessionsController GET new assigns a new usersession as @usersession (Not Yet Implemented)
+./spec/controllers/user_sessions_controller_spec.rb:17
+
+UserSessionsController POST create with valid params assigns a newly created usersession as @usersession (Not Yet Implemented)
+./spec/controllers/user_sessions_controller_spec.rb:23
+
+WorkoutHistoriesController POST create with valid params redirects to the created workout_history (Not Yet Implemented)
+./spec/controllers/workout_histories_controller_spec.rb:72
+
+/users/edit.html.erb renders the edit user form (Not Yet Implemented)
+./spec/views/users/edit.html.erb_spec.rb:12
+
+/workout_histories/edit.html.erb renders the edit workout_history form (Not Yet Implemented)
+./spec/views/workout_histories/edit.html.erb_spec.rb:12
+
+/workout_histories/index.html.erb renders a list of workout_histories (Not Yet Implemented)
+./spec/views/workout_histories/index.html.erb_spec.rb:13
+
+/workout_sessions/edit.html.erb renders the edit workout_session form (Not Yet Implemented)
+./spec/views/workout_sessions/edit.html.erb_spec.rb:12
+
+/workout_sessions/show.html.erb renders attributes in <p> (Not Yet Implemented)
+./spec/views/workout_sessions/show.html.erb_spec.rb:9
+
+1)
+ActionView::TemplateError in '/events/index.html.erb renders a list of events'
+Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id
+On line #4 of app/views/layouts/_base.html.erb
+
+    1: <%= link_to "Home", root_path %> |
+    2: <%= link_to "Graph", graph_path %> | 
+    3: <%= link_to "Calendar", events_path %> |
+    4:  <%= link_to "My Profile", edit_profile_path(current_user.id) %> |
+    5: <%= link_to "Logout", logout_path, :confirm => "Are you sure you want to logout?" %>
+    6: <br />
+
+    app/views/layouts/_base.html.erb:4
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/extensions/action_view/base.rb:17:in `render_partial'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/extensions/action_view/base.rb:27:in `render'
+    app/views/events/index.html.erb:1
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/extensions/action_view/base.rb:27:in `render'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `__send__'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `render'
+    /spec/views/events/index.html.erb_spec.rb:20
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `instance_eval'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `execute'
+    C:/Ruby187/lib/ruby/1.8/timeout.rb:53:in `timeout'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:37:in `execute'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:214:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `each'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:103:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:23:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `each'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `run'
+    rspec (1.3.0) lib/spec/runner/options.rb:152:in `run_examples'
+    rspec (1.3.0) lib/spec/runner/command_line.rb:9:in `run'
+    rspec (1.3.0) bin/spec:5
+
+Finished in 10.84362 seconds
+
+176 examples, 1 failure, 16 pending
