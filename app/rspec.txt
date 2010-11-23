@@ -1,0 +1,988 @@
+(in C:/Users/Edward/Fitness/fitness)
+FFFFFFFFFFFFFFFF..........F..........F.........FF.................................F..F.......FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF...FF.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+
+1)
+Spec::Mocks::MockExpectationError in 'EventsController DELETE destroy destroys the requested event'
+<Event(id: integer, start_at: datetime, end_at: datetime, name: string, event_type: string, user_id: integer, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/events_controller_spec.rb:119:
+
+2)
+'EventsController DELETE destroy redirects to the events list' FAILED
+expected redirect to "http://test.host/events", got redirect to "http://test.host/user_session/new"
+./spec/controllers/events_controller_spec.rb:127:
+
+3)
+Spec::Mocks::MockExpectationError in 'EventsController PUT update with invalid params updates the requested event'
+<Event(id: integer, start_at: datetime, end_at: datetime, name: string, event_type: string, user_id: integer, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/events_controller_spec.rb:97:
+
+4)
+'EventsController PUT update with invalid params assigns the event as @event' FAILED
+
+expected #<Event:57858744> => #<Event:0x372dab8 @name="Event_1004">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/events_controller_spec.rb:105:
+
+5)
+'EventsController PUT update with invalid params re-renders the 'edit' template' FAILED
+expected "edit", got redirected to "http://test.host/user_session/new"
+./spec/controllers/events_controller_spec.rb:111:
+
+6)
+Spec::Mocks::MockExpectationError in 'EventsController PUT update with valid params updates the requested event'
+<Event(id: integer, start_at: datetime, end_at: datetime, name: string, event_type: string, user_id: integer, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/events_controller_spec.rb:77:
+
+7)
+'EventsController PUT update with valid params assigns the requested event as @event' FAILED
+
+expected #<Event:57753888> => #<Event:0x3714120 @name="Event_1007">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/events_controller_spec.rb:85:
+
+8)
+'EventsController PUT update with valid params redirects to the event' FAILED
+expected redirect to "http://test.host/events/1008", got redirect to "http://test.host/user_session/new"
+./spec/controllers/events_controller_spec.rb:91:
+
+9)
+'EventsController POST create with invalid params assigns a newly created but unsaved event as @event' FAILED
+
+expected #<Event:57686580> => #<Event:0x3703a34 @name="Event_1009">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/events_controller_spec.rb:61:
+
+10)
+'EventsController POST create with invalid params re-renders the 'new' template' FAILED
+expected "new", got redirected to "http://test.host/user_session/new"
+./spec/controllers/events_controller_spec.rb:67:
+
+11)
+'EventsController POST create with valid params assigns a newly created event as @event' FAILED
+
+expected #<Event:57615852> => #<Event:0x36f25ec @name="Event_1011">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/events_controller_spec.rb:47:
+
+12)
+'EventsController POST create with valid params redirects to the created event' FAILED
+expected redirect to "http://test.host/events/1012", got redirect to "http://test.host/user_session/new"
+./spec/controllers/events_controller_spec.rb:53:
+
+13)
+'EventsController GET edit assigns the requested event as @event' FAILED
+
+expected #<Event:57547728> => #<Event:0x36e1bd0 @name="Event_1013">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/events_controller_spec.rb:37:
+
+14)
+'EventsController GET new assigns a new event as @event' FAILED
+
+expected #<Event:57509820> => #<Event:0x36d87bc @name="Event_1014">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/events_controller_spec.rb:29:
+
+15)
+'EventsController GET show assigns the requested event as @event' FAILED
+
+expected #<Event:57472164> => #<Event:0x36cf4a4 @name="Event_1015">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/events_controller_spec.rb:21:
+
+16)
+'EventsController GET index assigns all events as @events' FAILED
+expected: [#<Event:0x36c6054 @name="Event_1016">],
+     got: nil (using ==)
+./spec/controllers/events_controller_spec.rb:13:
+
+17)
+ActionView::TemplateError in '/events/index.html.erb renders a list of events'
+Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id
+On line #4 of app/views/layouts/_base.html.erb
+
+    1: <%= link_to "Home", root_path %> |
+    2: <%= link_to "Graph", workout_histories_path %> | 
+    3: <%= link_to "Calendar", events_path %> |
+    4:  <%= link_to "My Profile", edit_profile_path(current_user.id) %> |
+    5: <%= link_to "Logout", logout_path, :confirm => "Are you sure you want to logout?" %>
+    6: <br />
+
+    app/views/layouts/_base.html.erb:4
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/extensions/action_view/base.rb:17:in `render_partial'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/extensions/action_view/base.rb:27:in `render'
+    app/views/events/index.html.erb:1
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/extensions/action_view/base.rb:27:in `render'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `__send__'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `render'
+    /spec/views/events/index.html.erb_spec.rb:20
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `instance_eval'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `execute'
+    C:/Ruby187/lib/ruby/1.8/timeout.rb:53:in `timeout'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:37:in `execute'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:214:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `each'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:103:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:23:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `each'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `run'
+    rspec (1.3.0) lib/spec/runner/options.rb:152:in `run_examples'
+    rspec (1.3.0) lib/spec/runner/command_line.rb:9:in `run'
+    rspec (1.3.0) bin/spec:5
+
+18)
+ActionView::TemplateError in '/users/edit.html.erb renders the edit user form'
+undefined local variable or method `account_path' for #<ActionView::Base:0x6d1a090>
+On line #3 of app/views/users/edit.html.erb
+
+    1: <h1>Edit My Account</h1>
+    2: 
+    3: <% form_for @user, :url => account_path do |f| %>
+    4:   <%= f.error_messages %>
+    5:   <%= render :partial => "form", :object => f %>
+    6:   <%= f.submit "Update" %>
+
+    app/views/users/edit.html.erb:3
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/extensions/action_view/base.rb:27:in `render'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `__send__'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `render'
+    /spec/views/users/edit.html.erb_spec.rb:13
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `instance_eval'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `execute'
+    C:/Ruby187/lib/ruby/1.8/timeout.rb:53:in `timeout'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:37:in `execute'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:214:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `each'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:103:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:23:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `each'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `run'
+    rspec (1.3.0) lib/spec/runner/options.rb:152:in `run_examples'
+    rspec (1.3.0) lib/spec/runner/command_line.rb:9:in `run'
+    rspec (1.3.0) bin/spec:5
+
+19)
+ActionView::TemplateError in '/workout_histories/edit.html.erb renders the edit workout_history form'
+workout_session_workout_history_url failed to generate from {:action=>"show", :controller=>"workout_histories"} - you may have ambiguous routes, or you may need to supply additional parameters for this route.  content_url has the following required parameters: ["workout_sessions", :workout_session_id, "workout_history"] - are they all satisfied?
+On line #5 of app/views/workout_histories/edit.html.erb
+
+    2: 
+    3: 
+    4: 
+    5: <% form_for([@workout_session, @workout_history], :url => workout_session_workout_history_url(@workout_session)) do |f| %>
+    6:   <%= f.error_messages %>
+    7: 
+    8:   <p>
+
+    (eval):21:in `workout_session_workout_history_url'
+    app/views/workout_histories/edit.html.erb:5
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/extensions/action_view/base.rb:27:in `render'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `__send__'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `render'
+    /spec/views/workout_histories/edit.html.erb_spec.rb:13
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `instance_eval'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `execute'
+    C:/Ruby187/lib/ruby/1.8/timeout.rb:53:in `timeout'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:37:in `execute'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:214:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `each'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:103:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:23:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `each'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `run'
+    rspec (1.3.0) lib/spec/runner/options.rb:152:in `run_examples'
+    rspec (1.3.0) lib/spec/runner/command_line.rb:9:in `run'
+    rspec (1.3.0) bin/spec:5
+
+20)
+ActionView::TemplateError in '/workout_histories/index.html.erb renders a list of workout_histories'
+undefined method `edit_event_workout_history_path' for #<ActionView::Base:0x6bdb9d0>
+On line #16 of app/views/workout_histories/index.html.erb
+
+    13:     <td><%=h workout_history.actual_sets %></td>
+    14:     <td><%=h workout_history.calories %></td>
+    15:     <td><%= link_to 'Show', [@event, workout_history] %></td>
+    16:     <td><%= link_to 'Edit', edit_event_workout_history_path(@event, workout_history) %></td>
+    17:     <td><%= link_to 'Destroy', workout_history, :confirm => 'Are you sure?', :method => :delete %></td>
+    18:   </tr>
+    19: <% end %>
+
+    app/views/workout_histories/index.html.erb:16
+    app/views/workout_histories/index.html.erb:10:in `each'
+    app/views/workout_histories/index.html.erb:10
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/extensions/action_view/base.rb:27:in `render'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `__send__'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `render'
+    /spec/views/workout_histories/index.html.erb_spec.rb:14
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `instance_eval'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `execute'
+    C:/Ruby187/lib/ruby/1.8/timeout.rb:53:in `timeout'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:37:in `execute'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:214:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `each'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:103:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:23:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `each'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `run'
+    rspec (1.3.0) lib/spec/runner/options.rb:152:in `run_examples'
+    rspec (1.3.0) lib/spec/runner/command_line.rb:9:in `run'
+    rspec (1.3.0) bin/spec:5
+
+21)
+ActiveRecord::RecordInvalid in 'User should create a new instance given valid attributes'
+Validation failed: Login is too short (minimum is 3 characters), Login should use only letters, numbers, spaces, and .-_@ please., Password is too short (minimum is 4 characters), Password confirmation is too short (minimum is 4 characters)
+./spec/models/user_spec.rb:11:
+
+22)
+ActionView::TemplateError in '/workout_sessions/edit.html.erb renders the edit workout_session form'
+event_url failed to generate from {:action=>"show", :controller=>"events"} - you may have ambiguous routes, or you may need to supply additional parameters for this route.  content_url has the following required parameters: ["events", :id] - are they all satisfied?
+On line #20 of app/views/workout_sessions/edit.html.erb
+
+    17: <% end %>
+    18: 
+    19: <%= link_to 'Back', [@event, @workout_session] %> |
+    20: <%= link_to 'Back to Events', event_path(@event) %>
+
+    (eval):17:in `event_path'
+    app/views/workout_sessions/edit.html.erb:20
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/extensions/action_view/base.rb:27:in `render'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `__send__'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `render'
+    /spec/views/workout_sessions/edit.html.erb_spec.rb:13
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `instance_eval'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `execute'
+    C:/Ruby187/lib/ruby/1.8/timeout.rb:53:in `timeout'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:37:in `execute'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:214:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `each'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:103:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:23:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `each'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `run'
+    rspec (1.3.0) lib/spec/runner/options.rb:152:in `run_examples'
+    rspec (1.3.0) lib/spec/runner/command_line.rb:9:in `run'
+    rspec (1.3.0) bin/spec:5
+
+23)
+Spec::Mocks::MockExpectationError in 'WorkoutSessionsController DELETE destroy destroys the requested workout_session'
+<WorkoutSession(id: integer, estimated_reps: integer, estimated_sets: integer, event_id: integer, exercise_id: integer, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/workout_sessions_controller_spec.rb:119:
+
+24)
+'WorkoutSessionsController DELETE destroy redirects to the workout_sessions list' FAILED
+expected redirect to "http://test.host/workout_sessions", got redirect to "http://test.host/user_session/new"
+./spec/controllers/workout_sessions_controller_spec.rb:127:
+
+25)
+Spec::Mocks::MockExpectationError in 'WorkoutSessionsController PUT update with invalid params updates the requested workout_session'
+<WorkoutSession(id: integer, estimated_reps: integer, estimated_sets: integer, event_id: integer, exercise_id: integer, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/workout_sessions_controller_spec.rb:97:
+
+26)
+'WorkoutSessionsController PUT update with invalid params assigns the workout_session as @workout_session' FAILED
+
+expected #<WorkoutSession:58050048> => #<WorkoutSession:0x375c600 @name="WorkoutSession_1049">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_sessions_controller_spec.rb:105:
+
+27)
+'WorkoutSessionsController PUT update with invalid params re-renders the 'edit' template' FAILED
+expected "edit", got redirected to "http://test.host/user_session/new"
+./spec/controllers/workout_sessions_controller_spec.rb:111:
+
+28)
+Spec::Mocks::MockExpectationError in 'WorkoutSessionsController PUT update with valid params updates the requested workout_session'
+<WorkoutSession(id: integer, estimated_reps: integer, estimated_sets: integer, event_id: integer, exercise_id: integer, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/workout_sessions_controller_spec.rb:77:
+
+29)
+'WorkoutSessionsController PUT update with valid params assigns the requested workout_session as @workout_session' FAILED
+
+expected #<WorkoutSession:57896172> => #<WorkoutSession:0x3736cec @name="WorkoutSession_1052">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_sessions_controller_spec.rb:85:
+
+30)
+'WorkoutSessionsController PUT update with valid params redirects to the workout_session' FAILED
+expected redirect to "http://test.host/workout_sessions/1053", got redirect to "http://test.host/user_session/new"
+./spec/controllers/workout_sessions_controller_spec.rb:91:
+
+31)
+'WorkoutSessionsController POST create with invalid params assigns a newly created but unsaved workout_session as @workout_session' FAILED
+
+expected #<WorkoutSession:57827292> => #<WorkoutSession:0x3725fdc @name="WorkoutSession_1054">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_sessions_controller_spec.rb:61:
+
+32)
+'WorkoutSessionsController POST create with invalid params re-renders the 'new' template' FAILED
+expected "new", got redirected to "http://test.host/user_session/new"
+./spec/controllers/workout_sessions_controller_spec.rb:67:
+
+33)
+'WorkoutSessionsController POST create with valid params assigns a newly created workout_session as @workout_session' FAILED
+
+expected #<WorkoutSession:57751536> => #<WorkoutSession:0x37137f0 @name="WorkoutSession_1056">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_sessions_controller_spec.rb:47:
+
+34)
+'WorkoutSessionsController POST create with valid params redirects to the created workout_session' FAILED
+expected redirect to "http://test.host/workout_sessions/1057", got redirect to "http://test.host/user_session/new"
+./spec/controllers/workout_sessions_controller_spec.rb:53:
+
+35)
+'WorkoutSessionsController GET edit assigns the requested workout_session as @workout_session' FAILED
+
+expected #<WorkoutSession:57682008> => #<WorkoutSession:0x3702858 @name="WorkoutSession_1058">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_sessions_controller_spec.rb:37:
+
+36)
+'WorkoutSessionsController GET new assigns a new workout_session as @workout_session' FAILED
+
+expected #<WorkoutSession:57645180> => #<WorkoutSession:0x36f987c @name="WorkoutSession_1059">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_sessions_controller_spec.rb:29:
+
+37)
+'WorkoutSessionsController GET show assigns the requested workout_session as @workout_session' FAILED
+
+expected #<WorkoutSession:57607824> => #<WorkoutSession:0x36f0690 @name="WorkoutSession_1060">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_sessions_controller_spec.rb:21:
+
+38)
+'WorkoutSessionsController GET index assigns all workout_sessions as @workout_sessions' FAILED
+expected: [#<WorkoutSession:0x36e7378 @name="WorkoutSession_1061">],
+     got: nil (using ==)
+./spec/controllers/workout_sessions_controller_spec.rb:13:
+
+39)
+Spec::Mocks::MockExpectationError in 'WorkoutHistoriesController DELETE destroy destroys the requested workout_history'
+<WorkoutHistory(id: integer, actual_reps: integer, actual_sets: integer, calories: integer, workout_session_id: integer, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/workout_histories_controller_spec.rb:119:
+
+40)
+'WorkoutHistoriesController DELETE destroy redirects to the workout_histories list' FAILED
+expected redirect to "http://test.host/workout_histories", got redirect to "http://test.host/user_session/new"
+./spec/controllers/workout_histories_controller_spec.rb:127:
+
+41)
+Spec::Mocks::MockExpectationError in 'WorkoutHistoriesController PUT update with invalid params updates the requested workout_history'
+<WorkoutHistory(id: integer, actual_reps: integer, actual_sets: integer, calories: integer, workout_session_id: integer, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/workout_histories_controller_spec.rb:97:
+
+42)
+'WorkoutHistoriesController PUT update with invalid params assigns the workout_history as @workout_history' FAILED
+
+expected #<WorkoutHistory:57422436> => #<WorkoutHistory:0x36c3264 @name="WorkoutHistory_1065">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_histories_controller_spec.rb:105:
+
+43)
+'WorkoutHistoriesController PUT update with invalid params re-renders the 'edit' template' FAILED
+expected "edit", got redirected to "http://test.host/user_session/new"
+./spec/controllers/workout_histories_controller_spec.rb:111:
+
+44)
+Spec::Mocks::MockExpectationError in 'WorkoutHistoriesController PUT update with valid params updates the requested workout_history'
+<WorkoutHistory(id: integer, actual_reps: integer, actual_sets: integer, calories: integer, workout_session_id: integer, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/workout_histories_controller_spec.rb:77:
+
+45)
+'WorkoutHistoriesController PUT update with valid params assigns the requested workout_history as @workout_history' FAILED
+
+expected #<WorkoutHistory:57304668> => #<WorkoutHistory:0x36a665c @name="WorkoutHistory_1068">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_histories_controller_spec.rb:85:
+
+46)
+'WorkoutHistoriesController PUT update with valid params redirects to the workout_history' FAILED
+expected redirect to "http://test.host/workout_histories/1069", got redirect to "http://test.host/user_session/new"
+./spec/controllers/workout_histories_controller_spec.rb:91:
+
+47)
+'WorkoutHistoriesController POST create with invalid params assigns a newly created but unsaved workout_history as @workout_history' FAILED
+
+expected #<WorkoutHistory:57235704> => #<WorkoutHistory:0x36958f8 @name="WorkoutHistory_1070">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_histories_controller_spec.rb:61:
+
+48)
+'WorkoutHistoriesController POST create with invalid params re-renders the 'new' template' FAILED
+expected "new", got redirected to "http://test.host/user_session/new"
+./spec/controllers/workout_histories_controller_spec.rb:67:
+
+49)
+'WorkoutHistoriesController POST create with valid params assigns a newly created workout_history as @workout_history' FAILED
+
+expected #<WorkoutHistory:57161148> => #<WorkoutHistory:0x36835bc @name="WorkoutHistory_1072">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_histories_controller_spec.rb:47:
+
+50)
+'WorkoutHistoriesController POST create with valid params redirects to the created workout_history' FAILED
+expected redirect to "http://test.host/workout_histories/1073", got redirect to "http://test.host/user_session/new"
+./spec/controllers/workout_histories_controller_spec.rb:53:
+
+51)
+'WorkoutHistoriesController GET edit assigns the requested workout_history as @workout_history' FAILED
+
+expected #<WorkoutHistory:57082380> => #<WorkoutHistory:0x367020c @name="WorkoutHistory_1074">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_histories_controller_spec.rb:37:
+
+52)
+'WorkoutHistoriesController GET new assigns a new workout_history as @workout_history' FAILED
+
+expected #<WorkoutHistory:57042492> => #<WorkoutHistory:0x366663c @name="WorkoutHistory_1075">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_histories_controller_spec.rb:29:
+
+53)
+'WorkoutHistoriesController GET show assigns the requested workout_history as @workout_history' FAILED
+
+expected #<WorkoutHistory:57006144> => #<WorkoutHistory:0x365d840 @name="WorkoutHistory_1076">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/workout_histories_controller_spec.rb:21:
+
+54)
+'WorkoutHistoriesController GET index assigns all workout_histories as @workout_histories' FAILED
+expected: [#<WorkoutHistory:0x3653eb0 @name="WorkoutHistory_1077">],
+     got: nil (using ==)
+./spec/controllers/workout_histories_controller_spec.rb:13:
+
+55)
+ActionController::UnknownAction in 'UsersController DELETE destroy destroys the requested user'
+No action responded to destroy. Actions: create, edit, graph, new, show, and update
+./spec/controllers/users_controller_spec.rb:121:
+
+56)
+ActionController::UnknownAction in 'UsersController DELETE destroy redirects to the users list'
+No action responded to destroy. Actions: create, edit, graph, new, show, and update
+./spec/controllers/users_controller_spec.rb:126:
+
+57)
+Spec::Mocks::MockExpectationError in 'UsersController PUT update with invalid params updates the requested user'
+<User(id: integer, login: string, crypted_password: string, password_salt: string, persistence_token: string, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/users_controller_spec.rb:97:
+
+58)
+'UsersController PUT update with invalid params assigns the user as @user' FAILED
+
+expected #<User:56805864> => #<User:0x362c9e8 @name="User_1081">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/users_controller_spec.rb:105:
+
+59)
+'UsersController PUT update with invalid params re-renders the 'edit' template' FAILED
+expected "edit", got redirected to "http://test.host/user_session/new"
+./spec/controllers/users_controller_spec.rb:111:
+
+60)
+Spec::Mocks::MockExpectationError in 'UsersController PUT update with valid params updates the requested user'
+<User(id: integer, login: string, crypted_password: string, password_salt: string, persistence_token: string, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/users_controller_spec.rb:77:
+
+61)
+'UsersController PUT update with valid params assigns the requested user as @user' FAILED
+
+expected #<User:56697216> => #<User:0x3612180 @name="User_1084">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/users_controller_spec.rb:85:
+
+62)
+'UsersController PUT update with valid params redirects to the user' FAILED
+expected redirect to "http://test.host/users/1085", got redirect to "http://test.host/user_session/new"
+./spec/controllers/users_controller_spec.rb:91:
+
+63)
+'UsersController POST create with valid params redirects to the created user' FAILED
+expected redirect to "http://test.host/users/1089", got redirect to "http://test.host/"
+./spec/controllers/users_controller_spec.rb:53:
+
+64)
+'UsersController GET edit assigns the requested user as @user' FAILED
+
+expected #<User:56464416> => #<User:0x35d9420 @name="User_1090">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/users_controller_spec.rb:37:
+
+65)
+'UsersController GET show assigns the requested user as @user' FAILED
+
+expected #<User:56583780> => #<User:0x35f6664 @name="User_1092">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/users_controller_spec.rb:21:
+
+66)
+'UsersController GET index assigns all users as @users' FAILED
+expected: [#<User:0x38dcd38 @name="User_1093">],
+     got: nil (using ==)
+./spec/controllers/users_controller_spec.rb:13:
+
+67)
+Spec::Mocks::MockExpectationError in 'ProfilesController DELETE destroy destroys the requested profile'
+<Profile(id: integer, height: integer, weight: integer, first_name: string, last_name: string, gender: string, user_id: integer, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/profiles_controller_spec.rb:119:
+
+68)
+'ProfilesController DELETE destroy redirects to the profiles list' FAILED
+expected redirect to "http://test.host/profiles", got redirect to "http://test.host/user_session/new"
+./spec/controllers/profiles_controller_spec.rb:127:
+
+69)
+Spec::Mocks::MockExpectationError in 'ProfilesController PUT update with invalid params updates the requested profile'
+<Profile(id: integer, height: integer, weight: integer, first_name: string, last_name: string, gender: string, user_id: integer, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/profiles_controller_spec.rb:97:
+
+70)
+'ProfilesController PUT update with invalid params assigns the profile as @profile' FAILED
+
+expected #<Profile:59229096> => #<Profile:0x387c3a8 @name="Profile_1097">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/profiles_controller_spec.rb:105:
+
+71)
+'ProfilesController PUT update with invalid params re-renders the 'edit' template' FAILED
+expected "edit", got redirected to "http://test.host/user_session/new"
+./spec/controllers/profiles_controller_spec.rb:111:
+
+72)
+Spec::Mocks::MockExpectationError in 'ProfilesController PUT update with valid params updates the requested profile'
+<Profile(id: integer, height: integer, weight: integer, first_name: string, last_name: string, gender: string, user_id: integer, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/profiles_controller_spec.rb:77:
+
+73)
+'ProfilesController PUT update with valid params assigns the requested profile as @profile' FAILED
+
+expected #<Profile:58931064> => #<Profile:0x3833778 @name="Profile_1100">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/profiles_controller_spec.rb:85:
+
+74)
+'ProfilesController PUT update with valid params redirects to the profile' FAILED
+expected redirect to "http://test.host/profiles/1101", got redirect to "http://test.host/user_session/new"
+./spec/controllers/profiles_controller_spec.rb:91:
+
+75)
+'ProfilesController POST create with invalid params assigns a newly created but unsaved profile as @profile' FAILED
+
+expected #<Profile:58592364> => #<Profile:0x37e0c6c @name="Profile_1102">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/profiles_controller_spec.rb:61:
+
+76)
+'ProfilesController POST create with invalid params re-renders the 'new' template' FAILED
+expected "new", got redirected to "http://test.host/user_session/new"
+./spec/controllers/profiles_controller_spec.rb:67:
+
+77)
+'ProfilesController POST create with valid params assigns a newly created profile as @profile' FAILED
+
+expected #<Profile:58301580> => #<Profile:0x3799c8c @name="Profile_1104">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/profiles_controller_spec.rb:47:
+
+78)
+'ProfilesController POST create with valid params redirects to the created profile' FAILED
+expected redirect to "http://test.host/profiles/1105", got redirect to "http://test.host/user_session/new"
+./spec/controllers/profiles_controller_spec.rb:53:
+
+79)
+'ProfilesController GET edit assigns the requested profile as @profile' FAILED
+
+expected #<Profile:58142448> => #<Profile:0x3772ef0 @name="Profile_1106">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/profiles_controller_spec.rb:37:
+
+80)
+'ProfilesController GET new assigns a new profile as @profile' FAILED
+
+expected #<Profile:58074564> => #<Profile:0x37625c4 @name="Profile_1107">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/profiles_controller_spec.rb:29:
+
+81)
+'ProfilesController GET show assigns the requested profile as @profile' FAILED
+
+expected #<Profile:58013064> => #<Profile:0x3753588 @name="Profile_1108">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/profiles_controller_spec.rb:21:
+
+82)
+'ProfilesController GET index assigns all profiles as @profiles' FAILED
+expected: [#<Profile:0x37472e8 @name="Profile_1109">],
+     got: nil (using ==)
+./spec/controllers/profiles_controller_spec.rb:13:
+
+83)
+Spec::Mocks::MockExpectationError in 'ExercisesController DELETE destroy destroys the requested exercise'
+<Exercise(id: integer, name: string, exercise_type: string, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/exercises_controller_spec.rb:119:
+
+84)
+'ExercisesController DELETE destroy redirects to the exercises list' FAILED
+expected redirect to "http://test.host/exercises", got redirect to "http://test.host/user_session/new"
+./spec/controllers/exercises_controller_spec.rb:127:
+
+85)
+Spec::Mocks::MockExpectationError in 'ExercisesController PUT update with invalid params updates the requested exercise'
+<Exercise(id: integer, name: string, exercise_type: string, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/exercises_controller_spec.rb:97:
+
+86)
+'ExercisesController PUT update with invalid params assigns the exercise as @exercise' FAILED
+
+expected #<Exercise:57801156> => #<Exercise:0x371f9c4 @name="Exercise_1113">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/exercises_controller_spec.rb:105:
+
+87)
+'ExercisesController PUT update with invalid params re-renders the 'edit' template' FAILED
+expected "edit", got redirected to "http://test.host/user_session/new"
+./spec/controllers/exercises_controller_spec.rb:111:
+
+88)
+Spec::Mocks::MockExpectationError in 'ExercisesController PUT update with valid params updates the requested exercise'
+<Exercise(id: integer, name: string, exercise_type: string, created_at: datetime, updated_at: datetime) (class)> expected :find with ("37") once, but received it 0 times
+./spec/controllers/exercises_controller_spec.rb:77:
+
+89)
+'ExercisesController PUT update with valid params assigns the requested exercise as @exercise' FAILED
+
+expected #<Exercise:57692400> => #<Exercise:0x37050f0 @name="Exercise_1116">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/exercises_controller_spec.rb:85:
+
+90)
+'ExercisesController PUT update with valid params redirects to the exercise' FAILED
+expected redirect to "http://test.host/exercises/1117", got redirect to "http://test.host/user_session/new"
+./spec/controllers/exercises_controller_spec.rb:91:
+
+91)
+'ExercisesController POST create with invalid params assigns a newly created but unsaved exercise as @exercise' FAILED
+
+expected #<Exercise:57622800> => #<Exercise:0x36f4110 @name="Exercise_1118">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/exercises_controller_spec.rb:61:
+
+92)
+'ExercisesController POST create with invalid params re-renders the 'new' template' FAILED
+expected "new", got redirected to "http://test.host/user_session/new"
+./spec/controllers/exercises_controller_spec.rb:67:
+
+93)
+'ExercisesController POST create with valid params assigns a newly created exercise as @exercise' FAILED
+
+expected #<Exercise:57549720> => #<Exercise:0x36e2398 @name="Exercise_1120">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/exercises_controller_spec.rb:47:
+
+94)
+'ExercisesController POST create with valid params redirects to the created exercise' FAILED
+expected redirect to "http://test.host/exercises/1121", got redirect to "http://test.host/user_session/new"
+./spec/controllers/exercises_controller_spec.rb:53:
+
+95)
+'ExercisesController GET edit assigns the requested exercise as @exercise' FAILED
+
+expected #<Exercise:57479184> => #<Exercise:0x36d1010 @name="Exercise_1122">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/exercises_controller_spec.rb:37:
+
+96)
+'ExercisesController GET new assigns a new exercise as @exercise' FAILED
+
+expected #<Exercise:57441876> => #<Exercise:0x36c7e54 @name="Exercise_1123">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/exercises_controller_spec.rb:29:
+
+97)
+'ExercisesController GET show assigns the requested exercise as @exercise' FAILED
+
+expected #<Exercise:57404760> => #<Exercise:0x36bed58 @name="Exercise_1124">
+     got #<NilClass:4> => nil
+
+Compared using equal?, which compares object identity,
+but expected and actual are not the same object. Use
+'actual.should == expected' if you don't care about
+object identity in this example.
+
+./spec/controllers/exercises_controller_spec.rb:21:
+
+98)
+'ExercisesController GET index assigns all exercises as @exercises' FAILED
+expected: [#<Exercise:0x36b4e10 @name="Exercise_1125">],
+     got: nil (using ==)
+./spec/controllers/exercises_controller_spec.rb:13:
+
+99)
+ActionView::TemplateError in '/workout_sessions/show.html.erb renders attributes in <p>'
+edit_event_workout_session_url failed to generate from {:action=>"edit", :event_id=>#<WorkoutSession id: 1126, estimated_reps: nil, estimated_sets: nil, event_id: nil, exercise_id: nil, created_at: nil, updated_at: nil>, :controller=>"workout_sessions"}, expected: {:action=>"edit", :controller=>"workout_sessions"}, diff: {:event_id=>#<WorkoutSession id: 1126, estimated_reps: nil, estimated_sets: nil, event_id: nil, exercise_id: nil, created_at: nil, updated_at: nil>}
+On line #18 of app/views/workout_sessions/show.html.erb
+
+    15: </p>
+    16: 
+    17: 
+    18: <%= link_to 'Edit', edit_event_workout_session_path(@event,@workout_session) %> |
+    19: <%= link_to 'Back to Event', event_path(@event) %>
+
+    (eval):17:in `edit_event_workout_session_path'
+    app/views/workout_sessions/show.html.erb:18
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/extensions/action_view/base.rb:27:in `render'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `__send__'
+    C:/Ruby187/lib/ruby/gems/1.8/gems/rspec-rails-1.3.2/lib/spec/rails/example/view_example_group.rb:170:in `render'
+    /spec/views/workout_sessions/show.html.erb_spec.rb:10
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `instance_eval'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:40:in `execute'
+    C:/Ruby187/lib/ruby/1.8/timeout.rb:53:in `timeout'
+    rspec (1.3.0) lib/spec/example/example_methods.rb:37:in `execute'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:214:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `each'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:212:in `run_examples'
+    rspec (1.3.0) lib/spec/example/example_group_methods.rb:103:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:23:in `run'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `each'
+    rspec (1.3.0) lib/spec/runner/example_group_runner.rb:22:in `run'
+    rspec (1.3.0) lib/spec/runner/options.rb:152:in `run_examples'
+    rspec (1.3.0) lib/spec/runner/command_line.rb:9:in `run'
+    rspec (1.3.0) bin/spec:5
+
+Finished in 21.445227 seconds
+
+174 examples, 99 failures

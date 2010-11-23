@@ -1,0 +1,21 @@
+
+<table>
+  <tr>
+    <th>Actual reps</th>
+    <th>Actual sets</th>
+    <th>Calories</th>
+	<th>WS ID</th>
+  </tr>
+
+<% @event.workout_histories.each do |workout_history| %>
+  <tr>
+    <td><%=h workout_history.actual_reps %></td>
+    <td><%=h workout_history.actual_sets %></td>
+    <td><%=h workout_history.calories %></td>
+	<td><%=h workout_history.workout_session_id %></td>
+    <td><%= link_to 'Show', workout_history %></td>
+    <td><%= link_to 'Edit', edit_workout_history_path(workout_history) %></td>
+    <td><%= link_to 'Destroy', workout_history, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
