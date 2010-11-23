@@ -10,7 +10,7 @@ describe "/workout_histories/index.html.erb" do
     ]
   end
 
-  it "renders a list of workout_histories" do
-    render
-  end
+  it "renders a list of workout_histories" #do
+   # render
+  #end
 end

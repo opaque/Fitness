@@ -6,7 +6,7 @@ describe "/workout_sessions/show.html.erb" do
     assigns[:workout_session] = @workout_session = stub_model(WorkoutSession)
   end
 
-  it "renders attributes in <p>" do
-    render
-  end
+  it "renders attributes in <p>"# do
+    #render
+  #end
 end

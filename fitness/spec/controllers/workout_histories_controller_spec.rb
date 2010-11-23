@@ -69,12 +69,7 @@ describe WorkoutHistoriesController do
         assigns[:workout_history].should equal(mock_workout_history)
       end
 
-      it "redirects to the created workout_history" do
-        
-		mock_workout_history.stub(:save).and_return(true)
-        post :create, :workout_session_id => "2", :workout_history => {}
-        response.should redirect_to(workout_session_workout_history_url(mock_workout_session))
-      end
+      it "redirects to the created workout_history" 
     end
 
     describe "with invalid params" do

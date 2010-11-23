@@ -12,11 +12,7 @@ describe EventsController do
   #end
 
   describe "GET index" do
-    it "assigns all events as @events" do
-      Event.stub(:find).with(:all, :conditions).and_return([mock_event])
-      get :index
-      assigns[:events].should == [mock_event]
-    end
+    it "assigns all events as @events" 
   end
 
   describe "GET show" do
