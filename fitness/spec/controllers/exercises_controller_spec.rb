@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe ExercisesController do
+  
+  before {login}
 
   before{ login }
 
