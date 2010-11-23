@@ -25,16 +25,16 @@ describe UsersController do
   end
   
   
-	
+	/#
   describe "GET index" do
 	
     it "assigns all users as @users" do
-      User.stub(:all).and_return([mock_user])
+      User.stub(:find).with(:all).and_return([mock_user])
       get :index
       assigns[:users].should == [mock_user]
     end
   end
-
+#/
   describe "GET show" do
     it "assigns the requested user as @user" do
       User.stub(:find).with("37").and_return(mock_user)
@@ -77,9 +77,10 @@ describe UsersController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved user as @user" do
-        User.stub(:new).with({'these' => 'params'}).and_return(mock_user2(:save => false))
+		UsersController.stub(:require_no_user).and_return(true)
+        mock_user.stub(:new).with({'these' => 'params'}).and_return(mock_user(:save => false))
         post :create, :user => {:these => 'params'}
-        assigns[:user].should equal(mock_user2)
+        assigns[:user].should equal(mock_user)
       end
 
       it "re-renders the 'new' template" do
