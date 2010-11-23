@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe ExercisesController do
 
+  before{ login }
+
   def mock_exercise(stubs={})
     @mock_exercise ||= mock_model(Exercise, stubs)
   end
