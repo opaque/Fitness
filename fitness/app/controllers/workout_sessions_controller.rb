@@ -50,7 +50,6 @@ class WorkoutSessionsController < ApplicationController
 	@event = Event.find(params[:event_id])
     @workout_session = @event.workout_sessions.build(params[:workout_session])
 	@workout_history = WorkoutHistory.new(params[:workout_history])
-
     respond_to do |format|
       if @workout_session.save
 	    @workout_history.workout_session_id = @workout_session.id
