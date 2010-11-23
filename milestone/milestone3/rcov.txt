@@ -1,0 +1,65 @@
+(in /Users/davidchock/Documents/School Stuff/CS169/Fitness/fitness)
+.......................................................................................................................****...............**...*..****.*.**.*...........*....***
+
+Pending:
+
+/workout_sessions/show.html.erb renders attributes in <p> (Not Yet Implemented)
+./spec/views/workout_sessions/show.html.erb_spec.rb:9
+
+/workout_sessions/edit.html.erb renders the edit workout_session form (Not Yet Implemented)
+./spec/views/workout_sessions/edit.html.erb_spec.rb:12
+
+/workout_histories/index.html.erb renders a list of workout_histories (Not Yet Implemented)
+./spec/views/workout_histories/index.html.erb_spec.rb:13
+
+/users/edit.html.erb renders the edit user form (Not Yet Implemented)
+./spec/views/users/edit.html.erb_spec.rb:12
+
+EventsController GET index assigns all events as @events (Not Yet Implemented)
+./spec/controllers/events_controller_spec.rb:15
+
+/workout_histories/edit.html.erb renders the edit workout_history form (Not Yet Implemented)
+./spec/views/workout_histories/edit.html.erb_spec.rb:12
+
+UsersController PUT update with valid params updates the requested user (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:75
+
+UsersController POST create with invalid params assigns a newly created but unsaved user as @user (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:65
+
+UsersController POST create with invalid params re-renders the 'new' template (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:67
+
+UsersController POST create with valid params assigns a newly created user as @user (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:59
+
+UsersController POST create with valid params redirects to the created user (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:61
+
+UsersController GET new assigns a new user as @user (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:45
+
+UsersController GET index assigns all users as @users (Not Yet Implemented)
+./spec/controllers/users_controller_spec.rb:31
+
+UserSessionsController POST create with valid params assigns a newly created usersession as @usersession (Not Yet Implemented)
+./spec/controllers/user_sessions_controller_spec.rb:23
+
+UserSessionsController GET new assigns a new usersession as @usersession (Not Yet Implemented)
+./spec/controllers/user_sessions_controller_spec.rb:17
+
+WorkoutHistoriesController POST create with valid params redirects to the created workout_history (Not Yet Implemented)
+./spec/controllers/workout_histories_controller_spec.rb:72
+
+/events/index.html.erb renders a list of events (TODO)
+./spec/views/events/index.html.erb_spec.rb:19
+
+/events/show.html.erb renders attributes in <p> (TODO)
+./spec/views/events/show.html.erb_spec.rb:12
+
+/users/show.html.erb renders attributes in <p> (TODO)
+./spec/views/users/show.html.erb_spec.rb:9
+
+Finished in 2.136231 seconds
+
+176 examples, 0 failures, 19 pending
