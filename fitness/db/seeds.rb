@@ -5,8 +5,8 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+exercises = [{ :name => 'curl', :exercise_type => 'bicep', :mets => 3.5}, { :name => 'squat', :exercise_type => 'quadraceps', :mets => 3.6 }, { :name => 'bench press', :exercise_type => 'chest/pectoralis major', :mets => 3.5 }, { :name => 'calf raises', :exercise_type => 'calfs', :mets => 4.5 }, { :name => 'military press', :exercise_type => 'shoulders', :mets => 3.5 }, { :name => ' reverse pulls up', :exercise_type => 'latissimus dorsi', :mets => 8.0 }, { :name => 'jogging', :exercise_type => 'cardio', :mets => 7.0 }, { :name => 'swimming', :exercise_type => 'cardio', :mets => 8.0}]
 
-exercises = [{ :name => 'curl', :exercise_type => 'bicep' }, { :name => 'squat', :exercise_type => 'quadraceps' }, { :name => 'bench press', :exercise_type => 'chest/pectoralis major' }, { :name => 'calf raises', :exercise_type => 'calfs' }, { :name => 'military press', :exercise_type => 'shoulders' }, { :name => ' reverse pulls up', :exercise_type => 'latissimus dorsi' }, { :name => 'jogging', :exercise_type => 'cardio' }, { :name => 'swimming', :exercise_type => 'cardio' }]
 
 exercises.each do |e|
 	Exercise.create(e)
