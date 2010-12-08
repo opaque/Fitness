@@ -54,10 +54,8 @@ class UsersController < ApplicationController
 	
 	@events = Event.find(:all, :conditions => ['user_id = ?', current_user.id])
 	
-	@actual_data = Array.new
-	@actual_data.push(0)
-	@estimated_data = Array.new
-	@estimated_data.push(0)
+	@actual_data = [0]
+	@estimated_data = [0]
 	
 	@events.each do |event|
 		@workout_sess = event.workout_sessions
