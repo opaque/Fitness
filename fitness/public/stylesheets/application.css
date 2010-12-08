@@ -1,0 +1,32 @@
+html, body { 
+	margin: 0; 
+	padding: 0; 
+	font: 9pt verdana, sans-serif, arial; 
+}
+
+#container {
+	width: 800px;
+	text-align: left;
+	border: 1px solid #ddd;
+	margin: 0 auto;
+}
+#header {
+	border-bottom: 1px solid #ddd;
+}
+
+#nav {
+	padding: 5px;
+}
+
+#content {
+	padding: 15px 10px;
+}
+
+#footer {
+	border-top: 1px solid #ddd;
+}
+
+h1,h2,h3,h4 {
+	margin: 0;
+	padding: 0;
+}
