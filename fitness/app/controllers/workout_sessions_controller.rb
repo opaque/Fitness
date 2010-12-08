@@ -1,5 +1,6 @@
 class WorkoutSessionsController < ApplicationController
   before_filter :require_user, :get_event
+  layout 'base'
   
   def get_event
 	@event = Event.find(params[:event_id])

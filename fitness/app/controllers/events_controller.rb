@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   
   before_filter :require_user
-  
+  layout 'application'
   # GET /events
   # GET /events.xml
   def index
