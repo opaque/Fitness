@@ -2,31 +2,62 @@ html, body {
 	margin: 0; 
 	padding: 0; 
 	font: 9pt verdana, sans-serif, arial; 
+	background: #6E7985
 }
 
 #container {
-	width: 800px;
+	width: 1080px;
 	text-align: left;
 	border: 1px solid #ddd;
 	margin: 0 auto;
+	background: #FFFFFF;
 }
 #header {
 	border-bottom: 1px solid #ddd;
+	height: 40px;
+	position: relative;
+}
+
+#header h1 {
+	padding: 0;
+	margin: 0;
+}
+#logo{
+	bottom: 0px;
+	position: absolute;
+	left: 10px;
 }
 
 #nav {
-	padding: 5px;
+	float: right;
+	position: relative;
+	top: -55px;
+	background: #dddddd;
 }
 
 #content {
 	padding: 15px 10px;
+	min-height: 400px;
 }
 
 #footer {
 	border-top: 1px solid #ddd;
 }
+#footer p{
+	text-align: center;
+}
+
+#info {
+	position: relative;
+	
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
 
 h1,h2,h3,h4 {
-	margin: 0;
-	padding: 0;
+
 }
