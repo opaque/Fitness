@@ -1,10 +1,11 @@
+<%= render "layouts/login" %>
 <h1>Register</h1>
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
   
 <p>
-    <%= f.label :login %><br />
+    Username<br />
     <%= f.text_field :login %>
   </p>
   <p>

@@ -1,13 +1,35 @@
 <% if !current_user %>
-<div id="nav">
-  <%= link_to "Register", new_user_path %> |
-  <%= link_to "Log In", login_path %> 
+<%= render "layouts/login" %>
+  <div id="info">
+	This is where we talk about what our project is about. 
+	This is where we talk about what our project is about. 
+	This is where we talk about what our asdfsdf
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
   </div>
+  
+  
+  
+  
+  
 <% else %>
-<%= render "layouts/navigation" %><br />
-
-
+<%= render "layouts/navigation" %>
+  <div id="info">
+	This is where we talk about what our project is about. 
+	This is where we talk about what our project is about. 
+	This is where we talk about what our asdfsdf
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+  </div>
 <% end %>
+
+
 
 <p style="color: green"><%= flash[:notice] %></p>
 
