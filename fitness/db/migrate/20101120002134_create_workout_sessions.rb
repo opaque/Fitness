@@ -5,7 +5,6 @@ class CreateWorkoutSessions < ActiveRecord::Migration
       t.integer :estimated_sets
 	  t.integer :event_id
 	  t.integer :exercise_id
-	t.integer :estimated_mins
 
       t.timestamps
     end

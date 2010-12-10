@@ -1,97 +1,102 @@
 class EventsController < ApplicationController
   
-  before_filter :require_user
-  layout 'application'
-  # GET /events
-  # GET /events.xml
-  def index
-    @date = Time.parse("#{params[:start_date]} || Time.now.utc")
-    @date = @date - (@date.wday==0 ? 0 : @date.wday).days
-    @start_date = Date.new(@date.year, @date.month, @date.day)
-    @end_date = @start_date + 7
-    @event = Event.find(:all, :conditions => ['((start_at between ? and ?) or (end_at between ? and ?) or (start_at < ? and end_at > ?)) and (user_id = ? )',
-                                                @start_date, @end_date, @start_date, @end_date, @start_date, @end_date, current_user.id])
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @events }
-    end
-  end
-
-  # GET /events/1
-  # GET /events/1.xml
-  def show
-    @event = Event.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @event }
-    end
-  end
-
-  # GET /events/new
-  # GET /events/new.xml
   def new
-    @event = Event.new
-	@event.user_id = current_user.id
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @event }
-    end
+    @event = Event.new(:endtime => 1.hour.from_now, :period => "Does not repeat")
   end
-
-  # GET /events/1/edit
-  def edit
-    @event = Event.find(params[:id])
-  end
-
-  # POST /events
-  # POST /events.xml
+  
   def create
-    @event = Event.new(params[:event])
-	@event.user_id = current_user.id
-	
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to(events_path, :notice => 'Event was successfully created.') }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
-      end
+    if params[:event][:period] == "Does not repeat"
+      @event = Event.new(params[:event])
+    else
+      #      @event_series = EventSeries.new(:frequency => params[:event][:frequency], :period => params[:event][:repeats], :starttime => params[:event][:starttime], :endtime => params[:event][:endtime], :all_day => params[:event][:all_day])
+      @event_series = EventSeries.new(params[:event])
+    end
+    #debugger
+  end
+  
+  def index
+    
+  end
+  
+  def show
+    get_events
+  end
+  
+  
+  def get_events
+    @events = Event.find(:all, :conditions => ["starttime >= '#{Time.at(params['start'].to_i).to_formatted_s(:db)}' and endtime <= '#{Time.at(params['end'].to_i).to_formatted_s(:db)}'"] )
+    events = [] 
+    @events.each do |event|
+      events << {:id => event.id, :title => event.title, :description => event.description || "Some cool description here...", :start => "#{event.starttime.iso8601}", :end => "#{event.endtime.iso8601}", :allDay => event.all_day, :recurring => (event.event_series_id)? true: false}
+    end
+    render :text => events.to_json
+  end
+  
+  
+  
+  def move
+    @event = Event.find_by_id params[:id]
+    if @event
+      @event.starttime = (params[:minute_delta].to_i).minutes.from_now((params[:day_delta].to_i).days.from_now(@event.starttime))
+      @event.endtime = (params[:minute_delta].to_i).minutes.from_now((params[:day_delta].to_i).days.from_now(@event.endtime))
+      @event.all_day = params[:all_day]
+      @event.save
     end
   end
-
-  # PUT /events/1
-  # PUT /events/1.xml
+  
+  
+  def resize
+    @event = Event.find_by_id params[:id]
+    if @event
+      @event.endtime = (params[:minute_delta].to_i).minutes.from_now((params[:day_delta].to_i).days.from_now(@event.endtime))
+      @event.save
+    end    
+  end
+  
+  def edit
+    @event = Event.find_by_id(params[:id])
+  end
+  
   def update
-    @event = Event.find(params[:id])
-
-    respond_to do |format|
-      if @event.update_attributes(params[:event])
-        format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
-      end
+    @event = Event.find_by_id(params[:event][:id])
+    if params[:event][:commit_button] == "Update All Occurrence"
+      @events = @event.event_series.events #.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
+      @event.update_events(@events, params[:event])
+    elsif params[:event][:commit_button] == "Update All Following Occurrence"
+      @events = @event.event_series.events.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
+      @event.update_events(@events, params[:event])
+    else
+      @event.attributes = params[:event]
+      @event.save
     end
-  end
 
-  # DELETE /events/1
-  # DELETE /events/1.xml
+    render :update do |page|
+      page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
+      page<<"$('#desc_dialog').dialog('destroy')" 
+    end
+    
+  end  
+  
   def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(events_url) }
-      format.xml  { head :ok }
+    @event = Event.find_by_id(params[:id])
+    if params[:delete_all] == 'true'
+      @event.event_series.destroy
+    elsif params[:delete_all] == 'future'
+      @events = @event.event_series.events.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
+      @event.event_series.events.delete(@events)
+    else
+      @event.destroy
     end
+    
+    render :update do |page|
+      page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
+      page<<"$('#desc_dialog').dialog('destroy')" 
+    end
+    
   end
   
   def event_workout_history
     @event = Event.find(params[:id])
   end
-  
-  
   
 end
