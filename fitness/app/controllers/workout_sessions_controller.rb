@@ -1,7 +1,6 @@
 class WorkoutSessionsController < ApplicationController
   before_filter :require_user
   before_filter :get_event, :except => :update_exercise_menu
-  layout 'base'
 
   
   def get_event

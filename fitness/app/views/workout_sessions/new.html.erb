@@ -27,12 +27,14 @@
 	<label for="exercise_exercise_type">Exercise type</label><br />
 	<%= select :exercise, :exercise_type, @e_list, {:prompt=>'Please Select...'}, {:onchange => 
 		"function() {
-			if ($('selection').style.display != 'none')
+			if ($('selection').style.display != 'none') {
 				$('selection').fade({afterFinish:function() {new Effect.SlideDown('selection')}});
 				return false;
-			else 
+			}
+			else { 
 				$('selection').appear();
-		}" %><br />
+			}
+		}" }%><br />
 	<%= observe_field (:exercise_exercise_type, :url => {:action => :update_exercise_menu}, 
 					:update => :exercise_list_select_div,
 					:with => :exercise_type) %>
@@ -47,5 +49,5 @@
     <%= f.submit 'Create' %>
   </p>
 <% end %>
-<a href="#" onclick="Effect.SlideDown('exercise_list_select_div'); return false;">Click here for a demo!</a>
+
 <%= link_to 'Back', workout_sessions_path %>
