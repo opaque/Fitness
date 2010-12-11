@@ -3,7 +3,7 @@ class CreateExercises < ActiveRecord::Migration
     create_table :exercises do |t|
       t.string :name
       t.string :exercise_type
-
+	  t.float :mets
       t.timestamps
     end
   end
