@@ -1,4 +1,18 @@
 
-<p style="color: red"><%= flash[:notification] %></p>
+
+<% if (!flash[:notification].nil? || !flash[:notification 	] == '') %>
+<div id="notification">
+<p><%= flash[:notification] %></p>
+</div>
+<% end %>
+<div id="graph">
+
+<% if false %>
 <%= image_tag(@g) %>
+<% end %>
+
+<%= google_vizualisation_tag(@annotated_timeline) %>
+<%= google_vizualisation_tag(@bar_chart) %>
+</div>
+
 
