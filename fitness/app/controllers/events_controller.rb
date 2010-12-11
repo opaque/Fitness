@@ -5,11 +5,14 @@ class EventsController < ApplicationController
   end
   
   def create
+    #debugger
     if params[:event][:period] == "Does not repeat"
-      @event = Event.new(params[:event])
+      eventParams = params[:event]
+      eventParams[:user_id] = current_user.id
+      @event = Event.new(eventParams)
     else
       #      @event_series = EventSeries.new(:frequency => params[:event][:frequency], :period => params[:event][:repeats], :starttime => params[:event][:starttime], :endtime => params[:event][:endtime], :all_day => params[:event][:all_day])
-      @event_series = EventSeries.new(params[:event])
+      @event_series = EventSeries.new(eventParams)
     end
     #debugger
   end
@@ -24,10 +27,10 @@ class EventsController < ApplicationController
   
   
   def get_events
-    @events = Event.find(:all, :conditions => ["starttime >= '#{Time.at(params['start'].to_i).to_formatted_s(:db)}' and endtime <= '#{Time.at(params['end'].to_i).to_formatted_s(:db)}'"] )
+    @events = Event.find(:all, :conditions => ["starttime >= '#{Time.at(params['start'].to_i).to_formatted_s(:db)}' and endtime <= '#{Time.at(params['end'].to_i).to_formatted_s(:db)}' and user_id = '#{current_user.id}'"] )
     events = [] 
     @events.each do |event|
-      events << {:id => event.id, :title => event.title, :description => event.description || "Some cool description here...", :start => "#{event.starttime.iso8601}", :end => "#{event.endtime.iso8601}", :allDay => event.all_day, :recurring => (event.event_series_id)? true: false}
+      events << {:id => event.id, :user_id => current_user.id, :title => event.title, :description => event.description || "Some cool description here...", :start => "#{event.starttime.iso8601}", :end => "#{event.endtime.iso8601}", :allDay => event.all_day, :recurring => (event.event_series_id)? true: false}
     end
     render :text => events.to_json
   end
