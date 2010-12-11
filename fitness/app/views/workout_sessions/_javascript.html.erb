@@ -1,0 +1,12 @@
+
+<script>
+function hideAndSlide(element) {
+	if ($(element).visible()) {
+		$(element).fade({afterFinish:function() {new Effect.SlideDown(element)}});
+	}
+	else { 
+		$(element).appear();
+	}
+}
+
+</script>
