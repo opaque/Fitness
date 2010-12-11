@@ -1,12 +1,35 @@
 <% if !current_user %>
-  <%= link_to "Register", new_user_path %> |
-  <%= link_to "Log In", login_path %> 
+<%= render "layouts/login" %>
+  <div id="info">
+	This is where we talk about what our project is about. 
+	This is where we talk about what our project is about. 
+	This is where we talk about what our asdfsdf
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+  </div>
+  
+  
+  
+  
+  
 <% else %>
 <%= render "layouts/navigation" %>
-<br />
-
-<%= link_to "Logout", logout_path, :confirm => "Are you sure you want to logout?" %>
+  <div id="info">
+	This is where we talk about what our project is about. 
+	This is where we talk about what our project is about. 
+	This is where we talk about what our asdfsdf
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+	This is where we talk about what our project is about.
+  </div>
 <% end %>
+
+
 
 <p style="color: green"><%= flash[:notice] %></p>
 

@@ -1,5 +1,6 @@
 class ExercisesController < ApplicationController
    before_filter :require_user
+   layout 'application'
   # GET /exercises
   # GET /exercises.xml
   def index
