@@ -47,33 +47,41 @@ class UsersController < ApplicationController
   
   def graph
 	@user = @curret_user
-	
-	@events = Event.find(:all, :conditions => ['user_id = ?', current_user.id])
-	
-	@actual_data = [0]
-	@estimated_data = [0]
-	
-	@events.each do |event|
-		@workout_sess = event.workout_sessions
-		@workout_sess.each do |workout_sess|
-			@estimated_data.push(workout_sess.estimated_reps)
-		end
-		@workout_histories = event.workout_histories
-		@workout_histories.each do |workout_history|
-			@actual_data.push(workout_history.actual_reps)
-		end
-	end
-	
-	@g = Gchart.line(:title => "Actual vs Estimated Reps",
-                     :data => [@actual_data, @estimated_data],
-                     :line_colors => 'FF0000,00FF00',
-                     :legend => ["Actual Reps", "Estimate Reps"],
-                     :axis_with_labels => ['x','y'],
-					 :size => '600x400')
-	
-	if (@actual_data.size == 1 || @estimated_data.size == 1)
-		flash[:notification] = "No data yet-- please add data!"
-	end
+
+@annotated_timeline = GoogleCharts::AnnotatedTimeline.new(
+  :width => 500, :height => 240, :thickness => 1, :fill => 50
+  
+)
+
+
+@annotated_timeline.add_column("Date",Date)
+@annotated_timeline.add_column("Age",Float)
+@annotated_timeline.add_column("Weight",Float)
+
+
+@annotated_timeline.add_values("Date",[1.day.ago,2.day.ago,3.day.ago,11.day.ago])
+@annotated_timeline.add_values("Age",[8,10,13,15])
+@annotated_timeline.add_values("Weight",[12,23,24,35])
+
+@bar_chart = GoogleCharts::BarChart.new(
+  :width => 500, :height => 240, :title => 'Individual Performance'
+  
+)
+
+
+@bar_chart.add_column("String",String)
+@bar_chart.add_column("Estimated Reps",Float)
+@bar_chart.add_column("Actual Reps",Float)
+@bar_chart.add_column("Estimated Sets",Float)
+@bar_chart.add_column("Actual Sets",Float)
+
+
+@bar_chart.add_values("String",["Bicep","Tricep","Quadricep","Hamstring"])
+@bar_chart.add_values("Estimated Reps",[8,10,13,15])
+@bar_chart.add_values("Actual Reps",[12,23,24,35])
+@bar_chart.add_values("Estimated Sets",[8,10,13,15])
+@bar_chart.add_values("Actual Sets",[12,23,24,35])
+
 	
 	respond_to do |format|
 		format.html # graph.html.erb
