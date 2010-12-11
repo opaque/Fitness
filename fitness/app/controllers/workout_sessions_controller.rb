@@ -1,5 +1,6 @@
 class WorkoutSessionsController < ApplicationController
-  before_filter :require_user, :get_event
+  before_filter :require_user
+  before_filter :get_event, :except => :update_exercise_menu
   
   def get_event
 	@event = Event.find(params[:event_id])
@@ -48,6 +49,7 @@ class WorkoutSessionsController < ApplicationController
    def create
 	
     @workout_session = @event.workout_sessions.build(params[:workout_session])
+	@workout_session.estimate_time
 	@workout_history = WorkoutHistory.new(params[:workout_history])
     respond_to do |format|
       if @workout_session.save
@@ -93,4 +95,13 @@ class WorkoutSessionsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def update_exercise_menu
+	@exercises = Exercise.find(:all, :conditions => ['exercise_type = ?', params[:exercise_type]])
+	render :layout => false
+  end
+  
+ 
+  
+  
 end
