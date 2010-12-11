@@ -3,12 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <%=javascript_include_tag :defaults %>
-    <%=javascript_include_tag 'fullcalendar', 'gcal', 'application' %>
-    <%=stylesheet_link_tag "style", 'fullcalendar', 'jquery-ui', 'dialog', 'application' %>
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag 'fullcalendar', 'gcal', 'application' %>
+    <%= stylesheet_link_tag "style", 'fullcalendar', 'jquery-ui', 'dialog', 'application' %>
+	<%= google_vizualisation_include_tag %>
 </head>
 <body>
-<div id="container" class="moz-shadow">
+<div id="coloredBar"></div>
+<div id="container" class="shadow">
 
 <div id="header">
 <span id="logo">
