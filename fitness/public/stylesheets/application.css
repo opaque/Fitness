@@ -67,6 +67,16 @@ html, body {
 #notice p {
 	text-align: center;
 }
+
+#notification {
+	width: 200px;
+	color: red;
+	margin: auto;
+}
+
+#notification p{
+	text-align: center;
+}
 #error {
 	width: 200px;
 	color: red;
@@ -82,8 +92,6 @@ html, body {
 	text-align: center;
 }
 
-
-
 #footer {
 	border-top: 1px solid #ddd;
 }
@@ -91,6 +99,19 @@ html, body {
 	text-align: center;
 }
 
+#coloredBar{
+	background-color: #3B5998;
+	height: 51px;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	z-index: -1;
+}
+
+#graph {
+	margin: auto;
+	width: 500px;
+}
 
 a {
 	text-decoration: none;
@@ -137,6 +158,7 @@ border-radius: 5px;
 -webkit-border-radius: 5px;
 }
 
-.moz-shadow {
+.shadow {
 	 -moz-box-shadow: 1px 1px 10px #00f;
+	 -webkit-box-shadow: 5px 5px #818181;
 }
