@@ -1,24 +1,25 @@
-<%= render "layouts/navigation" %>
-<h1>Editing profile</h1>
+<div id="profile">
+<h1>My profile</h1>
 
 <% form_for(@profile) do |f| %>
   <%= f.error_messages %>
-
+  
+<fieldset class="moz-shadow">
   <p>
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, :size => 20 %>
   </p>
   <p>
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, :size => 20 %>
   </p>
   <p>
     <%= f.label :height %><br />
-    <%= f.text_field :height %>
+    <%= f.text_field :height, :size => 20 %>
   </p>
   <p>
     <%= f.label :weight %><br />
-    <%= f.text_field :weight %>
+    <%= f.text_field :weight, :size => 20 %>
   </p>
   <p>
     <%= f.label :gender %><br />
@@ -27,5 +28,7 @@
   <p>
     <%= f.submit 'Update' %>
   </p>
+  </fieldset>
+  
 <% end %>
-<%= link_to 'Back', root_url %>
+</div>

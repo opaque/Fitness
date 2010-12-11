@@ -1,8 +1,4 @@
-<center>
-<%= render "layouts/base" %>
 
-</center>
-<br>
 <p>
   <%=link_to_remote 'Create Event', :url => {:action => :new}, :before => "$('#loading').show()", :complete => "$('#loading').hide()" %>
 </p>

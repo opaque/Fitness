@@ -1,0 +1,5 @@
+<% if !current_user %>
+  Please register or login here.
+<% else %>
+  Logged in as <%= current_user.login %> (<%= link_to "Logout", logout_path, :confirm => "Are you sure you want to logout?" %>)
+<% end %>

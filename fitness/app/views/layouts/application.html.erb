@@ -1,37 +1,52 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <title>Yo</title>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <%=javascript_include_tag :defaults %>
     <%=javascript_include_tag 'fullcalendar', 'gcal', 'application' %>
-    <%=stylesheet_link_tag "style", 'fullcalendar', 'jquery-ui', 'dialog' %>
-  </head>
-  <body class="subpage">
-    <div class="wrapper">
-      <div class="subPageContent">
-        <% if flash[:notice] -%>
-        <div id = 'flash_notice'>
-          <%= flash[:notice] %>
-        </div>
-        <% end -%>
-        <% if flash[:error] -%>
-        <div id = 'flash_error'>
-          <%= flash[:error] %>
-        </div>
-        <%end -%>
-        <span>
-          <div id = 'loading'>
-            Loading...
-          </div>
-        </span>
-        <div class="aplicationContent">
-          <div class="appRightContent">
-            <%= yield %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%=stylesheet_link_tag "style", 'fullcalendar', 'jquery-ui', 'dialog', 'application' %>
+</head>
+<body>
+<div id="container" class="moz-shadow">
 
-  </body>
+<div id="header">
+<span id="logo">
+<h1><a href="/">Online Exercise</a></h1>
+</span>
+<div id="wrapper">
+<div id="info">
+	<%= render :partial => "layouts/info" %>
+</div>
+<div id="nav">
+	<%= render :partial => "layouts/navigation" %>
+</div>
+</div>
+</div>
+
+<div id="content">
+
+<% if (!flash[:notice].nil? || !flash[:notice] == '') %>
+<div id="notice">
+<p><%= flash[:notice] %></p>
+</div>
+<% end %>
+<% if (!flash[:error].nil? || !flash[:error] == '') %>
+<div id="error">
+<p><%= flash[:error] %></p>
+</div>
+<% end %>
+
+<div id="center">
+<%= yield %>
+</div>
+</div>
+
+<div id="footer">
+<p>Copyright &copy; 2010 David Chock, Stephanie Ren, Cavin Woo, Edward Wu. All Rights Reserved.</p>
+</div>
+
+</div>
+</body>
 </html>
+

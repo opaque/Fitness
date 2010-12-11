@@ -1,15 +1,20 @@
-<%= render "layouts/login" %>
-<h1>New User</h1>
+<div id="profile">
+<h1>Login</h1>
 
 <% form_for @user_session, :url => user_session_path do |f| %>
   <%= f.error_messages %>
+  <fieldset class="moz-shadow">
+  <p>
   Username<br />
-  <%= f.text_field :login %><br />
-  <br />
+  <%= f.text_field :login, :size => 20%><br />
+  </p>
+  <p>
   <%= f.label :password %><br />
-  <%= f.password_field :password %><br />
-  <br />
+  <%= f.password_field :password, :size => 20 %><br />
+  </p>
 
   <%= f.submit "Login" %>
+  </fieldset>
 <% end %>
+</div>
 
