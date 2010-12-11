@@ -1,12 +1,12 @@
 html, body { 
 	margin: 0; 
 	padding: 0; 
-	font: 9pt verdana, sans-serif, arial; 
-	background: #6E7985
+	font: 9pt trebuchet ms, verdana, sans-serif, arial; 
+	 /*background: #6E7985*/
 }
 
 #container {
-	width: 1080px;
+	width: 950px;
 	text-align: left;
 	border: 1px solid #ddd;
 	margin: 0 auto;
@@ -14,31 +14,75 @@ html, body {
 }
 #header {
 	border-bottom: 1px solid #ddd;
-	height: 40px;
+	height: 50px;
 	position: relative;
+	margin: auto;
 }
 
 #header h1 {
 	padding: 0;
 	margin: 0;
 }
+
+
 #logo{
 	bottom: 0px;
 	position: absolute;
 	left: 10px;
 }
 
-#nav {
-	float: right;
+#wrapper {
+	text-align: right;
 	position: relative;
-	top: -55px;
-	background: #dddddd;
+	right: 5px;
+	width: 225px;
+	float: right;
+}
+#info {
+	top: 5px;
+	position: relative;
+}
+#nav {
+	top: 3px;
+	position: relative;
+	width: 100%;
 }
 
 #content {
 	padding: 15px 10px;
 	min-height: 400px;
+	background: #FFFFFF;
+	
 }
+#center {
+	margin: auto;
+}
+
+#notice {
+	width: 200px;
+	color: green;
+	margin: auto;
+}
+
+#notice p {
+	text-align: center;
+}
+#error {
+	width: 200px;
+	color: red;
+	margin: auto;
+}
+
+#error p {
+	text-align: center;
+}
+#profile {
+	margin:auto;
+	width: 275px;
+	text-align: center;
+}
+
+
 
 #footer {
 	border-top: 1px solid #ddd;
@@ -47,10 +91,7 @@ html, body {
 	text-align: center;
 }
 
-#info {
-	position: relative;
-	
-}
+
 a {
 	text-decoration: none;
 }
@@ -59,5 +100,43 @@ a:hover {
 }
 
 h1,h2,h3,h4 {
+	text-shadow: 0 1px 0 #DDDDDD;
+}
 
+fieldset
+{	
+	color: #000000;
+
+	background-color: #bbbbbb;
+	position: relative;
+	border: 1px solid #aaaaaa;
+	width: 250px;
+	padding: 10px;
+	margin: 0px;
+
+/* mozilla browser */
+-moz-border-radius: 10px;
+/* opera browser */
+border-radius: 10px;
+/* chrome & safari browser */
+-webkit-border-radius: 10px;
+}
+
+input
+{
+color: #000000;
+background-color: #FFFFFF;
+border: 1px solid #aaaaaa;
+
+
+/* mozilla browser */
+-moz-border-radius: 5px;
+/* opera browser */
+border-radius: 5px;
+/* chrome & safari browser */
+-webkit-border-radius: 5px;
+}
+
+.moz-shadow {
+	 -moz-box-shadow: 1px 1px 10px #00f;
 }
