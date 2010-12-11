@@ -1,9 +1,5 @@
 <%remote_form_for @event, :url => {:action => :create}, :before => "$('#creating_events').show();", :complete => "$('#creating_events').hide();" do |f| %>
-<p>
-	<%=f.label :name %>
-  <br/>
-  <%=f.text_field :name %>
-</p>
+
 <p>
   <%=f.label :title %>
   <br/>
