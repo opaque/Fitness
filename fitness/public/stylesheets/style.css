@@ -4,20 +4,19 @@ body{
 }
 
 #loading{
-  position: absolute; 
-  right: 0px; 
-  top: 0px; 
+  position: relative;  
+  top: -30px; 
   background-color: #dd0000; 
   font-weight:bold;
   color: white; 
   margin: 5px; 
   padding: 3px;
+  float: right;
+  width: 65px;
 }
 
-span > div#loading {
-  position: fixed;
-}
 
 h1{
+
 font-size: 16px;
 }
