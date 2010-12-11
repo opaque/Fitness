@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  
+  before_filter :require_user
   def new
     @event = Event.new(:endtime => 1.hour.from_now, :period => "Does not repeat")
   end
