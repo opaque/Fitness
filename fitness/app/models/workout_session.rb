@@ -7,7 +7,22 @@ class WorkoutSession < ActiveRecord::Base
   validates_presence_of :estimated_mins, :event_id, :exercise_id, :estimated_reps, :estimated_sets
   #validates_uniqueness_of :exercise_id, :scope => :event_id
   validates_numericality_of :estimated_mins, :greater_than => 0
-  validates_numericality_of :estimated_reps, :greater_than => 0
-  validates_numericality_of :estimated_sets, :greater_than => 0
+  validates_numericality_of :estimated_reps, :allow_nil => true, :greater_than => 0
+  validates_numericality_of :estimated_sets, :allow_nil => true, :greater_than => 0
+  
+  
+  def estimate_time
+	@bool = false
+	if self.estimated_mins.nil?
+		@reps = self.estimated_reps
+		@sets = self.estimated_sets
+		if (not @reps.nil?) and (not @sets.nil?)
+			self.estimated_mins = ((@reps * 10) / 60) * @sets
+			@bool = true
+		end
+	end
+	
+	return @bool
+  end
   
 end
