@@ -1,34 +1,51 @@
+<head>
+<%= javascript_include_tag :defaults %> 
 <h1>New workout_session</h1>
+</head>
 
 
 
-<% @exercises  = Exercise.find(:all) %>
-<% @exercise_list = [] %>
-<% @exercises.each do |e| %>
-	<% @exercise_list << [e.name, e.id] %>
+<% @exers  = Exercise.find(:all) %>
+<% @exercise_list = {} %>
+<% @exers.each do |e| %>
+	<% @exercise_list[e.exercise_type] = e.exercise_type %>
+<% end %>
+<% @e_list = [] %>
+<% @exercise_list.each {|key,value| @e_list << [key, value]} %>
+<% @exercise = Exercise.new %>
+
+<% @temp = [] %>
+<% @exers.each do |e| %>
+	<% @temp << [e.name, e.id] %>
 <% end %>
 
 <% form_for([@event, @workout_session]) do |f| %>
   <%= f.error_messages %>
   
   <p>
-    <%= f.label :exercise %><br />
-    <%= f.select (:exercise_id, @exercise_list) %>
-  </p>
 	
-  
-  <p>
-    <%= f.label :estimated_reps %><br />
-    <%= f.text_field :estimated_reps %>
+	<label for="exercise_exercise_type">Exercise type</label><br />
+	<%= select :exercise, :exercise_type, @e_list, {:prompt=>'Please Select...'}, {:onchange => 
+		function() {
+			if ($('selection').style.display != 'none')
+				$('selection').fade({afterFinish:function() {new Effect.SlideDown('selection')}});
+				return false;
+			else 
+				$('selection').appear();
+		}} %><br />
+	<%= observe_field (:exercise_exercise_type, :url => {:action => :update_exercise_menu}, 
+					:update => :exercise_list_select_div,
+					:with => :exercise_type) %>
   </p>
-  <p>
-    <%= f.label :estimated_sets %><br />
-    <%= f.text_field :estimated_sets %>
-  </p>
+	<div id="selection" >
+		<div id="exercise_list_select_div" >
+	
+		</div>
+	</div>
 	
   <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
-
+<a href="#" onclick="Effect.SlideDown('exercise_list_select_div'); return false;">Click here for a demo!</a>
 <%= link_to 'Back', workout_sessions_path %>

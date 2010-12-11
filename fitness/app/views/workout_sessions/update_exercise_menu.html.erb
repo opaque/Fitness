@@ -1,0 +1,36 @@
+<!-- update_exercise_menu.html.erb -->
+<head>
+<%= javascript_include_tag :defaults %> 
+</head>
+
+
+<% if @exercises.present? %>
+	<div id="selection">
+	<p>
+		<label for="id_select">Exercise</label><br />
+		<select id="id_select" name="workout_session[exercise_id]" >
+			<%= options_from_collection_for_select @exercises, :id, :name %>
+		</select>
+	</p>
+	</div>
+	<% if params[:exercise_type] != 'cardio' %>
+		<p>
+			<%= label(:workout_session, :estimated_reps) %><br />
+			<%= text_field(:workout_session, :estimated_reps) %>
+		</p>
+		
+		<p>
+			<%= label(:workout_session, :estimated_sets) %><br />
+			<%= text_field(:workout_session, :estimated_sets) %>
+		</p>
+	<% else %>
+		<p>
+			<%= label(:workout_session, :estimated_mins) %><br />
+			<%= text_field(:workout_session, :estimated_mins) %>
+		</p>
+	<% end %>
+			
+			
+			
+<% end %>
+
