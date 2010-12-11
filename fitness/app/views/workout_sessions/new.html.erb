@@ -1,5 +1,7 @@
+
 <head>
-<%= javascript_include_tag :defaults %> 
+<%=javascript_include_tag :defaults %>
+
 <h1>New workout_session</h1>
 </head>
 
@@ -12,12 +14,6 @@
 <% end %>
 <% @e_list = [] %>
 <% @exercise_list.each {|key,value| @e_list << [key, value]} %>
-<% @exercise = Exercise.new %>
-
-<% @temp = [] %>
-<% @exers.each do |e| %>
-	<% @temp << [e.name, e.id] %>
-<% end %>
 
 <% form_for([@event, @workout_session]) do |f| %>
   <%= f.error_messages %>
@@ -25,16 +21,7 @@
   <p>
 	
 	<label for="exercise_exercise_type">Exercise type</label><br />
-	<%= select :exercise, :exercise_type, @e_list, {:prompt=>'Please Select...'}, {:onchange => 
-		"function() {
-			if ($('selection').style.display != 'none') {
-				$('selection').fade({afterFinish:function() {new Effect.SlideDown('selection')}});
-				return false;
-			}
-			else { 
-				$('selection').appear();
-			}
-		}" }%><br />
+	<%= select :exercise, :exercise_type, @e_list, {:prompt=>'Please Select...'}, {:onchange =>"new Effect.SlideDown('selection'); return false"} %><br />
 	<%= observe_field (:exercise_exercise_type, :url => {:action => :update_exercise_menu}, 
 					:update => :exercise_list_select_div,
 					:with => :exercise_type) %>
@@ -45,9 +32,17 @@
 		</div>
 	</div>
 	
+	<div id="test">
+		<div>
+		TEXT HERE
+		</div>
+	</div>
+	
   <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
 
+
+<a href="#" onclick="new Effect.SlideDown('test');return false">CLICK HERE</a>
 <%= link_to 'Back', workout_sessions_path %>
