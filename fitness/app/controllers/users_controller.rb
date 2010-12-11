@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if @user.save 
 	  @profile.user_id = @user.id
 	  if @profile.save
-        flash[:notice] = "Account and profile registered!"
+        flash[:notice] = "Account registered!"
         redirect_back_or_default root_url
 	  end
     else
