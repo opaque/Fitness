@@ -44,14 +44,17 @@ class User < ActiveRecord::Base
 	if (not @profile.weight)
 		@calories.push(0)
 		@date = DateTime.now
-		@dates.push(@date.month.ago)
+		@year= @date.year
+		@month = @date.month
+		@day = @date.day
+		@dates.push(DateTime.new(@year, @month, @day) << 1)
 	elsif (@events.empty?)
 		@calories.push(0)
 		@date = DateTime.now
 		@year= @date.year
 		@month = @date.month
 		@day = @date.day
-		@dates.push(DateTime.new(@year, @month-1, @day))
+		@dates.push(DateTime.new(@year, @month, @day) << 1)
 	else
 		@kg = @profile.weight * 0.4539 
 	
@@ -98,14 +101,14 @@ class User < ActiveRecord::Base
 		@year= @date.year
 		@month = @date.month
 		@day = @date.day
-		@dates.push(DateTime.new(@year, @month-1, @day))
+		@dates.push(DateTime.new(@year, @month, @day) << 1)
 	elsif (@events.empty?)
 		@pounds.push(0)
 		@date = DateTime.now
 		@year= @date.year
 		@month = @date.month
 		@day = @date.day
-		@dates.push(DateTime.new(@year, @month-1, @day))
+		@dates.push(DateTime.new(@year, @month, @day) << 1)
 	else
 		@kg = @profile.weight * 0.4539 
 	
