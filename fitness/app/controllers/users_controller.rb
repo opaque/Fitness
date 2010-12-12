@@ -50,6 +50,16 @@ class UsersController < ApplicationController
   def graph
 	@user = @curret_user
 	
+	@events = Event.find(:all, :conditions => ['user_id = ?', @current_user.id])
+	if (@events.empty?)
+		flash[:notification] = "No workout sessions completed yet!--Please add data!"
+	end
+	
+	@profile = Profile.find(:first, :conditions => ['user_id = ?', @current_user.id])
+	if (not @profile.weight)
+		flash[:notification] = "Weight not yet entered!--Please enter weight!"
+	end
+	
 	@column_chart = @current_user.mets_graph
 
 	@calories_burned = @current_user.calories_graph(@current_user)

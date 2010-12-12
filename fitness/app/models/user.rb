@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 		@month = @date.month
 		@day = @date.day
 		@dates.push(DateTime.new(@year, @month-1, @day))
-	elsif (not @events)
+	elsif (@events.empty?)
 		@calories.push(0)
 		@date = DateTime.now
 		@year= @date.year
@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
 		@month = @date.month
 		@day = @date.day
 		@dates.push(DateTime.new(@year, @month-1, @day))
-	elsif (not @events)
+	elsif (@events.empty?)
 		@pounds.push(0)
 		@date = DateTime.now
 		@year= @date.year
