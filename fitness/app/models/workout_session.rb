@@ -21,7 +21,7 @@ class WorkoutSession < ActiveRecord::Base
 		@reps = self.estimated_reps
 		@sets = self.estimated_sets
 		if (not @reps.nil?) and (not @sets.nil?)
-			self.estimated_mins = ((@reps * 10.0) / 60.0) * @sets
+			self.estimated_mins = ((@reps * @sets * 10) / 60)
 			@bool = true
 		end
 	end

@@ -49,40 +49,12 @@ class UsersController < ApplicationController
   
   def graph
 	@user = @curret_user
+	
+	@column_chart = @current_user.mets_graph
 
-@annotated_timeline = GoogleCharts::AnnotatedTimeline.new(
-  :width => 500, :height => 240, :thickness => 1, :fill => 50
-  
-)
+	@calories_burned = @current_user.calories_graph(@current_user)
 
-
-@annotated_timeline.add_column("Date",Date)
-@annotated_timeline.add_column("Age",Float)
-@annotated_timeline.add_column("Weight",Float)
-
-
-@annotated_timeline.add_values("Date",[1.day.ago,2.day.ago,3.day.ago,11.day.ago])
-@annotated_timeline.add_values("Age",[8,10,13,15])
-@annotated_timeline.add_values("Weight",[12,23,24,35])
-
-@bar_chart = GoogleCharts::BarChart.new(
-  :width => 500, :height => 240, :title => 'Individual Performance'
-  
-)
-
-
-@bar_chart.add_column("String",String)
-@bar_chart.add_column("Estimated Reps",Float)
-@bar_chart.add_column("Actual Reps",Float)
-@bar_chart.add_column("Estimated Sets",Float)
-@bar_chart.add_column("Actual Sets",Float)
-
-
-@bar_chart.add_values("String",["Bicep","Tricep","Quadricep","Hamstring"])
-@bar_chart.add_values("Estimated Reps",[8,10,13,15])
-@bar_chart.add_values("Actual Reps",[12,23,24,35])
-@bar_chart.add_values("Estimated Sets",[8,10,13,15])
-@bar_chart.add_values("Actual Sets",[12,23,24,35])
+	@pounds_lost = @current_user.pounds_graph(@current_user)
 
 	
 	respond_to do |format|
