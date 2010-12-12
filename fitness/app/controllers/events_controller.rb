@@ -6,9 +6,9 @@ class EventsController < ApplicationController
   
   def create
     #debugger
+    eventParams = params[:event]
+    eventParams[:user_id] = current_user.id
     if params[:event][:period] == "Does not repeat"
-      eventParams = params[:event]
-      eventParams[:user_id] = current_user.id
       @event = Event.new(eventParams)
     else
       #      @event_series = EventSeries.new(:frequency => params[:event][:frequency], :period => params[:event][:repeats], :starttime => params[:event][:starttime], :endtime => params[:event][:endtime], :all_day => params[:event][:all_day])

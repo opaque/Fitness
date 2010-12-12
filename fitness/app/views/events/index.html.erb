@@ -57,12 +57,24 @@ Loading ...
       
       });
   });
-</script>
+
+	$(function() {
+		$( "#tabs" ).tabs({cache:true});
+	});
+	</script>
 <div>
   <div id='calendar'>
   </div>
 </div>
 <div id = "desc_dialog" style ="display:none;">
+
+  <div id="tabs">
+	 <ul>
+         <li><span id = "edit_event"></span></li>
+         <li><span id = "add_session"></span></li>
+		 <li><span id = "delete_event"></span></li>
+     </ul>
+  </div>
   <div id = "event_desc">
   </div>
   <br/>
