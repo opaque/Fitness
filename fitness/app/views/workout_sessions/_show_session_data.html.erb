@@ -1,0 +1,39 @@
+<table>
+	<th>Exercise</th>
+	<th>Planned Repetitions Per Set</th>
+	<th>Planned Sets</th>
+	<th>Planned Time</th>
+	<th>Incomplete Repetitions</th>
+	<th>Completed Sets</th>
+	<th>Completed Time</th>
+	<th>Remove Exercise</th>
+</tr>
+
+
+<% @exercise_list = @event.workout_sessions %> 
+	<% @exercise_list.each do |exercise| %>
+		<tr>
+		<td><%=  Exercise.find(exercise.exercise_id).name %></td>
+		<% if Exercise.find(exercise.exercise_id).exercise_type != 'cardio' %>
+			<td><%= exercise.estimated_reps %></td>
+			<td><%= exercise.estimated_sets %></td>
+			<td><%= "n/a" %> </td>
+			<td><%= exercise.workout_history.actual_reps %></td>
+			<td><%= exercise.workout_history.actual_sets %></td>
+			<td><%= "n/a" %> </td>
+		<% else %>
+			<td><%= "n/a" %> </td>
+			<td><%= "n/a" %> </td>
+			<td><%= exercise.estimated_mins %></td>
+			<td><%= "n/a" %></td>
+			<td><%= "n/a" %></td>
+			<td><%= exercise.workout_history.actual_mins %></td>
+		<% end %>
+			
+		<td><%= link_to_remote 'Delete', :url => { :controller => "workout_sessions", :action => "destroy", :id => exercise.id, :event_id => @event.id}, :confirm => 'Are you sure?', :method => :delete, :complete => "addSession('#{@event.id}')" %></td>
+		
+		</tr>
+	<% end %>
+	
+</table>
+

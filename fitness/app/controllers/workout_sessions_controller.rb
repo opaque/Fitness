@@ -73,16 +73,16 @@ class WorkoutSessionsController < ApplicationController
   # PUT /workout_sessions/1.xml
   def update
     @workout_session = @event.workout_sessions.find(params[:id])
-
-    respond_to do |format|
       if @workout_session.update_attributes(params[:workout_session])
-        format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully updated.') }
-        format.xml  { head :ok }
+		render :layout => false
+        #format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully updated.') }
+        #format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
+		render :layout => false
+        #format.html { render :action => "edit" }
+        #format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
       end
-    end
+    
   end
 
   # DELETE /workout_sessions/1
@@ -90,18 +90,30 @@ class WorkoutSessionsController < ApplicationController
   def destroy
     @workout_session = @event.workout_sessions.find(params[:id])
     @workout_session.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(event_path(@event)) }
-      format.xml  { head :ok }
-    end
+	
+	render :update do |page|
+		page.replace_html 'event_desc', :partial => 'new_session_form'
+	end
   end
+  
   
   def update_exercise_menu
 	@exercises = Exercise.find(:all, :conditions => ['exercise_type = ?', params[:exercise_type]])
 	render :layout => false
   end
   
+  
+  def render_show
+	#render :update do |page|
+	#	page.replace_html 'exercise_info', :partial => 'show_session_data'
+    #end
+	render :partial => 'show_session_data'
+  end
+  
+  def render_edit
+	@workout_session = WorkoutSession.find(params[:id])
+	render :partial => 'edit_session_data'
+  end
  
   
   

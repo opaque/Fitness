@@ -1,0 +1,23 @@
+<% remote_form_for([@workout_session, @workout_history], :url => workout_session_workout_history_url(@workout_session),  :complete => "addSession('#{@event.id}')") do |f| %>
+  <%= f.error_messages %>
+
+   	<% if Exercise.find(@workout_session.exercise_id).exercise_type == 'cardio' %>  
+ 
+		<%= f.label 'Exercise Time' %>
+		<%= f.text_field :actual_mins %>
+	
+	<% else %>
+	
+		<%= f.label 'Remaining Repetitions'		%>
+		<%= f.text_field :actual_reps %>
+	 
+		<%= f.label 'Completed Sets' %>
+		<%= f.text_field :actual_sets %>
+	 
+	<% end %>
+
+
+
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
