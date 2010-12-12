@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 	
 	@profile = Profile.find(:first, :conditions => ['user_id = ?', @current_user.id])
 	if (not @profile.weight)
-		flash[:notification] = "Weight not yet entered!--Please enter weight!"
+		flash[:notification] = "Weight not yet entered!--Please enter weight in profile!"
 	end
 	
 	@column_chart = @current_user.mets_graph

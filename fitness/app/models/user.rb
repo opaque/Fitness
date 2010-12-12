@@ -69,10 +69,7 @@ class User < ActiveRecord::Base
 			end
 			@calories.push(@event_calories)
 			@date = event.starttime
-			@year= @date.year
-			@month = @date.month
-			@day = @date.day
-			@dates.push(DateTime.new(@year, @month-1, @day))
+			@dates.push(@date.month.ago)
 		end
 	end
 
@@ -127,7 +124,7 @@ class User < ActiveRecord::Base
 			@year= @date.year
 			@month = @date.month
 			@day = @date.day
-			@dates.push(DateTime.new(@year, @month-1, @day))
+			@dates.push(@date.month.ago)
 		end	
 	end
 	
