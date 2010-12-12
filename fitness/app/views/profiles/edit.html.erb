@@ -7,26 +7,26 @@
 <fieldset class="shadow">
   <p>
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, :size => 20 %>
+    <%= f.text_field :first_name, :size => 20, :class =>'input' %>
   </p>
   <p>
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, :size => 20 %>
+    <%= f.text_field :last_name, :size => 20, :class =>'input' %>
   </p>
   <p>
     <%= f.label :height %><br />
-    <%= f.text_field :height, :size => 20 %>
+    <%= f.text_field :height, :size => 20, :class =>'input' %>
   </p>
   <p>
     <%= f.label :weight %><br />
-    <%= f.text_field :weight, :size => 20 %>
+    <%= f.text_field :weight, :size => 20, :class =>'input' %>
   </p>
   <p>
     <%= f.label :gender %><br />
-	<%= f.select :gender, %w{Male Female} %>
+	<%= f.select :gender, %w{Male Female}, {}, {:class =>'select'} %>
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Update', :class =>'button' %>
   </p>
   </fieldset>
   

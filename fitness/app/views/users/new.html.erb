@@ -6,17 +6,17 @@
   <fieldset class="shadow">
 <p>
     Username<br />
-    <%= f.text_field :login, :size => 20 %>
+    <%= f.text_field :login, :size => 20, :class =>'input' %>
   </p>
   <p>
     <%= f.label :password %><br />
-    <%= f.password_field :password, :size => 20 %>
+    <%= f.password_field :password, :size => 20, :class =>'input' %>
   </p>
   <p>
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation,:size => 20 %>
+    <%= f.password_field :password_confirmation, :size => 20, :class =>'input' %>
   </p>
-  <%= f.submit "Register" %>
+  <%= f.submit "Register", :class =>'button' %>
   </fieldset>
 <% end %>
 </div>

@@ -6,7 +6,7 @@ html, body {
 }
 
 #container {
-	width: 950px;
+	width: 100%;
 	text-align: left;
 	border: 1px solid #ddd;
 	margin: 0 auto;
@@ -14,21 +14,36 @@ html, body {
 }
 #header {
 	border-bottom: 1px solid #ddd;
-	height: 50px;
+	width:100%;
 	position: relative;
-	margin: auto;
+	-moz-box-shadow:0 3px 10px #cccccc;
+	background-color: #d0d9e0;
+
 }
 
-#header h1 {
-	padding: 0;
-	margin: 0;
+
+#header-center {
+	height: 60px;
+	position: relative;
+	margin: auto;
+	width: 950px;
 }
 
 
 #logo{
 	bottom: 0px;
 	position: absolute;
-	left: 10px;
+	left: 0px;
+}
+
+#logo a {
+	text-decoration: none;
+}
+
+#logo h1 {
+	padding: 0;
+	margin: 0;
+	font-size: 30px;
 }
 
 #wrapper {
@@ -42,20 +57,31 @@ html, body {
 	top: 5px;
 	position: relative;
 }
+
+#info span{
+	font-weight: bold;
+}
+#info a:hover {
+	font-weight: bold;
+}
 #nav {
 	top: 3px;
 	position: relative;
 	width: 100%;
 }
+#nav a:hover {
+	font-weight: bold;
+}
 
 #content {
-	padding: 15px 10px;
-	min-height: 400px;
+	padding: 20px 10px;
+	min-height: 100px;
 	background: #FFFFFF;
 	
 }
 #center {
 	margin: auto;
+	width: 900px;
 }
 
 #notice {
@@ -94,19 +120,17 @@ html, body {
 
 #footer {
 	border-top: 1px solid #ddd;
+	height: 40px;
+	-moz-box-shadow:0 -3px 10px #cccccc;
+	background-color:#d0d9e0;
+	color: #576672;
 }
 #footer p{
 	text-align: center;
 }
 
-#coloredBar{
-	background-color: #3B5998;
-	height: 51px;
-	left: 0;
-	position: absolute;
-	width: 100%;
-	z-index: -1;
-}
+
+
 
 #graph {
 	margin: auto;
@@ -115,9 +139,11 @@ html, body {
 
 a {
 	text-decoration: none;
+	color: #576672;
 }
 a:hover {
 	text-decoration: underline;
+	color: #234F74;
 }
 
 h1,h2,h3,h4 {
@@ -127,13 +153,13 @@ h1,h2,h3,h4 {
 fieldset
 {	
 	color: #000000;
-
-	background-color: #bbbbbb;
+	-moz-box-shadow: 1px 1px 10px #bbbbbb;
+	background-color: #d0d9e0;
 	position: relative;
-	border: 1px solid #aaaaaa;
+	border: 1px solid #cccccc;
 	width: 250px;
 	padding: 10px;
-	margin: 0px;
+	margin: 10px 0px;
 
 /* mozilla browser */
 -moz-border-radius: 10px;
@@ -147,7 +173,8 @@ input
 {
 color: #000000;
 background-color: #FFFFFF;
-border: 1px solid #aaaaaa;
+border: 1px solid #bbbbbb;
+-moz-box-shadow: inset 1px 1px 10px #bbbbbb;
 
 
 /* mozilla browser */
@@ -158,7 +185,41 @@ border-radius: 5px;
 -webkit-border-radius: 5px;
 }
 
+.input {
+    border: 1px solid #cccccc;
+    background: #ffc;
+}
+.input:hover {
+    border: 1px solid #234F74;
+    background: #ff6;
+}
+.button {
+    border: 1px solid #cccccc;
+    background: #ccf;
+}
+.button:hover {
+    border: 1px solid #234F74;
+    background: #eef;
+}
+.select {
+    border: 1px solid #cccccc;
+    background: #ffc;
+}
+.select:hover {
+    border: 1px solid #234F74;
+    background: #ffc;
+}
+
 .shadow {
-	 -moz-box-shadow: 1px 1px 10px #00f;
-	 -webkit-box-shadow: 5px 5px #818181;
+/*	 -moz-box-shadow: 1px 1px 10px #00f;
+	 -webkit-box-shadow: 5px 5px #818181; */
+}
+
+.blue {
+	color: #234F74;
+}
+
+.black 
+{
+	color: #000000;
 }

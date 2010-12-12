@@ -6,14 +6,14 @@
   <fieldset class="shadow">
   <p>
   Username<br />
-  <%= f.text_field :login, :size => 20%><br />
+  <%= f.text_field :login, :size => 20, :class =>'input'%><br />
   </p>
   <p>
   <%= f.label :password %><br />
-  <%= f.password_field :password, :size => 20 %><br />
+  <%= f.password_field :password, :size => 20, :class =>'input' %><br />
   </p>
 
-  <%= f.submit "Login" %>
+  <%= f.submit "Login", :class =>'button' %>
   </fieldset>
 <% end %>
 </div>
