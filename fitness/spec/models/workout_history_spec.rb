@@ -5,6 +5,7 @@ describe WorkoutHistory do
     @valid_attributes = {
       :actual_reps => 10,
 	  :actual_sets => 10,
+	  :actual_mins => 10,
 	  :calories => nil,
 	  :workout_session_id => 1
     }
@@ -45,28 +46,33 @@ describe WorkoutHistory do
 	end
   
 	  it "should not create a new instance given non numerical rep values" do
-		@invalid_attributes[:actual_reps] = "fun",
-		WorkoutHistory.create(@invalid_attributes).should == false
+		@invalid_attributes[:actual_reps] = "fun"
+		@workout_history = WorkoutHistory.new(@invalid_attributes)
+		@workout_history.should_not be_valid	
 	  end
 	  
 	  it "should not create a new instance given non numerical set values" do
 		@invalid_attributes[:actual_sets] = "fail set"
-		WorkoutHistory.create(@invalid_attributes).should == false
+		@workout_history = WorkoutHistory.new(@invalid_attributes)
+		@workout_history.should_not be_valid	
 	  end
 	  
 	  it "should not create a new instance given non numerical caloric values" do
 		@invalid_attributes[:calories] = "fail calories"
-		WorkoutHistory.create(@invalid_attributes).should == false
+		@workout_history = WorkoutHistory.new(@invalid_attributes)
+		@workout_history.should_not be_valid	
 	  end
 	  
 	  it "should not create a new instance if a workout history has already been created for specified session" do
 		WorkoutHistory.create(@valid_attributes)
-		WorkoutHistory.create(@invalid_attributes).should == false
+		@workout_history = WorkoutHistory.new(@invalid_attributes)
+		@workout_history.should_not be_valid	
 	  end
 	  
 	  it "should not create a new instance given null workout session id association" do
 		@invalid_attributes.delete(:workout_session_id)
-		WorkoutHistory.create(@invalid_attributes).should == false
+		@workout_history = WorkoutHistory.new(@invalid_attributes)
+		@workout_history.should_not be_valid	  
 	  end
 	  
   

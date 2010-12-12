@@ -18,7 +18,8 @@ describe Exercise do
     @invalid_attributes = {
 	  :exercise_type => "bicep"
 	}
-	Exercise.create(@invalid_attributes).should be_false
+	@ex = Exercise.new(@invalid_attributes)
+    @ex.should_not be_valid
   end
   
   it "should not create a new instance given not unique attributes" do
@@ -27,7 +28,8 @@ describe Exercise do
 	  :exercise_type => "bicep"
 	}
 	Exercise.create(@valid_attributes)
-	Exercise.create(@invalid_attributes).should be_false
+	@ex = Exercise.new(@invalid_attributes)
+    @ex.should_not be_valid
   end
   
   it "should not create a new instance given a bad exercise type" do
@@ -35,7 +37,8 @@ describe Exercise do
 	  :name => "curl",
 	  :exercise_type => "mega awesome type"
 	}
-	Exercise.create(@invalid_attributes).should be_false
+	@ex = Exercise.new(@invalid_attributes)
+    @ex.should_not be_valid
   end
   
   

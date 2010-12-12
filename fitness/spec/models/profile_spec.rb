@@ -7,7 +7,7 @@ describe Profile do
 	  :weight => 128,
 	  :first_name => "John",
 	  :last_name => "Doe",
-	  :gender => "male",
+	  :gender => "Male",
 	  :user_id => 1
 	  
     }
@@ -25,7 +25,8 @@ describe Profile do
 	  :last_name => "Doe",
 	  :gender => "male"
     }
-	Profile.create(@invalid_attributes).should be_false
+	@pf = Profile.new(@invalid_attributes)
+    @pf.should_not be_valid
   end
   
   it "should not create a new instance if height/weight is negative" do
@@ -37,7 +38,8 @@ describe Profile do
 	  :gender => "male",
 	  :user_id => 1
     }
-	Profile.create(@invalid_attributes1).should be_false
+	@pf = Profile.new(@invalid_attributes)
+    @pf.should_not be_valid
 	
 	@invalid_attributes2 = {
       :height => 3,
@@ -47,7 +49,8 @@ describe Profile do
 	  :gender => "male",
 	  :user_id => 1
     }
-	Profile.create(@invalid_attributes2).should be_false
+	@pf = Profile.new(@invalid_attributes)
+    @pf.should_not be_valid
   end
   
   it "should not create a new instance if gender is specified incorrectly" do
@@ -59,7 +62,8 @@ describe Profile do
 	  :gender => "Bob Dole",
 	  :user_id => 1
     }
-	Profile.create(@invalid_attributes).should be_false
+	@pf = Profile.new(@invalid_attributes)
+    @pf.should_not be_valid
   end
   
 end
