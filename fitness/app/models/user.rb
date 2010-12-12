@@ -37,26 +37,35 @@ class User < ActiveRecord::Base
 	@events = Event.find(:all, :conditions => ['user_id = ?', user.id])
 	
 	@profile = Profile.find(:first, :conditions => ['user_id = ?', user.id])
-	@kg = @profile.weight * 0.4539 
 	
 	@calories = Array.new
 	@dates = Array.new
 	
-	@events.each do |event|
-		@workout_sess = event.workout_sessions.find(:all, :conditions => ['event_id = ?', event.id])
-		@event_calories = 0
-		@workout_sess.each do |workout_sess|
-			@mins = workout_sess.estimated_mins
-			@exercise = Exercise.find(:first, :conditions => ['id = ?', workout_sess.exercise_id])
-			@mets = @exercise.mets
-			@event_calories += ((@mets * @kg * 3.5) / 200) * @mins	
+	if (not @profile.weight)
+		@calories.push(0)
+		@dates.push(DateTime.now)
+	elsif (not @events)
+		@calories.push(0)
+		@dates.push(DateTime.now)
+	else
+		@kg = @profile.weight * 0.4539 
+	
+		@events.each do |event|
+			@workout_sess = event.workout_sessions.find(:all, :conditions => ['event_id = ?', event.id])
+			@event_calories = 0
+			@workout_sess.each do |workout_sess|
+				@mins = workout_sess.estimated_mins
+				@exercise = Exercise.find(:first, :conditions => ['id = ?', workout_sess.exercise_id])
+				@mets = @exercise.mets
+				@event_calories += ((@mets * @kg * 3.5) / 200) * @mins	
+			end
+			@calories.push(@event_calories)
+			@date = event.starttime
+			@year= @date.year
+			@month = @date.month
+			@day = @date.day
+			@dates.push(DateTime.new(@year, @month-1, @day))
 		end
-		@calories.push(@event_calories)
-		@date = event.starttime
-		@year= @date.year
-		@month = @date.month
-		@day = @date.day
-		@dates.push(DateTime.new(@year, @month-1, @day))
 	end
 
 	@calories_burned.add_values("Date",@dates)
@@ -74,33 +83,42 @@ class User < ActiveRecord::Base
 	@events = Event.find(:all, :conditions => ['user_id = ?', user.id])
 	
 	@profile = Profile.find(:first, :conditions => ['user_id = ?', user.id])
-	@kg = @profile.weight * 0.4539 
 	
 	@pounds = Array.new
 	@total_pounds = 0
 	
-	@events.each do |event|
-		@workout_sess = event.workout_sessions.find(:all, :conditions => ['event_id = ?', event.id])
-		@event_calories = 0
-		@workout_sess.each do |workout_sess|
-			@mins = workout_sess.estimated_mins
-			@exercise = Exercise.find(:first, :conditions => ['id = ?', workout_sess.exercise_id])
-			@mets = @exercise.mets
-			@event_calories += ((@mets * @kg * 3.5) / 200) * @mins	
-		end
-		@total_pounds += @event_calories / 3500
-		@pounds.push(@total_pounds)
-		@date = event.starttime
-		@year= @date.year
-		@month = @date.month
-		@day = @date.day
-		@dates.push(DateTime.new(@year, @month-1, @day))
-	end
-
-	@pounds_lost.add_values("Date",@dates)
-	@pounds_lost.add_values("Total Pounds Lost Over Time",@pounds)
+	if (not @profile.weight)
+		@pounds.push(0)
+		@dates.push(DateTime.now)
+	elsif (not @events)
+		@pounds.push(0)
+		@dates.push(DateTime.now)
+	else
+		@kg = @profile.weight * 0.4539 
 	
-	@pounds_lost
+		@events.each do |event|
+			@workout_sess = event.workout_sessions.find(:all, :conditions => ['event_id = ?', event.id])
+			@event_calories = 0
+			@workout_sess.each do |workout_sess|
+				@mins = workout_sess.estimated_mins
+				@exercise = Exercise.find(:first, :conditions => ['id = ?', workout_sess.exercise_id])
+				@mets = @exercise.mets
+				@event_calories += ((@mets * @kg * 3.5) / 200) * @mins	
+			end	
+			@total_pounds += @event_calories / 3500
+			@pounds.push(@total_pounds)
+			@date = event.starttime
+			@year= @date.year
+			@month = @date.month
+			@day = @date.day
+			@dates.push(DateTime.new(@year, @month-1, @day))
+		end	
+	end
+	
+		@pounds_lost.add_values("Date",@dates)
+		@pounds_lost.add_values("Total Pounds Lost Over Time",@pounds)
+	
+		@pounds_lost
   end
 	
 end
