@@ -2,6 +2,8 @@ ActionController::Routing::Routes.draw do |map|
 
   #map.add_exercise 'events/:event_id/workout_sessions/new', :controller => 'workout_sessions', :action => 'new'
   
+  map.make_session 'events/make_session/:id', :controller => 'events', :action => 'make_session'
+  
   map.resources :profiles
 
   map.resources :events, :has_many => [:workout_sessions]  
