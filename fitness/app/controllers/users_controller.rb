@@ -74,5 +74,9 @@ class UsersController < ApplicationController
     end
   end
   
+  def partial_test
+	@pounds_lost = params[:data]
+	render :partial => "graph1"
+  end
   
 end
