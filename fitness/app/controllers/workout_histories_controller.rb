@@ -105,5 +105,10 @@ class WorkoutHistoriesController < ApplicationController
     end
   end
   
+  def render_update_actual
+	@workout_history = @workout_session.workout_history
+	render :partial => 'complete_exercise_form'
+  end
+  
 
 end

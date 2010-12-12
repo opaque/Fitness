@@ -1,0 +1,22 @@
+<% remote_form_for([@event, @workout_session], :url => {:controller => "workout_sessions", :action => :update, :event_id => @event.id, :id => @workout_session.id}, :complete => "addSession('#{@event.id}')") do |f| %>
+  <%= f.error_messages %>
+
+	<% if Exercise.find(@workout_session.exercise_id).exercise_type == 'cardio' %>  
+ 
+		<%= f.label 'Planned Exercise Time' %>
+		<%= f.text_field :estimated_mins %>
+	
+	<% else %>
+	
+		<%= f.label  'Planned Reps Per Set'%>
+		<%= f.text_field :estimated_reps %>
+	 
+		<%= f.label 'Planned Sets' %>
+		<%= f.text_field :estimated_sets %>
+	 
+	<% end %>
+  
+  
+    <%= f.submit 'Update' %>
+ 
+<% end %>

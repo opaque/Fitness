@@ -2,8 +2,11 @@
  <div id="exercise_info">
 <table>
 <tr>
-	<th>Exercise</th>
-	<th>Remove Exercise</th>
+	<th>Exercise	|</th>
+	<th></th>
+	<th>Edit	|</th>
+	<th>Remove Exercise|	</th>
+	<th>Complete Exercise</th>
 	
 </tr>
 <% @event = Event.find(params[:id]) %>
@@ -11,7 +14,11 @@
 	<% @exercise_list.each do |exercise| %>
 		<tr>
 		<td><%= Exercise.find(exercise.exercise_id).name %></td>
+		<td><div id=<%= "exercise_%d" % exercise.id %> >
+		</div></td>
+		<td><%= link_to_remote 'Edit', :update =>"exercise_%d" % exercise.id, :url => {:controller => 'workout_sessions', :action => 'render_edit', :event_id => @event.id, :id => exercise.id} %></td>
 		<td><%= link_to_remote 'Delete', :url => { :controller => "workout_sessions", :action => "destroy", :id => exercise.id, :event_id => @event.id}, :confirm => 'Are you sure?', :method => :delete, :complete => "addSession('#{@event.id}')" %></td>
+		<td><%= link_to_remote 'Update', :update =>"exercise_%d" % exercise.id, :url => {:controller => 'workout_histories', :action => 'render_update_actual', :workout_session_id => exercise.id, :id => exercise.workout_history.id} %></td>
 		</tr>
 	<% end %>
 
@@ -19,6 +26,7 @@
 	
 </Table>
 </div>
+<a href ='javascript:void(0);' onclick='addSession(<%= @event.id %>)'>Back</a>
 <%= link_to_remote 'Show', :update => 'exercise_info', :url => {:controller => 'workout_sessions', :action => 'render_show', :event_id => @event.id} %>
   
 <% @exers  = Exercise.find(:all) %>
