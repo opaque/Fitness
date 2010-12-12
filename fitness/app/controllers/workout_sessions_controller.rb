@@ -90,18 +90,21 @@ class WorkoutSessionsController < ApplicationController
   def destroy
     @workout_session = @event.workout_sessions.find(params[:id])
     @workout_session.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(event_path(@event)) }
-      format.xml  { head :ok }
-    end
   end
+  
   
   def update_exercise_menu
 	@exercises = Exercise.find(:all, :conditions => ['exercise_type = ?', params[:exercise_type]])
 	render :layout => false
   end
   
+  
+  def render_show
+	#render :update do |page|
+	#	page.replace_html 'exercise_info', :partial => 'show_session_data'
+    #end
+	render :partial => 'show_session_data'
+  end
  
   
   

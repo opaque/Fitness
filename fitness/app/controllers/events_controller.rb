@@ -124,7 +124,7 @@ class EventsController < ApplicationController
 		@workout_history.workout_session_id = @workout_session.id
 		if @workout_history.save
 			render :update do |page|
-				flash.now[:notice] = "exercise successfully added"
+				
 				page.replace_html 'event_desc', :partial => 'new_session_form'
 				
 			end
