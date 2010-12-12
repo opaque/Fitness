@@ -123,9 +123,8 @@ class EventsController < ApplicationController
 	  if @workout_session.save
 		@workout_history.workout_session_id = @workout_session.id
 		if @workout_history.save
-			render :update do |page|
-			  page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
-			  page<<"$('#desc_dialog').dialog('destroy')" 
+			render :new_session do |page|
+				page.replace_html 'event_desc', :partial => 'new_session_form'
 			end
 		  #format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully created.') }
 		  #format.xml  { render :xml => @workout_session, :status => :created, :location => @workout_session }

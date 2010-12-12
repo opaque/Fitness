@@ -56,15 +56,15 @@ class WorkoutSessionsController < ApplicationController
       if @workout_session.save
 	    @workout_history.workout_session_id = @workout_session.id
 		if @workout_history.save
-          format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully created.') }
-          format.xml  { render :xml => @workout_session, :status => :created, :location => @workout_session }
+          #format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully created.') }
+          #format.xml  { render :xml => @workout_session, :status => :created, :location => @workout_session }
 		else
-		  format.html { render :action => "new" }
-          format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
+		  #format.html { render :action => "new" }
+          #format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
 		end
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
+        #format.html { render :action => "new" }
+        #format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
       end
     end
   end
