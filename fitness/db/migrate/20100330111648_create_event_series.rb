@@ -4,6 +4,7 @@ class CreateEventSeries < ActiveRecord::Migration
       t.integer :frequency, :default => 1
       t.string :period, :default => 'monthly'
       t.string :name
+      t.integer :user_id
       t.datetime :starttime
       t.datetime :endtime
       t.boolean :all_day, :default => false

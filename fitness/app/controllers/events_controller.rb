@@ -8,6 +8,9 @@ class EventsController < ApplicationController
     #debugger
     eventParams = params[:event]
     eventParams[:user_id] = current_user.id
+    if eventParams[:title].strip().empty?
+      eventParams[:title] = '(no title)'
+    end
     if params[:event][:period] == "Does not repeat"
       @event = Event.new(eventParams)
     else

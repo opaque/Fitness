@@ -40,10 +40,16 @@ function showEventDetails(event){
     $('#desc_dialog').dialog({
         title: title,
         modal: true,
-        width: 500,
+        width: 700,
+		minWidth: 700,
+		minHeight: 500,		
+		position: 'top',
         close: function(event, ui){
             $('#desc_dialog').dialog('destroy')
-        }
+        },
+		open: function(ev, ui){
+			editEvent(event.id)
+		}
         
     });
     
