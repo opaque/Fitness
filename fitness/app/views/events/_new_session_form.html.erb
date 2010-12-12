@@ -1,4 +1,6 @@
-
+<p>
+<div id="errors">
+</div>
   
 <table>
 <tr>
@@ -26,15 +28,15 @@
 		<td><%= exercise.event_id %></td>
 		<td><%= exercise.estimated_reps %></td>
 		<td><%= exercise.estimated_sets %></td>
-		<td><%= exercise.estimated_mins %></td>
+		<td><%= "%.3f" % exercise.estimated_mins %></td>
 		<td><%= exercise.workout_history.actual_reps %></td>
 		<td><%= exercise.workout_history.actual_sets %></td>
 		<td><%= exercise.workout_history.actual_mins %></td>
 		<td><%= exercise.workout_history.actual_reps %></td>
-		<td><%= link_to 'X', event_workout_session_path(@event,session) %></td>
-		<td><%= link_to 'X', edit_event_workout_session_path(@event, session) %></td>
-		<td><%= link_to 'X', [@event, session], :confirm => 'Are you sure?', :method => :delete %></td>
-		<td><%= link_to 'X',  edit_workout_session_workout_history_path(session)%></td>
+		<td><%= link_to 'X', event_workout_session_path(@event,exercise) %></td>
+		<td><%= link_to 'X', edit_event_workout_session_path(@event, exercise) %></td>
+		<td><%= link_to 'X', [@event, exercise], :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= link_to 'X',  edit_workout_session_workout_history_path(exercise)%></td>
 		</tr>
 	<% end %>
 
@@ -43,13 +45,6 @@
 </Table>
 
   
-  
-
-
-
-
-
-
 <% @exers  = Exercise.find(:all) %>
 <% @exercise_list = {} %>
 <% @exers.each do |e| %>
@@ -61,15 +56,16 @@
 
 
 <% remote_form_for([@event, @workout_session], :url => make_session_path(@event), :html => {:id => 'workout_session_form' }, :before => "$('#adding_to_session').show();", :complete => "$('#adding_to_session').hide();") do |f| %>
+<%= error_messages_for :event, :workout_session %>
   <%= f.error_messages %>
   
   <p>
 	
 	<label for="exercise_exercise_type">Exercise type</label><br />
-	<%= select :exercise, :exercise_type, @e_list, {:prompt=>'Please Select...'}, {:onchange =>"new Effect.SlideDown('selection'); return false"} %><br />
+	<%= select :exercise, :exercise_type, @e_list, {:prompt=>'Please Select...'} %><br />
 	<%= observe_field (:exercise_exercise_type, :url => {:action => :update_exercise_menu}, 
 					:update => :exercise_list_select_div,
-					:with => :exercise_type) %>
+					:with => :exercise_type)%>
   </p>
 	<div id="selection" >
 		<div id="exercise_list_select_div" >

@@ -119,12 +119,14 @@ class EventsController < ApplicationController
 	@workout_session = @event.workout_sessions.build(params[:workout_session])
 	@workout_session.estimate_time
 	@workout_history = WorkoutHistory.new(params[:workout_history])
-   
+	@workout_session.errors.each_full{|msg| flash[:error] = msg }
 	  if @workout_session.save
 		@workout_history.workout_session_id = @workout_session.id
 		if @workout_history.save
-			render :new_session do |page|
+			render :update do |page|
+				flash.now[:notice] = "exercise successfully added"
 				page.replace_html 'event_desc', :partial => 'new_session_form'
+				
 			end
 		  #format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully created.') }
 		  #format.xml  { render :xml => @workout_session, :status => :created, :location => @workout_session }

@@ -69,12 +69,14 @@ function editEvent(event_id){
 }
 
 function deleteEvent(event_id, delete_all){
+	if (confirm("Are you sure about this?")) {
     jQuery.ajax({
         data: 'id=' + event_id + '&delete_all='+delete_all,
         dataType: 'script',
         type: 'post',
         url: "/events/destroy"
     });
+}
 }
 
 function showPeriodAndFrequency(value){
