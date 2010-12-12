@@ -17,6 +17,7 @@ html, body {
 	width:100%;
 	position: relative;
 	-moz-box-shadow:0 3px 10px #cccccc;
+	-webkit-box-shadow:0 3px 10px #cccccc;
 	background-color: #d0d9e0;
 
 }
@@ -122,6 +123,7 @@ html, body {
 	border-top: 1px solid #ddd;
 	height: 40px;
 	-moz-box-shadow:0 -3px 10px #cccccc;
+	-webkit-box-shadow:0 -3px 10px #cccccc;
 	background-color:#d0d9e0;
 	color: #576672;
 }
@@ -147,13 +149,14 @@ a:hover {
 }
 
 h1,h2,h3,h4 {
-	text-shadow: 0 1px 0 #DDDDDD;
+	text-shadow: 0 1px 0 #bbbbbb;
 }
 
 fieldset
 {	
 	color: #000000;
 	-moz-box-shadow: 1px 1px 10px #bbbbbb;
+	-webkit-box-shadow: 1px 1px 10px #bbbbbb;
 	background-color: #d0d9e0;
 	position: relative;
 	border: 1px solid #cccccc;
@@ -175,6 +178,7 @@ color: #000000;
 background-color: #FFFFFF;
 border: 1px solid #bbbbbb;
 -moz-box-shadow: inset 1px 1px 10px #bbbbbb;
+-webkit-box-shadow: inset 1px 1px 10px #bbbbbb;
 
 
 /* mozilla browser */
