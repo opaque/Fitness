@@ -22,6 +22,11 @@ function resizeEvent(event, dayDelta, minuteDelta){
 function showEventDetails(event){
     $('#event_desc').html(event.description);
     $('#edit_event').html("<a href = 'javascript:void(0);' onclick ='editEvent(" + event.id + ")'>Edit</a>");
+	
+	//testing new javascript popup page
+	$('#add_session').html("<a href ='javascript:void(0);' onclick='addSession(" + event.id + ")'>Add Workout Session</a>");
+	//
+	
     if (event.recurring) {
         title = event.title + "(Recurring)";
         $('#delete_event').html("&nbsp; <a href = 'javascript:void(0);' onclick ='deleteEvent(" + event.id + ", " + false + ")'>Delete Only This Occurrence</a>");
@@ -44,6 +49,15 @@ function showEventDetails(event){
     
 }
 
+
+function addSession(event_id){
+	jQuery.ajax({
+		//data: event_id,
+		dataType: 'script',
+		type: 'get',
+		url: "/events/new_session/" + event_id
+	});
+}
 
 function editEvent(event_id){
     jQuery.ajax({
