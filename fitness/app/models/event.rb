@@ -17,14 +17,14 @@
 class Event < ActiveRecord::Base
   attr_accessor :period, :frequency, :commit_button
   
-  validates_presence_of :title, :description
+  #validates_presence_of :title
   
   belongs_to :event_series
   has_many :workout_sessions, :dependent => :destroy
   belongs_to :user
   has_many :exercises, :through => :workout_sessions
   has_many :workout_histories, :through => :workout_sessions
-  #validates_presence_of :name, :user_id, :starttime, :endtime  this validation took me 5 hours
+  validates_presence_of :user_id, :starttime, :endtime
   validate :valid_time_period
   
   def valid_time_period
@@ -45,6 +45,8 @@ class Event < ActiveRecord::Base
     end
   end
   
+  # events is all the events for a certain event series that need to be updated
+  # event is the parameters of the event that needs to be updated
   def update_events(events, event)
     events.each do |e|
       begin 
