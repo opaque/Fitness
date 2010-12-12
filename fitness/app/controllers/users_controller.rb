@@ -23,6 +23,7 @@ class UsersController < ApplicationController
         redirect_back_or_default root_url
 	  end
     else
+	  flash[:error] = "Please try again!"
       render :action => :new
     end
   end
@@ -41,6 +42,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Account updated!"
       redirect_to root_url
     else
+	  flash[:error] = "Account failed to update. Please try again!"
       render :action => :edit
     end
   end

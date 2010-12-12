@@ -116,6 +116,15 @@ html, body {
 #profile {
 	margin:auto;
 	width: 275px;
+}
+#profile h1 {
+	text-align: center;
+}
+
+#new_user {
+	text-align: center;
+}
+#new_user_session {
 	text-align: center;
 }
 
@@ -152,6 +161,8 @@ h1,h2,h3,h4 {
 	text-shadow: 0 1px 0 #bbbbbb;
 }
 
+
+
 fieldset
 {	
 	color: #000000;
@@ -171,6 +182,8 @@ border-radius: 10px;
 /* chrome & safari browser */
 -webkit-border-radius: 10px;
 }
+
+
 
 input
 {
@@ -226,4 +239,8 @@ border-radius: 5px;
 .black 
 {
 	color: #000000;
+}
+
+.edit_profile {
+	text-align: center;
 }

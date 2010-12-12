@@ -1,8 +1,7 @@
 <div id="profile">
 <h1>My profile</h1>
-
+  <%= error_messages_for :profile %>
 <% form_for(@profile) do |f| %>
-  <%= f.error_messages %>
   
 <fieldset class="shadow">
   <p>

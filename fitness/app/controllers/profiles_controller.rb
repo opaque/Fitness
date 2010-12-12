@@ -65,7 +65,8 @@ class ProfilesController < ApplicationController
         format.html { redirect_to(root_url, :notice => 'Profile was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+	    flash[:error] = "Profile was unsuccessfully updated."
+        format.html { render :action => "edit"}
         format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
       end
     end
