@@ -5,15 +5,14 @@
 <p><%= flash[:notification] %></p>
 </div>
 <% end %>
+
 <div id="graph">
-
-<% if false %>
-<%= image_tag(@g) %>
-<% end %>
-
-<%= google_vizualisation_tag(@pounds_lost) %>
-<%= google_vizualisation_tag(@calories_burned) %>
-<%= google_vizualisation_tag(@column_chart) %>
+text
 </div>
+<%= link_to_remote ("Home", :update => "graph", :url => {:controller => :users, :action=> :partial_test, :data => @pounds_lost}) %>
+
+
+
+
 
 
