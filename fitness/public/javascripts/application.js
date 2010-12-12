@@ -19,6 +19,25 @@ function resizeEvent(event, dayDelta, minuteDelta){
     });
 }
 
+function promptDialog(eventID){
+	prompt_dialog = $('#prompt_dialog')
+	prompt_dialog.dialog({
+		title: 'Delete Event Series?',
+		minWidth:500,
+		width:500,
+		position:'center',
+		close: function(ev, ui){
+            prompt_dialog.dialog('destroy');
+			$('#prompt').html("");
+        },
+		open: function(ev, ui){
+			$('#prompt').html("&nbsp; <a href = 'javascript:void(0);' onclick ='deleteEvent(" + eventID + ", " + false + ");prompt_dialog.dialog(\"destroy\"); '>Delete Only This Occurrence</a>");
+	        $('#prompt').append("&nbsp;&nbsp; <a href = 'javascript:void(0);' onclick ='deleteEvent(" + eventID + ", " + true + ");prompt_dialog.dialog(\"destroy\");'>Delete All In Series</a>");
+	        $('#prompt').append("&nbsp;&nbsp; <a href = 'javascript:void(0);' onclick ='deleteEvent(" + eventID + ", \"future\");prompt_dialog.dialog(\"destroy\");'>Delete All Future Events</a>");
+		}
+	});
+}
+
 function showEventDetails(event){
     //$('#event_desc').html(event.description);
     $('#edit_event').html("<a href = 'javascript:void(0);' onclick ='editEvent(" + event.id + ")'>Edit</a>");
@@ -28,10 +47,9 @@ function showEventDetails(event){
 	//
 	
     if (event.recurring) {
-        title = event.title + "(Recurring)";
-        $('#delete_event').html("&nbsp; <a href = 'javascript:void(0);' onclick ='deleteEvent(" + event.id + ", " + false + ")'>Delete Only This Occurrence</a>");
-        $('#delete_event').append("&nbsp;&nbsp; <a href = 'javascript:void(0);' onclick ='deleteEvent(" + event.id + ", " + true + ")'>Delete All In Series</a>")
-        $('#delete_event').append("&nbsp;&nbsp; <a href = 'javascript:void(0);' onclick ='deleteEvent(" + event.id + ", \"future\")'>Delete All Future Events</a>")
+        title = event.title + " (Recurring)";
+		$('#delete_event').html("<a href = 'javascript:void(0);' onclick ='promptDialog(" + event.id + ")'> Delete </a>")
+        
     }
     else {
         title = event.title;
@@ -45,7 +63,10 @@ function showEventDetails(event){
 		minHeight: 500,		
 		position: 'top',
         close: function(event, ui){
-            $('#desc_dialog').dialog('destroy')
+            $('#desc_dialog').dialog('destroy');
+			
+			$('#prompt_dialog').dialog('destroy');
+			
         },
 		open: function(ev, ui){
 			editEvent(event.id)
@@ -53,6 +74,12 @@ function showEventDetails(event){
         
     });
     
+}
+
+function defaultValue(title){
+	if(title.length == 0 && first_time){
+		alert('hi');
+	}
 }
 
 
