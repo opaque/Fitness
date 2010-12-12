@@ -11,7 +11,7 @@
 	<% @exercise_list.each do |exercise| %>
 		<tr>
 		<td><%= Exercise.find(exercise.exercise_id).name %></td>
-		<td><%= link_to_remote 'Delete', :url => { :controller => "workout_sessions", :action => "destroy", :id => exercise.id, :event_id => @event.id}, :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= link_to_remote 'Delete', :url => { :controller => "workout_sessions", :action => "destroy", :id => exercise.id, :event_id => @event.id}, :confirm => 'Are you sure?', :method => :delete, :complete => "addSession('#{@event.id}')" %></td>
 		</tr>
 	<% end %>
 

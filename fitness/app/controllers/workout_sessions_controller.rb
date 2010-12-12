@@ -90,6 +90,10 @@ class WorkoutSessionsController < ApplicationController
   def destroy
     @workout_session = @event.workout_sessions.find(params[:id])
     @workout_session.destroy
+	
+	render :update do |page|
+		page.replace_html 'event_desc', :partial => 'new_session_form'
+	end
   end
   
   
