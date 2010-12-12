@@ -44,10 +44,7 @@ class User < ActiveRecord::Base
 	if (not @profile.weight)
 		@calories.push(0)
 		@date = DateTime.now
-		@year= @date.year
-		@month = @date.month
-		@day = @date.day
-		@dates.push(DateTime.new(@year, @month-1, @day))
+		@dates.push(@date.month.ago)
 	elsif (@events.empty?)
 		@calories.push(0)
 		@date = DateTime.now
@@ -69,7 +66,10 @@ class User < ActiveRecord::Base
 			end
 			@calories.push(@event_calories)
 			@date = event.starttime
-			@dates.push(@date.month.ago)
+			@year= @date.year
+			@month = @date.month
+			@day = @date.day
+			@dates.push(DateTime.new(@year, @month, @day) << 1)
 		end
 	end
 
@@ -124,7 +124,7 @@ class User < ActiveRecord::Base
 			@year= @date.year
 			@month = @date.month
 			@day = @date.day
-			@dates.push(@date.month.ago)
+			@dates.push(DateTime.new(@year, @month, @day) << 1)
 		end	
 	end
 	
