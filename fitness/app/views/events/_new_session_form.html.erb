@@ -1,0 +1,35 @@
+
+<% @exers  = Exercise.find(:all) %>
+<% @exercise_list = {} %>
+<% @exers.each do |e| %>
+	<% @exercise_list[e.exercise_type] = e.exercise_type %>
+<% end %>
+<% @e_list = [] %>
+<% @exercise_list.each {|key,value| @e_list << [key, value]} %>
+
+<% remote_form_for([@event, @workout_session], :url => make_session_path(@event), :before => "$('#adding_to_session').show();", :complete => "$('#adding_to_session').hide();") do |f| %>
+  <%= f.error_messages %>
+  
+  <p>
+	
+	<label for="exercise_exercise_type">Exercise type</label><br />
+	<%= select :exercise, :exercise_type, @e_list, {:prompt=>'Please Select...'}, {:onchange =>"new Effect.SlideDown('selection'); return false"} %><br />
+	<%= observe_field (:exercise_exercise_type, :url => {:action => :update_exercise_menu}, 
+					:update => :exercise_list_select_div,
+					:with => :exercise_type) %>
+  </p>
+	<div id="selection" >
+		<div id="exercise_list_select_div" >
+	
+		</div>
+	</div>
+	
+  <p>
+    <%= f.submit 'make_session' %>
+  </p>
+  
+  <p>
+  <span id = "adding_to_session" style = "display:none;">Updating, Please wait...</span>
+  </p>
+<% end %>
+

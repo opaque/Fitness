@@ -58,6 +58,7 @@ class EventsController < ApplicationController
   
   def edit
     @event = Event.find_by_id(params[:id])
+	#@workout_session = @event.workout_sessions.build
   end
   
   def update
@@ -101,5 +102,43 @@ class EventsController < ApplicationController
   def event_workout_history
     @event = Event.find(params[:id])
   end
+  
+  def update_exercise_menu
+	@exercises = Exercise.find(:all, :conditions => ['exercise_type = ?', params[:exercise_type]])
+	render :layout => false
+  end
+  
+  def new_session
+	@event = Event.find(params[:id])
+	@workout_session = @event.workout_sessions.build
+  end
+  
+  
+  def make_session
+	@event = Event.find(params[:id])
+	@workout_session = @event.workout_sessions.build(params[:workout_session])
+	@workout_session.estimate_time
+	@workout_history = WorkoutHistory.new(params[:workout_history])
+   
+	  if @workout_session.save
+		@workout_history.workout_session_id = @workout_session.id
+		if @workout_history.save
+			render :update do |page|
+			  page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
+			  page<<"$('#desc_dialog').dialog('destroy')" 
+			end
+		  #format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully created.') }
+		  #format.xml  { render :xml => @workout_session, :status => :created, :location => @workout_session }
+		else
+		  #format.html { render :action => "new" }
+		  #format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
+		end
+	  else
+		#format.html { render :action => "new" }
+		#format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
+	  end
+  end
+
+
   
 end
