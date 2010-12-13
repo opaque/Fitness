@@ -55,6 +55,9 @@ function showEventDetails(event){
         title = event.title;
         $('#delete_event').html("<a href = 'javascript:void(0);' onclick ='deleteEvent(" + event.id + ", " + false + ")'>Delete</a>");
     }
+	jQuery.ajaxSetup ({
+	      cache: false
+	});
     $('#desc_dialog').dialog({
         title: title,
         modal: true,
@@ -63,10 +66,14 @@ function showEventDetails(event){
 		minHeight: 500,		
 		position: 'top',
         close: function(event, ui){
-            $('#desc_dialog').dialog('destroy');
-			
+            $('#desc_dialog').dialog('destroy').remove();
 			$('#prompt_dialog').dialog('destroy');
-			
+			//insert back in the dialog divs to prevent caching
+			$('<div id = "desc_dialog" style ="display:none;">'+ 
+			'<div id="tabs"><ul><li><span id = "edit_event"></span></li><li>'+
+			'<span id = "add_session"></span></li><li><span id = "delete_event">' + 
+			'</span></li></ul></div><div id = "event_desc"></div><br/><br/></div>').insertAfter('#wrapcalendar');
+			$( "#tabs" ).tabs();
         },
 		open: function(ev, ui){
 			editEvent(event.id)
@@ -76,11 +83,6 @@ function showEventDetails(event){
     
 }
 
-function defaultValue(title){
-	if(title.length == 0 && first_time){
-		alert('hi');
-	}
-}
 
 
 function addSession(event_id){
