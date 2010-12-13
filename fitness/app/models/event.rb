@@ -15,7 +15,7 @@
 #
 
 class Event < ActiveRecord::Base
-  attr_accessor :period, :frequency, :commit_button
+  attr_accessor :period, :frequency, :commit_button, :empty_title
   
   #validates_presence_of :title
   
@@ -26,6 +26,7 @@ class Event < ActiveRecord::Base
   has_many :workout_histories, :through => :workout_sessions
   validates_presence_of :user_id, :starttime, :endtime
   validate :valid_time_period
+
   
   def valid_time_period
 	errors.add(:endtime, 'ending time must be after starting time for event') if (endtime < starttime)
