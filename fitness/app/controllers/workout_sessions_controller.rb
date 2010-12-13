@@ -52,7 +52,7 @@ class WorkoutSessionsController < ApplicationController
     @workout_session = @event.workout_sessions.build(params[:workout_session])
 	@workout_session.estimate_time
 	@workout_history = WorkoutHistory.new(params[:workout_history])
-    respond_to do |format|
+	
       if @workout_session.save
 	    @workout_history.workout_session_id = @workout_session.id
 		if @workout_history.save
@@ -67,7 +67,7 @@ class WorkoutSessionsController < ApplicationController
         #format.html { render :action => "new" }
         #format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
       end
-    end
+    
   end
 
   # PUT /workout_sessions/1
