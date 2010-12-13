@@ -3,22 +3,22 @@
 <p>
   <%=f.label :title %>
   <br/>
-  <%=f.text_field :title %>
+  <%=f.text_field :title, :class =>'input'  %>
 </p>
 <p>
   <%=f.label :description %>
   <br/>
-  <%=f.text_area :description, :rows => 4, :cols => 30 %>
+  <%=f.text_area :description, :rows => 4, :cols => 30, :class =>'input' %>
 </p>
 <p>
   <%=f.label :starttime, 'Start Time' %>
   <br/>
-  <%=f.datetime_select :starttime %>
+  <%=f.datetime_select :starttime, {}, {:class =>'select'} %>
 </p>
 <p>
   <%=f.label :endtime, 'End Time' %>
   <br/>
-  <%=f.datetime_select :endtime %>
+  <%=f.datetime_select :endtime, {}, {:class =>'select'} %>
 </p>
 <p>
   <%=f.label :all_day %>
@@ -26,14 +26,14 @@
 </p>
 <p>
   <%=f.label :period, "Repeats" %>
-  <%=f.select :period, Event::REPEATS,{}, :onchange => "showPeriodAndFrequency(this.value);" %>
+  <%=f.select :period, Event::REPEATS,{}, :onchange => "showPeriodAndFrequency(this.value);", :class =>'select' %>
 </p>
 <p id = "frequency" style = "display:none;">
   <%=f.label :frequency, "Repeat every" %>
-  <%=f.select :frequency, (1..30).to_a %> <span id = "period"></span>
+  <%=f.select :frequency, (1..30).to_a, {}, {:class =>'select'} %> <span id = "period"></span>
 </p>
 <%=f.hidden_field :id, :value => @event.id %>
 <p>
-  <%=f.submit 'Create' %> <span id = "creating_events" style = "display:none;">Creating, Please wait...</span>
+  <%=f.submit 'Create', :class =>'button2' %> <span id = "creating_events" style = "display:none;">Creating, Please wait...</span>
 </p>
 <%end %>
