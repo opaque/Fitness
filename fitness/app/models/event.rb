@@ -74,6 +74,19 @@ class Event < ActiveRecord::Base
     event_series.save
   end
   
+  def add_workout_session_and_history(session)
+	  session.delete(:commit_button)
+	  @workout_session = self.workout_sessions.build(session)
+	  @workout_session.estimate_time
+	  @workout_history = WorkoutHistory.new
+		  if @workout_session.save
+			@workout_history.workout_session_id = @workout_session.id
+			if not @workout_history.save
+				@workout_session.destroy
+			end
+		  end
+  end
+  
   
   
 end
