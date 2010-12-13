@@ -64,7 +64,7 @@ function showEventDetails(event){
         width: 700,
 		minWidth: 700,
 		minHeight: 500,		
-		position: 'top',
+		position: ['top', 'center'],
         close: function(event, ui){
             $('#desc_dialog').dialog('destroy').remove();
 			$('#prompt_dialog').dialog('destroy');
