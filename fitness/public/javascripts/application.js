@@ -55,11 +55,9 @@ function showEventDetails(event){
         title = event.title;
         $('#delete_event').html("<a href = 'javascript:void(0);' onclick ='deleteEvent(" + event.id + ", " + false + ")'>Delete</a>");
     }
-	jQuery.ajaxSetup ({
-	      cache: false
-	});
+
     $('#desc_dialog').dialog({
-        //title: title,
+        title: title,
         modal: true,
         width: 700,
 		minWidth: 700,
