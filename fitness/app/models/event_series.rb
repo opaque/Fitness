@@ -1,32 +1,18 @@
-# == Schema Information
-# Schema version: 20100330111833
-#
-# Table name: event_series
-#
-#  id         :integer(4)      not null, primary key
-#  frequency  :integer(4)      default(1)
-#  period     :string(255)     default("months")
-#  starttime  :datetime
-#  endtime    :datetime
-#  all_day    :boolean(1)
-#  created_at :datetime
-#  updated_at :datetime
-#
-
 class EventSeries < ActiveRecord::Base
   attr_accessor :title, :description, :commit_button
   
   validates_presence_of :frequency, :period, :starttime, :endtime, :user_id
-  validates_presence_of :title, :description
+  #validates_presence_of :title, :description
   
   has_many :events, :dependent => :destroy
   
   def after_create
+    #debugger
     create_events_until(END_TIME)
   end
   
   def create_events_until(end_time)
-    debugger
+    #debugger
     st = starttime
     et = endtime
     p = r_period(period)

@@ -1,7 +1,7 @@
-<% remote_form_for([@event, @workout_session], :url => {:controller => "workout_sessions", :action => :update, :event_id => @event.id, :id => @workout_session.id}, :complete => " $('#desc_dialog').dialog( 'option', 'width', 700 ); addSession('#{@event.id}'); return false") do |f| %>
+<% remote_form_for([@event, @workout_session], :url => {:controller => "workout_sessions", :action => :update, :event_id => @event.id, :id => @workout_session.id}, :complete => " $('#desc_dialog').dialog( 'option', 'width', 700 ); addSession('#{@event.id}');$( '#desc_dialog' ).dialog( 'option', 'position', ['top','center']); return false") do |f| %>
   <%= f.error_messages %>
-
-	<% if Exercise.find(@workout_session.exercise_id).exercise_type == 'cardio' %>  
+	<% @type = Exercise.find(@workout_session.exercise_id).exercise_type %>
+	<% if @type == 'cardio' %>  
  
 		<%= f.label 'Planned Exercise Time' %>
 		<%= f.text_field :estimated_mins, :size => 10 %>

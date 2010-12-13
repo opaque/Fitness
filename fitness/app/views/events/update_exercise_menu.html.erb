@@ -7,16 +7,25 @@
 		</select>
 	</p>
 	</div>
-	<% if params[:exercise_type] != 'cardio' %>
+	<% @type = params[:exercise_type] %>
+	<% if @type != 'cardio' %>
 		<p>
-			<%= label(:workout_session, :estimated_reps) %><br />
+			<%= label(:workout_session, :estimated_reps, 'Planned Repititions Per Set') %><br />
 			<%= text_field(:workout_session, :estimated_reps) %>
 		</p>
 		
 		<p>
-			<%= label(:workout_session, :estimated_sets) %><br />
+			<%= label(:workout_session, :estimated_sets,'Planned Sets') %><br />
 			<%= text_field(:workout_session, :estimated_sets) %>
 		</p>
+		
+		<% if @type != 'calisthenics' %>
+			<p>
+				<%= label :workout_session, :estimated_weight, 'Weight Lifted' %><br />
+				<%= text_field :workout_session, :estimated_weight %>
+			</p>
+		<% end %>
+		
 	<% else %>
 		<p>
 			<%= label(:workout_session, :estimated_mins) %><br />
