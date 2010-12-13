@@ -1,6 +1,6 @@
 .ui-dialog { position: relative; padding: .2em; width: 300px; }
 .ui-dialog .ui-dialog-titlebar { padding: .5em .3em .3em 1em; position: relative;  }
-.ui-dialog .ui-dialog-title { float: left; margin: .1em 0 .2em; } 
+.ui-dialog .ui-dialog-title { float: left; margin: .1em 0 .2em; color:#234F74;} 
 .ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; }
 .ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
 .ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
@@ -11,3 +11,9 @@
 .ui-draggable .ui-dialog-titlebar { cursor: move; }
 
 div#desc_dialog, div#create_event_dialog{ font-size: 12px !important;}
+#prompt_dialog {
+	background: #dddddd;
+}
+#prompt a{
+	color: #234F74;
+}
