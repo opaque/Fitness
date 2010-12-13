@@ -3,7 +3,6 @@
 </script>
 <%remote_form_for @event, :url => {:action => :update} , :before => "$('#updating_events').show();", :complete => "$('#updating_events').hide();" do |f| %>
 
-  <%=f.error_messag%>
 <p>
   <%=f.label :title %>
   <br/>
