@@ -22,8 +22,10 @@ class User < ActiveRecord::Base
 	@quadraceps=0
 	@calves=0
 	@cardio=0
-	@latissimus_dorsi=0
 	@shoulders=0
+	@back=0
+	@calisthenics=0
+	@abdominal=0
 	
 		@events.each do |event|
 			@workout_sess = event.workout_sessions.find(:all, :conditions => ['event_id = ?', event.id])
@@ -42,10 +44,14 @@ class User < ActiveRecord::Base
 					@calves += 1
 				elsif @type == 'cardio'
 					@cardio += 1
-				elsif @type == 'latissimus dorsi'
-					@latissimus_dorsi += 1
 				elsif @type == 'shoulders'
 					@shoulders += 1
+				elsif @type == 'back'
+					@back += 1
+				elsif @type == 'calisthenics'
+					@calistenics += 1
+				elsif @type == 'abdominal'
+					@abdominal += 1
 				else
 					false
 				end
@@ -53,8 +59,8 @@ class User < ActiveRecord::Base
 			end	
 		end	
 	
-	@pie_graph.add_values("Times",[@bicep, @tricep, @chest, @quadraceps, @calves, @cardio, @latissimus_dorsi, @shoulders])
-	@pie_graph.add_values("Type",['Bicep', 'Tricep', 'Chest', 'Quadraceps', 'Calves', 'Cardio', 'Latissimus Dorsi', 'Shoulders'])
+	@pie_graph.add_values("Times",[@bicep, @tricep, @chest, @quadraceps, @calves, @cardio, @shoulders, @back, @calisthenics, @abdominal])
+	@pie_graph.add_values("Type",['Bicep', 'Tricep', 'Chest', 'Quadraceps', 'Calves', 'Cardio', 'Shoulders', 'Back', 'Calisthenics', 'Abdominal'])
 	
 	@pie_graph
   end
