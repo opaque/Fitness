@@ -16,9 +16,11 @@
 		<td><%= Exercise.find(exercise.exercise_id).name %></td>
 		<td><div id=<%= "exercise_%d" % exercise.id %> >
 		</div></td>
-		<td><%= link_to_remote 'Edit', :update =>"exercise_%d" % exercise.id, :url => {:controller => 'workout_sessions', :action => 'render_edit', :event_id => @event.id, :id => exercise.id} %></td>
-		<td><%= link_to_remote 'Delete', :url => { :controller => "workout_sessions", :action => "destroy", :id => exercise.id, :event_id => @event.id}, :confirm => 'Are you sure?', :method => :delete, :complete => "addSession('#{@event.id}')" %></td>
-		<td><%= link_to_remote 'Update', :update =>"exercise_%d" % exercise.id, :url => {:controller => 'workout_histories', :action => 'render_update_actual', :workout_session_id => exercise.id, :id => exercise.workout_history.id} %></td>
+		<td><%= link_to_remote 'Edit', :update =>"exercise_%d" % exercise.id, :url => {:controller => 'workout_sessions', :action => 'render_edit', :event_id => @event.id, :id => exercise.id}, 
+		:loading => "$( '#desc_dialog' ).dialog( 'option', 'width', 1000 );" %></td>
+		<td><%= link_to_remote 'Delete', :url => { :controller => "workout_sessions", :action => "destroy", :id => exercise.id, :event_id => @event.id}, :confirm => 'Are you sure?', :method => :delete, :complete => "addSession('#{@event.id}');" %></td>
+		<td><%= link_to_remote 'Update', :update =>"exercise_%d" % exercise.id, :url => {:controller => 'workout_histories', :action => 'render_update_actual', :workout_session_id => exercise.id, :id => exercise.workout_history.id}, 
+		:loading => "$( '#desc_dialog' ).dialog( 'option', 'width', 1000 );" %></td>
 		</tr>
 	<% end %>
 

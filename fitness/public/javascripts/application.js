@@ -39,11 +39,11 @@ function promptDialog(eventID){
 }
 
 function showEventDetails(event){
-    $('#event_desc').html(event.description);
+    //$('#event_desc').html(event.description);
     $('#edit_event').html("<a href = 'javascript:void(0);' onclick ='editEvent(" + event.id + ")'>Edit</a>");
 	
 	//testing new javascript popup page
-	$('#add_session').html("<a href ='javascript:void(0);' onclick='addSession(" + event.id + ")'>Add Workout Session</a>");
+	$('#add_session').html("<a href ='javascript:void(0);' onclick='addSession(" + event.id + ")'>View Workout Session</a>");
 	//
 	
     if (event.recurring) {

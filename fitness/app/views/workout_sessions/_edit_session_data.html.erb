@@ -4,15 +4,15 @@
 	<% if Exercise.find(@workout_session.exercise_id).exercise_type == 'cardio' %>  
  
 		<%= f.label 'Planned Exercise Time' %>
-		<%= f.text_field :estimated_mins %>
+		<%= f.text_field :estimated_mins, :size => 10 %>
 	
 	<% else %>
 	
 		<%= f.label  'Planned Reps Per Set'%>
-		<%= f.text_field :estimated_reps %>
+		<%= f.text_field :estimated_reps, :size => 10 %>
 	 
 		<%= f.label 'Planned Sets' %>
-		<%= f.text_field :estimated_sets %>
+		<%= f.text_field :estimated_sets, :size => 10 %>
 	 
 	<% end %>
   

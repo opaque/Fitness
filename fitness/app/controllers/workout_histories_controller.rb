@@ -5,7 +5,7 @@ class WorkoutHistoriesController < ApplicationController
   
   def get_event
 	@workout_session = WorkoutSession.find(params[:workout_session_id])
-	@event = Event.find(:all, :conditions => ['id = ?', @workout_session.event_id])
+	@event = Event.find(:all, :conditions => ['id = ?', @workout_session.event_id]).first
   end
   
   # GET /workout_histories
@@ -81,16 +81,18 @@ class WorkoutHistoriesController < ApplicationController
   def update
     @workout_history = @workout_session.workout_history
 	
-    respond_to do |format|
+    
       if @workout_history.update_attributes(params[:workout_history])
-        format.html { redirect_to(event_path(@event), :notice => 'WorkoutHistory was successfully updated.') }
-        format.xml  { head :ok }
+		render :layout => false
+        #format.html { redirect_to(event_path(@event), :notice => 'WorkoutHistory was successfully updated.') }
+        #format.xml  { head :ok }
       else
+		render :layout => false
         #format.html { render :action => "edit" }
-        format.html { redirect_to(event_path(@event), :notice => 'failed' ) }
-		format.xml  { render :xml => @workout_history.errors, :status => :unprocessable_entity }
+        #format.html { redirect_to(event_path(@event), :notice => 'failed' ) }
+		#format.xml  { render :xml => @workout_history.errors, :status => :unprocessable_entity }
       end
-    end
+    
   end
 
   # DELETE /workout_histories/1
