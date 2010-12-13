@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 	
 	@profile = Profile.find(:first, :conditions => ['user_id = ?', @current_user.id])
 	if (not @profile.weight)
-		flash[:notification] = "Weight not yet entered!--Please enter weight in profile!"
+		flash[:notification] = "Please enter weight and height in my profile to view graphs!"
 	end
 	
 	@pie_graph = @current_user.exercise_pie_graph(@current_user)
@@ -76,10 +76,10 @@ class UsersController < ApplicationController
     end
   end
   
-  def partial_test
-	@column_chart = params[:data]
-	render :partial => "graph1", :locals => {:data => @column_chart}
+  #def partial_test
+#	@column_chart = params[:data]
+#	render :partial => "graph1", :locals => {:data => @column_chart}
 	#render :inline => "<%= google_vizualisation_tag('#{@column_chart}') %>"
-  end
+ # end
   
 end
