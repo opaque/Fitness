@@ -9,6 +9,8 @@ class CreateWorkoutHistories < ActiveRecord::Migration
 	  t.integer :workout_session_id
       t.timestamps
     end
+	
+	add_index :workout_histories, :workout_session_id, :name => 'index_on_session_id'
   end
 
   def self.down

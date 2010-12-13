@@ -12,6 +12,9 @@ class CreateWorkoutSessions < ActiveRecord::Migration
 
       t.timestamps
     end
+	
+	add_index :workout_sessions, :event_id, :name => 'index_on_event_id'
+	add_index :workout_sessions, :exercise_id, :name => 'index_on_exercise_id'
   end
 
   def self.down
