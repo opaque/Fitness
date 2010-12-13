@@ -90,6 +90,7 @@ html, body {
 #center {
 	margin: auto;
 	width: 900px;
+	
 }
 
 #notice {
@@ -158,9 +159,32 @@ html, body {
 
 
 
-#graph {
+#graph1{
 	margin: auto;
-	width: 500px;
+	width: 445px;
+	float: left;
+	height: 240px;
+}
+#graph2 {
+	margin: auto;
+	width: 445px;
+	float: right;
+	height: 240px;
+}
+#graph3 {
+	margin: auto;
+	width: 445px;
+	float: left;
+	height: 240px;
+}
+#graph4 {
+	margin: auto;
+	width: 445px;
+	float: right;
+	height: 240px;
+}
+.clear {
+	clear: both;
 }
 
 a {
@@ -243,7 +267,7 @@ border-radius: 5px;
 }
 .button {
     border: 1px solid #cccccc;
-    background: #ccf;
+    background: #eef;
 }
 .button:hover {
     border: 1px solid #234F74;

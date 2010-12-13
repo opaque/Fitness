@@ -6,11 +6,20 @@
 </div>
 <% end %>
 
-<div id="graph">
-text
+<div id="graph1">
+<%= google_vizualisation_tag(@calories_burned) %>
 </div>
-<%= link_to_remote ("Home", :update => "graph", :url => {:controller => :users, :action=> :partial_test, :data => @column_chart}) %>
-
+<div id="graph2">
+<%= google_vizualisation_tag(@pounds_lost) %>
+</div>
+<div class="clear"></div>
+<div id="graph3">
+<%= google_vizualisation_tag(@column_chart) %>
+</div>
+<div id="graph4">
+<%= google_vizualisation_tag(@column_chart) %>
+</div
+<div class="clear"></div>
 
 
 
