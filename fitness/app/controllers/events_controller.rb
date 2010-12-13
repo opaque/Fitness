@@ -119,28 +119,24 @@ class EventsController < ApplicationController
   
   def make_session
 	@event = Event.find(params[:id])
-	@workout_session = @event.workout_sessions.build(params[:workout_session])
-	@workout_session.estimate_time
-	@workout_history = WorkoutHistory.new(params[:workout_history])
-	@workout_session.errors.each_full{|msg| flash[:error] = msg }
-	  if @workout_session.save
-		@workout_history.workout_session_id = @workout_session.id
-		if @workout_history.save
-			render :update do |page|
-				
-				page.replace_html 'event_desc', :partial => 'new_session_form'
-				
-			end
-		  #format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully created.') }
-		  #format.xml  { render :xml => @workout_session, :status => :created, :location => @workout_session }
-		else
-		  #format.html { render :action => "new" }
-		  #format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
-		end
-	  else
-		#format.html { render :action => "new" }
-		#format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
+	if params[:workout_session][:commit_button] == "Add to All Occurences"
+      @events = @event.event_series.events #.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
+      @events.each do |event_x|
+		  event_x.add_workout_session_and_history(params[:workout_session])
 	  end
+    elsif params[:workout_session][:commit_button] == "Add to Following Occurrences"
+      @events = @event.event_series.events.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
+      @events.each do |event_x|
+		  event_x.add_workout_session_and_history(params[:workout_session])
+	  end
+    else
+	  @event.add_workout_session_and_history(params[:workout_session])
+    end
+	
+	#render :update do |page|
+	#	page.replace_html 'event_desc', :partial => 'new_session_form'
+	#end
+	 
   end
 
 

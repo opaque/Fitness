@@ -22,7 +22,9 @@
 		:success => "$('#desc_dialog' ).dialog( 'option', 'width', 900 );",
 		:complete =>"$('#adding_to_session').hide();$('##{@div_id}').hide(); $('##{@div_id}').fadeIn(1000, function() {}); return false" %></td>
 		
-		<td><%= link_to_remote 'Delete', :url => { :controller => "workout_sessions", :action => "destroy", :id => exercise.id, :event_id => @event.id}, :confirm => 'Are you sure?', :method => :delete, :complete => "addSession('#{@event.id}');" %></td>
+		<td><%= link_to_remote 'Delete', :url => { :controller => "workout_sessions", :action => "destroy", :id => exercise.id, :event_id => @event.id}, :confirm => 'Are you sure?', :method => :delete, 
+		:before => "$('#adding_to_session').show();",
+		:complete => "addSession('#{@event.id}');$('#adding_to_session').hide(); return false" %></td>
 		
 		<td><%= link_to_remote 'Update', :update =>"exercise_%d" % exercise.id, :url => {:controller => 'workout_histories', :action => 'render_update_actual', :workout_session_id => exercise.id, :id => exercise.workout_history.id}, 
 		:before => "$('#adding_to_session').show();",
@@ -54,8 +56,8 @@
 
 
 
-<% remote_form_for([@event, @workout_session], :url => make_session_path(@event), :html => {:id => 'workout_session_form' }, :before => "$('#adding_to_session').show();", :complete => "$('#adding_to_session').hide();") do |f| %>
-<%= error_messages_for :event, :workout_session %>
+<% remote_form_for([@event, @workout_session], :url => make_session_path(@event), :html => {:id => 'workout_session_form' }, :before => "$('#adding_to_session').show();", :complete => "addSession('#{@event.id}'); $('#adding_to_session').hide(); return false") do |f| %>
+
   <%= f.error_messages %>
   
   <p>
@@ -74,8 +76,16 @@
 		</div>
 	</div>
 	
+  <%=f.hidden_field :commit_button, :value => ""%>
   <p>
-    <%= f.submit 'Add Exercise' %>
+      <%if @event.event_series -%>
+		  <%=f.submit 'Add Exercise to Only This Occurence', :onclick => "document.getElementById('workout_session_commit_button').value = this.value"%>
+		  <%=f.submit 'Add to All Occurences', :onclick => "document.getElementById('workout_session_commit_button').value = this.value"%>
+		  <%=f.submit 'Add to Following Occurrences', :onclick => "document.getElementById('workout_session_commit_button').value = this.value"%>
+		  <%else-%>
+		  <%=f.submit 'Add Exercise', :onclick => "document.getElementById('workout_session_commit_button').value = this.value"%>
+	  <%end-%>
+
   </p>
   
   <p>
