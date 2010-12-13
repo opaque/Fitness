@@ -6,6 +6,62 @@ class User < ActiveRecord::Base
   
   validates_presence_of :login, :crypted_password
   
+  def exercise_pie_graph(user)
+	@pie_graph = GoogleCharts::PieChart.new(
+		:width => 450, :height => 300, :title => 'Exercise Distribution')
+	#@pie_graph.add_column("Exercise Type",String)
+	#@pie_graph.add_column("Times",Float)
+	@pie_graph.add_column("Type",String)
+	@pie_graph.add_column("Times",Float)
+
+	@events = Event.find(:all, :conditions => ['user_id = ?', user.id])
+	
+	@bicep=0
+	@tricep=0
+	@chest=0
+	@quadraceps=0
+	@calves=0
+	@cardio=0
+	@latissimus_dorsi=0
+	@shoulders=0
+	
+		@events.each do |event|
+			@workout_sess = event.workout_sessions.find(:all, :conditions => ['event_id = ?', event.id])
+			@workout_sess.each do |workout_sess|
+				@exercise = Exercise.find(:first, :conditions => ['id = ?', workout_sess.exercise_id])
+				@type = @exercise.exercise_type
+				if @type == 'bicep'
+					@bicep += 1
+				elsif @type == 'tricep'
+					@tricep += 1
+				elsif @type == 'chest'
+					@chest += 1
+				elsif @type == 'quadraceps'
+					@quadraceps += 1
+				elsif @type == 'calves'
+					@calves += 1
+				elsif @type == 'cardio'
+					@cardio += 1
+				elsif @type == 'latissimus dorsi'
+					@latissimus_dorsi += 1
+				elsif @type == 'shoulders'
+					@shoulders += 1
+				else
+					false
+				end
+
+			end	
+		end	
+	
+	@pie_graph.add_values("Times",[@bicep, @tricep, @chest, @quadraceps, @calves, @cardio, @latissimus_dorsi, @shoulders])
+	@pie_graph.add_values("Type",['Bicep', 'Tricep', 'Chest', 'Quadraceps', 'Calves', 'Cardio', 'Latissimus Dorsi', 'Shoulders'])
+	
+	@pie_graph
+  end
+  
+  
+  
+  
   def mets_graph
 	@exercises = Exercise.find(:all)
 
@@ -138,3 +194,4 @@ class User < ActiveRecord::Base
   end
 	
 end
+
