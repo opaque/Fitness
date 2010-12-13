@@ -207,10 +207,25 @@ border-radius: 5px;
 -webkit-border-radius: 5px;
 }
 
+textarea
+{
+-moz-box-shadow: inset 1px 1px 10px #d0d9e0;
+-webkit-box-shadow: inset 1px 1px 10px #d0d9e0;
+
+
+/* mozilla browser */
+-moz-border-radius: 5px;
+/* opera browser */
+border-radius: 5px;
+/* chrome & safari browser */
+-webkit-border-radius: 5px;
+}
+
 .input {
     border: 1px solid #cccccc;
     background: #ffc;
 }
+
 .input:hover {
     border: 1px solid #234F74;
     background: #ff6;
