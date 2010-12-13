@@ -1,37 +1,20 @@
 
-<% if !current_user %>
-
-
+<div id="menu" class="center">
+<%= link_to_remote("Intensity of Your Workouts", :update => "description", :url => {:controller => :landing, :action=> :menu_one}) %>
+<%= link_to_remote("The Calendar", :update => "description", :url => {:controller => :landing, :action=> :menu_two}) %>
+<%= link_to_remote("Interactive Gui", :update => "description", :url => {:controller => :landing, :action=> :menu_three}) %>
+</div>
 <div id="description">
 <div class="image">
-<%= image_tag("/images/169logo.jpg", :alt => "test", :width => 400, :height => 175) %>
+<%= image_tag("/images/graph.jpg", :alt => "graph", :width => 450, :height => 270) %>
 </div>
 <div class="content">
-<h1> Keeping Track of your Exercises</h1>
-	This is the first menu.
+<h1>Intensity of Your Workouts</h1>
+	<p>We offer a variety of exercises that allow you to customize your workout. </p>
+	<p>We also offer many different types of graphs that follow the progress you are making with your workouts. </p>
+	<p>Furthermore, a handy dandy calendar is available to keep track of when you schedule your workouts. </p>
+	<p>Last but not least, an interactive UI makes it easy to create a workout!</p>
 </div>
 </div>
-<div class="center">
-<%= link_to_remote("Menu1", :update => "description", :url => {:controller => :landing, :action=> :menu_one}) %>
-<%= link_to_remote("Menu2", :update => "description", :url => {:controller => :landing, :action=> :menu_two}) %>
-<%= link_to_remote("Menu3", :update => "description", :url => {:controller => :landing, :action=> :menu_three}) %>
-</div>
-<% else %>
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-	This is where we display relevant information to the user about their workout stuff.
-
-<% end %>
 
 

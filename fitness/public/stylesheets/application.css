@@ -32,7 +32,7 @@ html, body {
 
 #description 
 {
-	width: 800px;
+	width: 890px;
 	padding: 0;
 	margin: 10px 0;
 	overflow: auto;
@@ -163,13 +163,13 @@ html, body {
 	margin: auto;
 	width: 445px;
 	float: left;
-	height: 240px;
+	height: 260px;
 }
 #graph2 {
 	margin: auto;
 	width: 445px;
 	float: right;
-	height: 240px;
+	height: 260px;
 }
 #graph3 {
 	padding-top: 5px;
@@ -314,7 +314,7 @@ border-radius: 5px;
 
 .image {
 	float: left;
-	width: 400px;
+	width: 450px;
 	margin-right:10px;
 	display: inline;
 }
@@ -322,7 +322,20 @@ border-radius: 5px;
 .content {
 	padding: 3px 0;
 	float: left;
-	width: 390px;
+	width: 430px;
+	display: inline;
+}
+.image2 {
+	float: left;
+	width: 600px;
+	margin-right:10px;
+	display: inline;
+}
+
+.content2 {
+	padding: 3px 0;
+	float: left;
+	width: 230px;
 	display: inline;
 }
 
