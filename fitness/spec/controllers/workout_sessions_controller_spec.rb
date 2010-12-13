@@ -64,8 +64,9 @@ describe WorkoutSessionsController do
 		
         mock_workout_session.stub(:build).with({'these' => 'params'}).and_return(mock_workout_session(:save => true))
 		mock_workout_session.stub(:save).and_return(true)
+		mock_workout_history.stub(:save).and_return(true)
 		mock_workout_session.stub(:estimate_time).and_return("6")
-        post :create, :event_id => "1", :workout_session => {:these => 'params'}
+        post :create, :event_id => "1", :id => "37", :workout_session => {:these => 'params'}
         assigns[:workout_session].should equal(mock_workout_session)
       end
 	 
