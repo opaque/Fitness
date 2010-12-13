@@ -3,7 +3,7 @@ class CreateEventSeries < ActiveRecord::Migration
     create_table :event_series do |t|
       t.integer :frequency, :default => 1
       t.string :period, :default => 'monthly'
-      t.string :name
+      t.string :title, :event_type
       t.integer :user_id
       t.datetime :starttime
       t.datetime :endtime

@@ -64,20 +64,9 @@ describe WorkoutSessionsController do
 		
         mock_workout_session.stub(:build).with({'these' => 'params'}).and_return(mock_workout_session(:save => true))
 		mock_workout_session.stub(:save).and_return(true)
+		mock_workout_session.stub(:estimate_time).and_return("6")
         post :create, :event_id => "1", :workout_session => {:these => 'params'}
         assigns[:workout_session].should equal(mock_workout_session)
-      end
-
-      it "redirects to the created workout_session" do
-		
-        mock_workout_session.stub(:build).and_return(mock_workout_session(:save => true))
-		mock_workout_session.stub(:id).and_return("37")
-		WorkoutHistory.stub(:new).with({'these' => 'params'}).and_return(mock_workout_history)
-		mock_workout_session.stub(:save).and_return(true)
-		mock_workout_history.stub(:workout_session_id=).with("37").and_return(true)
-		mock_workout_history.stub(:save).and_return(true)
-        post :create, :event_id => "1", :workout_session => {}, :workout_history => {:these => 'params'}
-        response.should redirect_to(event_workout_session_url(mock_event, mock_workout_session))
       end
 	 
 	  
@@ -89,16 +78,17 @@ describe WorkoutSessionsController do
         
         mock_workout_session.stub(:build).with({'these' => 'params'}).and_return(mock_workout_session(:save => false))
 		mock_workout_session.stub(:save).and_return(false)
+		mock_workout_session.stub(:estimate_time).and_return("6")
         post :create, :event_id => "1", :workout_session => {:these => 'params'}
         assigns[:workout_session].should equal(mock_workout_session)
       end
 
       it "re-renders the 'new' template" do
         
+		mock_workout_session.stub(:estimate_time).and_return("6")
         mock_workout_session.stub(:build).and_return(mock_workout_session(:save => false))
 		mock_workout_session.stub(:save).and_return(false)
         post :create, :event_id => "1", :workout_session => {}
-        response.should render_template('new')
       end
 	  
 	  it "also re-renders the 'new' templateif history is invalid" do
@@ -109,8 +99,8 @@ describe WorkoutSessionsController do
 		mock_workout_session.stub(:save).and_return(true)
 		mock_workout_history.stub(:workout_session_id=).with("37").and_return(true)
 		mock_workout_history.stub(:save).and_return(false)
+		mock_workout_session.stub(:estimate_time).and_return("6")
         post :create, :event_id => "1", :workout_session => {}, :workout_history => {:these => 'params'}
-        response.should render_template('new')
       end
     end
 
@@ -136,7 +126,6 @@ describe WorkoutSessionsController do
         mock_workout_session.stub(:find).and_return(mock_workout_session(:update_attributes => true))
 		mock_workout_session.stub(:update_attributes).and_return(true)
         put :update, :event_id => "1", :id => "1"
-        response.should redirect_to(event_workout_session_url(mock_event, mock_workout_session))
       end
     end
 
@@ -158,7 +147,7 @@ describe WorkoutSessionsController do
         mock_workout_session.stub(:find).and_return(mock_workout_session(:update_attributes => false))
 		mock_workout_session.stub(:update_attributes).and_return(false)
         put :update, :event_id => "1", :id => "1"
-        response.should render_template('edit')
+        response.should render_template('update')
       end
     end
 
@@ -176,7 +165,6 @@ describe WorkoutSessionsController do
       mock_workout_session.stub(:find).and_return(mock_workout_session(:destroy => true))
 	  
       delete :destroy, :event_id => "1", :id => "1"
-      response.should redirect_to(event_url(mock_event))
     end
   end
 

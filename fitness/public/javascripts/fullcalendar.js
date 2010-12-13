@@ -888,6 +888,7 @@ function normalizeEvent(event, options) {
 	}else{
 		event.className = [];
 	}
+	
 }
 // TODO: if there is no title or start date, return false to indicate an invalid event
 
@@ -1439,6 +1440,10 @@ function _renderDaySegs(segs, rowCnt, view, minLeft, maxLeft, getRow, dayContent
 			left = seg.isStart ? dayContentLeft(seg.start.getDay()) : minLeft;
 			right = seg.isEnd ? dayContentRight(seg.end.getDay()-1) : maxLeft;
 		}
+		eventTitle = event.title
+		if (jQuery.trim(eventTitle).length == 0){
+			eventTitle = "(no title)";
+		}
 		html +=
 			"<div class='" + className + event.className.join(' ') + "' style='position:absolute;z-index:8;left:"+left+"px'>" +
 				"<a" + (event.url ? " href='" + htmlEscape(event.url) + "'" : '') + ">" +
@@ -1447,7 +1452,7 @@ function _renderDaySegs(segs, rowCnt, view, minLeft, maxLeft, getRow, dayContent
 							htmlEscape(formatDates(event.start, event.end, view.option('timeFormat'), options)) +
 						"</span>"
 					:'') +
-					"<span class='fc-event-title'>" + htmlEscape(event.title) + "</span>" +
+					"<span class='fc-event-title'>" + htmlEscape(eventTitle) + "</span>" +
 				"</a>" +
 				((event.editable || event.editable == undefined && options.editable) && !options.disableResizing && $.fn.resizable ?
 					"<div class='ui-resizable-handle ui-resizable-" + (rtl ? 'w' : 'e') + "'></div>"
@@ -2080,12 +2085,16 @@ function Agenda(element, options, methods) {
 			seg.left = left;
 			seg.outerWidth = outerWidth;
 			seg.outerHeight = bottom - top;
+			eventTitle = event.title
+			if (jQuery.trim(eventTitle).length == 0){
+				eventTitle = "(no title)";
+			}
 			html +=
 				"<div class='" + className + event.className.join(' ') + "' style='position:absolute;z-index:8;top:" + top + "px;left:" + left + "px'>" +
 					"<a" + (event.url ? " href='" + htmlEscape(event.url) + "'" : '') + ">" +
 						"<span class='fc-event-bg'></span>" +
 						"<span class='fc-event-time'>" + htmlEscape(formatDates(event.start, event.end, view.option('timeFormat'))) + "</span>" +
-						"<span class='fc-event-title'>" + htmlEscape(event.title) + "</span>" +
+						"<span class='fc-event-title'>" + htmlEscape(eventTitle) + "</span>" +
 					"</a>" +
 					((event.editable || event.editable == undefined && options.editable) && !options.disableResizing && $.fn.resizable ?
 						"<div class='ui-resizable-handle ui-resizable-s'>=</div>"

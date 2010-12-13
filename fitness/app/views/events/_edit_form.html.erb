@@ -8,26 +8,26 @@
   <% if @event.title.strip().length == 0%>
   <%=h f.text_field :title, :style => "color:#aaa;", :value => '(no title)',
 					:onfocus => "if(this.value == '(no title)' && unchangedTitle) {this.style.color = '#000';this.value = '';unchangedTitle = false}",
-					:onblur => "if(this.value.length == 0){this.style.color = '#aaa';this.value='(no title)';unchangedTitle=true}"	
+					:onblur => "if(this.value.length == 0){this.style.color = '#aaa';this.value='(no title)';unchangedTitle=true}", :class =>'input' 	
 					 %>
   <%else%>
-  <%=h f.text_field :title %>
+  <%=h f.text_field :title, :class =>'input'  %>
   <% end %>
 </p>
 <p>
   <%=f.label :description %>
   <br/>
-  <%=f.text_area :description, :rows => 4, :cols => 30 %>
+  <%=f.text_area :description, :rows => 4, :cols => 30, :class =>'input'  %>
 </p>
 <p>
   <%=f.label :starttime, 'Start Time' %>
   <br/>
-  <%=f.datetime_select :starttime %>
+  <%=f.datetime_select :starttime, {}, {:class =>'select'} %>
 </p>
 <p>
   <%=f.label :endtime, 'End Time' %>
   <br/>
-  <%=f.datetime_select :endtime %>
+  <%=f.datetime_select :endtime, {}, {:class =>'select'} %>
 </p>
 <p>
   <%=f.label :all_day %>
@@ -37,7 +37,7 @@
 <%period = (@event.event_series)?@event.event_series.period : nil -%>
 <p>
   <%=f.label :period, "Repeats" %>
-  <%=f.select :period, Event::REPEATS,{:selected => period}, :onchange => "showPeriodAndFrequency(this.value);" %>
+  <%=f.select :period, Event::REPEATS,{:selected => period}, :onchange => "showPeriodAndFrequency(this.value);", :class => 'select' %>
 </p>
 <%frequency = (@event.event_series)?@event.event_series.frequency : nil -%>
 <p id = "frequency" style = "display:<%(period)? '' : 'none'%>;">
@@ -49,11 +49,11 @@
 <%=f.hidden_field :commit_button, :value => ""%>
 <p>
   <%if @event.event_series -%>
-  <%=f.submit 'Update Only This Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value"%>
-  <%=f.submit 'Update All Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value"%>
-  <%=f.submit 'Update All Following Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value"%>
+  <%=f.submit 'Update Only This Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value", :class =>'button2'%>
+  <%=f.submit 'Update All Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value", :class =>'button2'%>
+  <%=f.submit 'Update All Following Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value", :class =>'button2'%>
   <%else-%>
-  <%=f.submit 'Update', :onclick => "document.getElementById('event_commit_button').value = this.value;if (unchangedTitle && '#{@event.title.strip().length}' == 0) {document.getElementById('event_title').value = '';}"%>
+  <%=f.submit 'Update', :onclick => "document.getElementById('event_commit_button').value = this.value;if (unchangedTitle && '#{@event.title.strip().length}' == 0) {document.getElementById('event_title').value = '';}", :class =>'button2'%>
   <%end-%>
   
 	

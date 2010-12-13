@@ -1,25 +1,20 @@
 require 'spec_helper'
 
 describe EventsController do
-
+	
+  before {login}
+	
   def mock_event(stubs={})
     @mock_event ||= mock_model(Event, {:user_id= => 1}.merge(stubs)) # make the user_id default at 1
   end
-  
-  before {login} #do
-    
-    #@mock_event.stub!(:user_id=).with(:all).and_return(1)
-  #end
 
-  describe "GET index" do
-    it "assigns all events as @events" 
-  end
 
   describe "GET show" do
     it "assigns the requested event as @event" do
-      Event.stub(:find).with("37").and_return(mock_event)
+      Event.stub(:find).and_return(mock_event)
+	  mock_event.stub(:each).and_return([mock_event])
       get :show, :id => "37"
-      assigns[:event].should equal(mock_event)
+      assigns[:events].should equal(mock_event)
     end
   end
 
@@ -33,7 +28,7 @@ describe EventsController do
 
   describe "GET edit" do
     it "assigns the requested event as @event" do
-      Event.stub(:find).with("37").and_return(mock_event)
+      Event.stub(:find).and_return(mock_event)
       get :edit, :id => "37"
       assigns[:event].should equal(mock_event)
     end
