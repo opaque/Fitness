@@ -13,7 +13,12 @@
 	 
 		<%= f.label 'Planned Sets' %>
 		<%= f.text_field :estimated_sets, :size => 10 %>
-	 
+		
+		<% if @type != 'calisthenics' %>
+			<%= f.label 'Planned Weight Per Rep' %>
+			<%= f.text_field :estimated_weight, :size => 10 %>
+		<% end %>
+		
 	<% end %>
   
   

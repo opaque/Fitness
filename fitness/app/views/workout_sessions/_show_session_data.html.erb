@@ -2,9 +2,11 @@
 	<th>Exercise	    |</th>
 	<th>Planned Repetitions Per Set 	|</th>
 	<th>Planned Sets	|</th>
+	<th>Planned Weight	|</th>
 	<th>Planned Time	|</th>
 	<th>Incomplete Repetitions	|</th>
 	<th>Completed Sets	|</th>
+	<th>Lifted Weight	|</th>
 	<th>Completed Time	|</th>
 	<th>Remove Exercise</th>
 </tr>
@@ -17,16 +19,20 @@
 		<% if Exercise.find(exercise.exercise_id).exercise_type != 'cardio' %>
 			<td><%= exercise.estimated_reps %></td>
 			<td><%= exercise.estimated_sets %></td>
+			<td><%= exercise.estimated_weight %></td>
 			<td><%= "n/a" %> </td>
 			<td><%= exercise.workout_history.actual_reps %></td>
 			<td><%= exercise.workout_history.actual_sets %></td>
+			<td><%= exercise.workout_history.actual_weight %></td>
 			<td><%= "n/a" %> </td>
 		<% else %>
+			<td><%= "n/a" %> </td>
 			<td><%= "n/a" %> </td>
 			<td><%= "n/a" %> </td>
 			<td><%= exercise.estimated_mins %></td>
 			<td><%= "n/a" %></td>
 			<td><%= "n/a" %></td>
+			<td><%= "n/a" %> </td>
 			<td><%= exercise.workout_history.actual_mins %></td>
 		<% end %>
 			
