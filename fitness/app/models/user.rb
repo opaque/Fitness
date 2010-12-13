@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   
   def exercise_pie_graph(user)
 	@pie_graph = GoogleCharts::PieChart.new(
-		:width => 450, :height => 300, :title => 'Exercise Distribution')
+		:width => 300, :height => 300, :title => 'Exercise Distribution')
 	#@pie_graph.add_column("Exercise Type",String)
 	#@pie_graph.add_column("Times",Float)
 	@pie_graph.add_column("Type",String)
@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
 	@exercises = Exercise.find(:all)
 
 	@column_chart = GoogleCharts::ColumnChart.new(
-		:width => 500, :height => 240, :title => 'Exercise METs (Metabolic Equivalent of Task)')
+		:width => 660, :height => 300, :title => 'Exercise METs (Metabolic Equivalent of Task)', :legend => 'none')
 
 	@column_chart.add_column("Exercise",String)		
 	@column_chart.add_column("METs",Float)
@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
   
   def calories_graph(user)
 	@calories_burned = GoogleCharts::AnnotatedTimeline.new(
-		:width => 500, :height => 240, :thickness => 1)
+		:width => 445, :height => 240, :thickness => 1)
 	@calories_burned.add_column("Date",Date)
 	@calories_burned.add_column("Calories Burned",Float)
 
@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
   
   def pounds_graph(user)
 	@pounds_lost = GoogleCharts::AnnotatedTimeline.new(
-		:width => 550, :height => 240, :thickness => 1)
+		:width => 445, :height => 240, :thickness => 1)
 	@pounds_lost.add_column("Date",Date)
 	@pounds_lost.add_column("Total Pounds Lost Over Time",Float)
 
