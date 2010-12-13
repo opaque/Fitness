@@ -4,24 +4,24 @@
 	<% if @type == 'cardio' %>  
  
 		<%= f.label 'Planned Exercise Time' %>
-		<%= f.text_field :estimated_mins, :size => 10 %>
+		<%= f.text_field :estimated_mins, :size => 10, :class =>'input' %>
 	
 	<% else %>
 	
 		<%= f.label  'Planned Reps Per Set'%>
-		<%= f.text_field :estimated_reps, :size => 10 %>
+		<%= f.text_field :estimated_reps, :size => 10, :class =>'input' %>
 	 
 		<%= f.label 'Planned Sets' %>
-		<%= f.text_field :estimated_sets, :size => 10 %>
+		<%= f.text_field :estimated_sets, :size => 10, :class =>'input' %>
 		
 		<% if @type != 'calisthenics' %>
 			<%= f.label 'Planned Weight Per Rep' %>
-			<%= f.text_field :estimated_weight, :size => 10 %>
+			<%= f.text_field :estimated_weight, :size => 10, :class =>'input' %>
 		<% end %>
 		
 	<% end %>
   
   
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Update', :class => 'button2'	%>
  
 <% end %>
