@@ -1,14 +1,21 @@
 
 <% if !current_user %>
-<h1> Welcome</h1>
-	This is where we talk about what our project is about. 
-	This is where we talk about what our project is about. 
-	This is where we talk about what our asdfsdf
-	This is where we talk about what our project is about.
-	This is where we talk about what our project is about.
-	This is where we talk about what our project is about.
-	This is where we talk about what our project is about.
-	This is where we talk about what our project is about.
+
+
+<div id="description">
+<div class="image">
+<%= image_tag("/images/169logo.jpg", :alt => "test", :width => 400, :height => 175) %>
+</div>
+<div class="content">
+<h1> Keeping Track of your Exercises</h1>
+	This is the first menu.
+</div>
+</div>
+<div class="center">
+<%= link_to_remote("Menu1", :update => "description", :url => {:controller => :landing, :action=> :menu_one}) %>
+<%= link_to_remote("Menu2", :update => "description", :url => {:controller => :landing, :action=> :menu_two}) %>
+<%= link_to_remote("Menu3", :update => "description", :url => {:controller => :landing, :action=> :menu_three}) %>
+</div>
 <% else %>
 	This is where we display relevant information to the user about their workout stuff.
 	This is where we display relevant information to the user about their workout stuff.
@@ -26,5 +33,5 @@
 	This is where we display relevant information to the user about their workout stuff.
 
 <% end %>
-<%= yield %>
+
 

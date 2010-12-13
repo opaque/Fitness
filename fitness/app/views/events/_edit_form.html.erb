@@ -1,8 +1,18 @@
+<script type="text/javascript" charset="utf-8">
+  var unchangedTitle = true;
+</script>
 <%remote_form_for @event, :url => {:action => :update} , :before => "$('#updating_events').show();", :complete => "$('#updating_events').hide();" do |f| %>
 <p>
   <%=f.label :title %>
   <br/>
-  <%=f.text_field :title %>
+  <% if @event.title.strip().length == 0%>
+  <%=h f.text_field :title, :style => "color:#aaa;", :value => '(no title)',
+					:onfocus => "if(this.value == '(no title)' && unchangedTitle) {this.style.color = '#000';this.value = '';unchangedTitle = false}",
+					:onblur => "if(this.value.length == 0){this.style.color = '#aaa';this.value='(no title)';unchangedTitle=true}"	
+					 %>
+  <%else%>
+  <%=h f.text_field :title %>
+  <% end %>
 </p>
 <p>
   <%=f.label :description %>
@@ -43,7 +53,7 @@
   <%=f.submit 'Update All Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value"%>
   <%=f.submit 'Update All Following Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value"%>
   <%else-%>
-  <%=f.submit 'Update', :onclick => "document.getElementById('event_commit_button').value = this.value"%>
+  <%=f.submit 'Update', :onclick => "document.getElementById('event_commit_button').value = this.value;if (unchangedTitle && '#{@event.title.strip().length}' == 0) {document.getElementById('event_title').value = '';}"%>
   <%end-%>
   
 	
