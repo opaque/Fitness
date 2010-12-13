@@ -1,16 +1,16 @@
 <table>
-	<th>Exercise</th>
-	<th>Planned Repetitions Per Set</th>
-	<th>Planned Sets</th>
-	<th>Planned Time</th>
-	<th>Incomplete Repetitions</th>
-	<th>Completed Sets</th>
-	<th>Completed Time</th>
+	<th>Exercise	    |</th>
+	<th>Planned Repetitions Per Set 	|</th>
+	<th>Planned Sets	|</th>
+	<th>Planned Time	|</th>
+	<th>Incomplete Repetitions	|</th>
+	<th>Completed Sets	|</th>
+	<th>Completed Time	|</th>
 	<th>Remove Exercise</th>
 </tr>
 
 
-<% @exercise_list = @event.workout_sessions %> 
+<% @exercise_list = @event.workout_sessions.find(:all, :joins => :exercise, :order => "name ASC")  %> 
 	<% @exercise_list.each do |exercise| %>
 		<tr>
 		<td><%=  Exercise.find(exercise.exercise_id).name %></td>

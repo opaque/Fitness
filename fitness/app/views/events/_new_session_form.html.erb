@@ -3,24 +3,34 @@
 <table>
 <tr>
 	<th>Exercise	|</th>
-	<th></th>
 	<th>Edit	|</th>
 	<th>Remove Exercise|	</th>
 	<th>Complete Exercise</th>
+	<th></th>
 	
 </tr>
 <% @event = Event.find(params[:id]) %>
-<% @exercise_list = @event.workout_sessions %> 
+<% @exercise_list = @event.workout_sessions.find(:all, :joins => :exercise, :order => "name ASC")  %> 
 	<% @exercise_list.each do |exercise| %>
 		<tr>
+		<% @div_id = "exercise_%d" % exercise.id %>
 		<td><%= Exercise.find(exercise.exercise_id).name %></td>
-		<td><div id=<%= "exercise_%d" % exercise.id %> >
-		</div></td>
-		<td><%= link_to_remote 'Edit', :update =>"exercise_%d" % exercise.id, :url => {:controller => 'workout_sessions', :action => 'render_edit', :event_id => @event.id, :id => exercise.id}, 
-		:loading => "$( '#desc_dialog' ).dialog( 'option', 'width', 1000 );" %></td>
+		
+		
+		<td><%= link_to_remote 'Edit', :update =>"exercise_%d" % exercise.id, :url => {:controller => 'workout_sessions', :action => 'render_edit', :event_id => @event.id, :id => exercise.id},
+		:before => "$('#adding_to_session').show();",
+		:success => "$('#desc_dialog' ).dialog( 'option', 'width', 900 );",
+		:complete =>"$('#adding_to_session').hide();$('##{@div_id}').hide(); $('##{@div_id}').fadeIn(1000, function() {}); return false" %></td>
+		
 		<td><%= link_to_remote 'Delete', :url => { :controller => "workout_sessions", :action => "destroy", :id => exercise.id, :event_id => @event.id}, :confirm => 'Are you sure?', :method => :delete, :complete => "addSession('#{@event.id}');" %></td>
+		
 		<td><%= link_to_remote 'Update', :update =>"exercise_%d" % exercise.id, :url => {:controller => 'workout_histories', :action => 'render_update_actual', :workout_session_id => exercise.id, :id => exercise.workout_history.id}, 
-		:loading => "$( '#desc_dialog' ).dialog( 'option', 'width', 1000 );" %></td>
+		:before => "$('#adding_to_session').show();",
+		:success => "$( '#desc_dialog' ).dialog( 'option', 'width', 900 );",
+		:complete =>"$('#adding_to_session').hide();$('##{@div_id}').hide();$('##{@div_id}').fadeIn(1000, function() {});return false" %></td>
+		
+		<td><div id=<%= @div_id %> style="display:none">
+		</div></td>
 		</tr>
 	<% end %>
 
@@ -29,7 +39,10 @@
 </Table>
 </div>
 <a href ='javascript:void(0);' onclick='addSession(<%= @event.id %>)'>Back</a>
-<%= link_to_remote 'Show', :update => 'exercise_info', :url => {:controller => 'workout_sessions', :action => 'render_show', :event_id => @event.id} %>
+<%= link_to_remote 'Show Info', :update => 'exercise_info', :url => {:controller => 'workout_sessions', :action => 'render_show', :event_id => @event.id},
+		:before => "$('#adding_to_session').show();",
+		:success => "$( '#desc_dialog' ).dialog( 'option', 'width', 1000 );",
+		:complete =>"$('#adding_to_session').hide();" %>
   
 <% @exers  = Exercise.find(:all) %>
 <% @exercise_list = {} %>
@@ -51,7 +64,9 @@
 	<%= select :exercise, :exercise_type, @e_list, {:prompt=>'Please Select...'} %><br />
 	<%= observe_field (:exercise_exercise_type, :url => {:action => :update_exercise_menu}, 
 					:update => :exercise_list_select_div,
-					:with => :exercise_type)%>
+					:with => :exercise_type,
+					:before => "$('#adding_to_session').show();",
+					:complete =>"$('#exercise_list_select_div').slideDown('slow',function() {});$('#adding_to_session').hide(); return false")%>
   </p>
 	<div id="selection" >
 		<div id="exercise_list_select_div" >

@@ -1,4 +1,4 @@
-<% remote_form_for([@event, @workout_session], :url => {:controller => "workout_sessions", :action => :update, :event_id => @event.id, :id => @workout_session.id}, :complete => "addSession('#{@event.id}')") do |f| %>
+<% remote_form_for([@event, @workout_session], :url => {:controller => "workout_sessions", :action => :update, :event_id => @event.id, :id => @workout_session.id}, :complete => " $('#desc_dialog').dialog( 'option', 'width', 700 ); addSession('#{@event.id}'); return false") do |f| %>
   <%= f.error_messages %>
 
 	<% if Exercise.find(@workout_session.exercise_id).exercise_type == 'cardio' %>  

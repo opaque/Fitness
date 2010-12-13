@@ -75,11 +75,11 @@ class WorkoutSessionsController < ApplicationController
   def update
     @workout_session = @event.workout_sessions.find(params[:id])
       if @workout_session.update_attributes(params[:workout_session])
-		render :layout => false
+		render :nothing => true
         #format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully updated.') }
         #format.xml  { head :ok }
       else
-		render :layout => false
+		#render :layout => false
         #format.html { render :action => "edit" }
         #format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
       end
@@ -92,9 +92,9 @@ class WorkoutSessionsController < ApplicationController
     @workout_session = @event.workout_sessions.find(params[:id])
     @workout_session.destroy
 	
-	render :update do |page|
-		page.replace_html 'event_desc', :partial => 'new_session_form'
-	end
+	#render :update do |page|
+	#	page.replace_html 'event_desc', :partial => 'new_session_form'
+	#end
   end
   
   
