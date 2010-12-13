@@ -59,7 +59,7 @@ function showEventDetails(event){
 	      cache: false
 	});
     $('#desc_dialog').dialog({
-        title: title,
+        //title: title,
         modal: true,
         width: 700,
 		minWidth: 700,
