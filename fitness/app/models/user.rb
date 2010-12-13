@@ -148,7 +148,7 @@ class User < ActiveRecord::Base
 	@pounds_lost = GoogleCharts::AnnotatedTimeline.new(
 		:width => 445, :height => 240, :thickness => 1)
 	@pounds_lost.add_column("Date",Date)
-	@pounds_lost.add_column("Total Pounds Lost Over Time",Float)
+	@pounds_lost.add_column("Total Pounds Lost",Float)
 
 	@events = Event.find(:all, :conditions => ['user_id = ?', user.id])
 	
@@ -194,7 +194,7 @@ class User < ActiveRecord::Base
 	end
 	
 		@pounds_lost.add_values("Date",@dates)
-		@pounds_lost.add_values("Total Pounds Lost Over Time",@pounds)
+		@pounds_lost.add_values("Total Pounds Lost",@pounds)
 	
 		@pounds_lost
   end
