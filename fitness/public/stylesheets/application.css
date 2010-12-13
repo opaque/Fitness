@@ -128,6 +128,10 @@ html, body {
 	text-align: center;
 }
 
+#menu a {
+	margin: 0px 5px;
+}
+
 #new_user {
 	text-align: center;
 }
@@ -264,9 +268,7 @@ border-radius: 5px;
 	 -webkit-box-shadow: 5px 5px #818181; */
 }
 
-.center{
-	text-align: center;
-}
+
 
 .blue {
 	color: #234F74;
@@ -278,6 +280,9 @@ border-radius: 5px;
 }
 
 .edit_profile {
+	text-align: center;
+}
+.center {
 	text-align: center;
 }
 
