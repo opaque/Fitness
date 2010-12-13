@@ -12,7 +12,7 @@
 					:onblur => "if(this.value.length == 0){this.style.color = '#aaa';this.value='(no title)';unchangedTitle=true}", :class =>'input' 	
 					 %>
   <%else%>
-  <%=h f.text_field :title, :class =>'input'  %>
+  <%=h f.text_field :title, :class =>'input' %>
   <% end %>
 </p>
 <p>
@@ -23,12 +23,12 @@
 <p>
   <%=f.label :starttime, 'Start Time' %>
   <br/>
-  <%=f.datetime_select :starttime, {}, {:class =>'select'} %>
-</p>
+  <%=f.datetime_select :starttime, {:twelve_hour => true, :minute_step => 15}, :class =>'select'%>
+</p>	
 <p>
   <%=f.label :endtime, 'End Time' %>
   <br/>
-  <%=f.datetime_select :endtime, {}, {:class =>'select'} %>
+  <%=f.datetime_select :endtime, {:twelve_hour => true, :minute_step => 15}, {:class =>'select'} %>
 </p>
 <p>
   <%=f.label :all_day %>
@@ -50,9 +50,9 @@
 <%=f.hidden_field :commit_button, :value => ""%>
 <p>
   <%if @event.event_series -%>
-  <%=f.submit 'Update Only This Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value", :class =>'button2'%>
-  <%=f.submit 'Update All Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value", :class =>'button2'%>
-  <%=f.submit 'Update All Following Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value", :class =>'button2'%>
+  <%=f.submit 'Update Only This Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value;", :class =>'button2'%>
+  <%=f.submit 'Update All Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value;", :class =>'button2'%>
+  <%=f.submit 'Update All Following Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value;", :class =>'button2'%>
   <%else-%>
   <%=f.submit 'Update', :onclick => "document.getElementById('event_commit_button').value = this.value;if (unchangedTitle && '#{@event.title.strip().length}' == 0) {document.getElementById('event_title').value = '';}", :class =>'button2'%>
   <%end-%>
