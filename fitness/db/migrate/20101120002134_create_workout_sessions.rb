@@ -3,6 +3,7 @@ class CreateWorkoutSessions < ActiveRecord::Migration
     create_table :workout_sessions do |t|
       t.integer :estimated_reps
       t.integer :estimated_sets
+	  t.float	:estimated_weight
 	  t.integer :event_id
 	  t.integer :exercise_id
 

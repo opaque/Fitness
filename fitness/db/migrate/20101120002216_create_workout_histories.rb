@@ -3,6 +3,7 @@ class CreateWorkoutHistories < ActiveRecord::Migration
     create_table :workout_histories do |t|
       t.integer :actual_reps
       t.integer :actual_sets
+	  t.float	:actual_weight
 	  t.float :actual_mins
       t.integer :calories
 	  t.integer :workout_session_id

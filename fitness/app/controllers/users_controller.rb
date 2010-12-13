@@ -75,8 +75,9 @@ class UsersController < ApplicationController
   end
   
   def partial_test
-	@pounds_lost = params[:data]
-	render :partial => "graph1"
+	@column_chart = params[:data]
+	render :partial => "graph1", :locals => {:data => @column_chart}
+	#render :inline => "<%= google_vizualisation_tag('#{@column_chart}') %>"
   end
   
 end
