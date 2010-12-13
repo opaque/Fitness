@@ -1,5 +1,5 @@
 module GoogleCharts
-  class ScatterChart < GoogleVizualisation
+  class PieChart < GoogleVizualisation
     def initialize(options = {})
       @viz_type = "piechart"
       @class_name = "PieChart"    

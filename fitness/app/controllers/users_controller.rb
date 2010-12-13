@@ -60,6 +60,8 @@ class UsersController < ApplicationController
 		flash[:notification] = "Weight not yet entered!--Please enter weight in profile!"
 	end
 	
+	@pie_graph = @current_user.exercise_pie_graph(@current_user)
+	
 	@column_chart = @current_user.mets_graph
 
 	@calories_burned = @current_user.calories_graph(@current_user)
