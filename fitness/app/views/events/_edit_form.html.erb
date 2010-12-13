@@ -51,9 +51,9 @@
   <%if @event.event_series -%>
   <%=f.submit 'Update Only This Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value", :class =>'button2'%>
   <%=f.submit 'Update All Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value", :class =>'button2'%>
-  <%=f.submit 'Update All Following Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value, :class =>'button2'"%>
+  <%=f.submit 'Update All Following Occurrence', :onclick => "document.getElementById('event_commit_button').value = this.value", :class =>'button2'%>
   <%else-%>
-  <%=f.submit 'Update', :onclick => "document.getElementById('event_commit_button').value = this.value;if (unchangedTitle && '#{@event.title.strip().length}' == 0) {document.getElementById('event_title').value = '';}"%>
+  <%=f.submit 'Update', :onclick => "document.getElementById('event_commit_button').value = this.value;if (unchangedTitle && '#{@event.title.strip().length}' == 0) {document.getElementById('event_title').value = '';}", :class =>'button2'%>
   <%end-%>
   
 	
