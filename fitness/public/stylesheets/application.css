@@ -30,6 +30,13 @@ html, body {
 	width: 950px;
 }
 
+#description 
+{
+	width: 800px;
+	padding: 0;
+	margin: 10px 0;
+	overflow: auto;
+}
 
 #logo{
 	bottom: 0px;
@@ -75,7 +82,7 @@ html, body {
 }
 
 #content {
-	padding: 20px 10px;
+	padding: 30px 10px;
 	min-height: 100px;
 	background: #FFFFFF;
 	
@@ -257,6 +264,10 @@ border-radius: 5px;
 	 -webkit-box-shadow: 5px 5px #818181; */
 }
 
+.center{
+	text-align: center;
+}
+
 .blue {
 	color: #234F74;
 }
@@ -266,14 +277,6 @@ border-radius: 5px;
 	color: #000000;
 }
 
-
-.description 
-{
-	width: 800px;
-	padding: 0;
-	margin: 10px 0;
-	overflow: auto;
-}
 .edit_profile {
 	text-align: center;
 }
