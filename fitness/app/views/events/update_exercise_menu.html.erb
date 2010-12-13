@@ -2,34 +2,32 @@
 	<div id="selection">
 	<p>
 		<label for="id_select">Exercise</label><br />
-		<select id="id_select" name="workout_session[exercise_id]" >
-			<%= options_from_collection_for_select @exercises, :id, :name %>
-		</select>
+		<%= select_tag ("workout_session[exercise_id]", options_from_collection_for_select(@exercises, :id, :name), :id => "id_select", :class => "select") %>
 	</p>
 	</div>
 	<% @type = params[:exercise_type] %>
 	<% if @type != 'cardio' %>
 		<p>
 			<%= label_tag([:workout_session, :estimated_reps], 'Planned Repetitions Per Set') %><br />
-			<%= text_field(:workout_session, :estimated_reps) %>
+			<%= text_field :workout_session, :estimated_reps, :class => 'input'  %>
 		</p>
 		
 		<p>
 			<%= label_tag([:workout_session, :estimated_sets],'Planned Sets') %><br />
-			<%= text_field(:workout_session, :estimated_sets) %>
+			<%= text_field :workout_session, :estimated_sets, :class => 'input' %>
 		</p>
 		
 		<% if @type != 'calisthenics' %>
 			<p>
 				<%= label_tag [:workout_session, :estimated_weight], 'Weight Lifted' %><br />
-				<%= text_field :workout_session, :estimated_weight %>
+				<%= text_field :workout_session, :estimated_weight, :class => 'input' %>
 			</p>
 		<% end %>
 		
 	<% else %>
 		<p>
 			<%= label([:workout_session, :estimated_mins],'Planned Time') %><br />
-			<%= text_field(:workout_session, :estimated_mins) %>
+			<%= text_field :workout_session, :estimated_mins, :class => 'input' %>
 		</p>
 	<% end %>
 			
