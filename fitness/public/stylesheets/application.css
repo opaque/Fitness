@@ -172,12 +172,14 @@ html, body {
 	height: 240px;
 }
 #graph3 {
+	padding-top: 5px;
 	margin: auto;
 	width: 445px;
 	float: left;
 	height: 240px;
 }
 #graph4 {
+	padding-top: 5px;
 	margin: auto;
 	width: 445px;
 	float: right;
