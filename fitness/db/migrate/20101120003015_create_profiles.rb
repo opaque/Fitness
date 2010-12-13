@@ -10,6 +10,9 @@ class CreateProfiles < ActiveRecord::Migration
 
       t.timestamps
     end
+	
+	add_index :profiles, :user_id, :name => 'index_on_user_id_profiles'
+	
   end
 
   def self.down

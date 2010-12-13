@@ -6,6 +6,9 @@ class CreateExercises < ActiveRecord::Migration
 	  t.float :mets
       t.timestamps
     end
+	
+	add_index :exercises, [:name, :exercise_type], :name => 'index_on_name_type'
+	
   end
 
   def self.down
