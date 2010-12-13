@@ -2,7 +2,6 @@
 <h1>My profile</h1>
   <%= error_messages_for :profile %>
 <% form_for(@profile) do |f| %>
-  
 <fieldset class="shadow">
   <p>
     <%= f.label :first_name %><br />
@@ -13,11 +12,11 @@
     <%= f.text_field :last_name, :size => 20, :class =>'input' %>
   </p>
   <p>
-    <%= f.label :height %><br />
+    <%= f.label :height %> (inches)<br />
     <%= f.text_field :height, :size => 20, :class =>'input' %>
   </p>
   <p>
-    <%= f.label :weight %><br />
+    <%= f.label :weight %> (pounds)<br />
     <%= f.text_field :weight, :size => 20, :class =>'input' %>
   </p>
   <p>
