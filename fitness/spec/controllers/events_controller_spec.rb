@@ -5,7 +5,11 @@ describe EventsController do
   before {login}
   before(:each) do
     @params = {
-      :user_id= => 1, :title => 'hello', :event_id => 1, :description =>'description', 
+      :user_id => current_user.id, :title => 'hello', :event_id => 1, :description =>'description', 
+        :starttime => mock_datetime, :endtime => mock_datetime, :all_day => false, :event_series_id => nil 
+    }
+    @invalid_params = {
+      :user_id => current_user.id, :title => 'hello', :event_id => 1, :description =>'description', 
         :starttime => mock_datetime, :endtime => mock_datetime, :all_day => false, :event_series_id => nil
     }
   end
@@ -15,6 +19,10 @@ describe EventsController do
   
   def mock_datetime(stubs={})
     @mock_datetime ||= mock_model(DateTime, :iso8601 => Time.now)
+  end
+  
+  def mock_event_series(stubs={})
+    @mock_event_series ||= mock_model(EventSeries, @params.merge(stubs))
   end
 
 
@@ -45,68 +53,85 @@ describe EventsController do
   describe "POST create" do
 
     describe "with valid params" do
+      before(:each) do
+        @valid_mock_event = mock_event(:save => true, :period => "Does not repeat")
+        @valid_mock_series = mock_event_series(:save => true, :period => "Monthly")
+        Event.stub(:new).and_return(@valid_mock_event)
+        EventSeries.stub(:new).and_return(@valid_mock_series)
+      end
+      
       it "assigns a newly created event as @event" do
-        Event.stub(:new).with(@params).and_return(mock_event(:save => true))
-		@params[:period] = true
-        post :create, :event => @params
-        assigns[:event].should equal(mock_event)
+         @valid_mock_event.should_receive(:new).with(@params)
+         post :create, :event => @params.merge(:save => true, :period => "Does not repeat")
+         puts response.header
       end
 
-     
+      it "assigns a newly created event series as @event_series" do
+        #debugger
+        @valid_mock_series.should_receive(:new)
+        post :create, :event => @params.merge(:save => true, :period => "Monthly")
+        
+      end
     end
-
     describe "with invalid params" do
-      it "assigns a newly created but unsaved event as @event" do
+         it "assigns a newly created but unsaved event as @event" do
+           Event.stub(:new).with(params).and_return(mock_event(:save => false, :period => "Does not repeat"))
+            post :create, :event => params
 
-      end
-
-      it "re-renders the 'new' template" do
-
-      end
-    end
-
+         end
+       end
+    
   end
-
+  
+  
   describe "PUT update" do
 
-    describe "with valid params" do
-      it "updates the requested event" do
+      describe "with valid params" do
+        before(:each) do
+          #Event.stub(:find_by_id).and_return(mock_event(:save => true, :period => "Does not repeat"))
+          #EventSeries.stub(:new).and_return(mock_event_series(:save => true, :period => "Monthly"))
+          Event.stub!(:find_by_id).and_return(mock_event)
+        end
+        it "updates the requested non-series event" do
+            mock_event.should_receive(:attributes=)
+            put :update, :id => "37", :event => @params
+        end
+
+        it "assigns the requested event as @event" do
+
+        end
+
+        it "redirects to the event" do
+
+        end
+      end
+
+      describe "with invalid params" do
+        it "updates the requested event" do
+
+        end
+
+        it "assigns the event as @event" do
+
+        end
+
+        it "re-renders the 'edit' template" do
+
+        end
+      end
+
+    end
+
+    describe "DELETE destroy" do
+      it "destroys the requested event" do
 
       end
 
-      it "assigns the requested event as @event" do
-
-      end
-
-      it "redirects to the event" do
+      it "redirects to the events list" do
 
       end
     end
+  
 
-    describe "with invalid params" do
-      it "updates the requested event" do
-
-      end
-
-      it "assigns the event as @event" do
-
-      end
-
-      it "re-renders the 'edit' template" do
-
-      end
-    end
-
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested event" do
-
-    end
-
-    it "redirects to the events list" do
-
-    end
-  end
-
+   
 end
