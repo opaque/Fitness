@@ -171,7 +171,11 @@ describe WorkoutHistoriesController do
   end
    describe "RENDER partial" do
 	it "renders complete_exercise_form" do
+	WorkoutSession.stub(:workout_history).and_return(mock_workout_history)
+	WorkoutHistory.stub(:find).and_return(mock_workout_history)
 	WorkoutSession.stub(:find).and_return(mock_workout_session)
+	Event.stub(:find).and_return([mock_event])
+	#mock_event.stub(:first).and_retrun(mock_event)
 	  get :render_update_actual, :workout_session_id => "2",:id => "1"
 	  response.should render_template("workout_histories/_complete_exercise_form")
 	end
