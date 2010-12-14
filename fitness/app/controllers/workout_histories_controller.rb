@@ -31,19 +31,7 @@ class WorkoutHistoriesController < ApplicationController
     end
   end
   
-  def graph
-    @workout_history = WorkoutHistory.new
-	Gchart.line(:size => '200x300', 
-				:title => "example title",
-				:bg => 'efefef',
-				:legend => ['first data set label', 'second data set label'],
-				:data => [10, 30, 120, 45, 72])
-	
-	respond_to do |format|
-      format.html # graph.html.erb
-      format.xml  { render :xml => @workout_history }
-    end
-  end
+
 
   # GET /workout_histories/new
   # GET /workout_histories/new.xml
