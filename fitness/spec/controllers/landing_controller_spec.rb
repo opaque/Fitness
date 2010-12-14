@@ -9,15 +9,15 @@ describe LandingController do
 	end
 	it "should render the menu_one partial" do
 	  get :menu_one
-	  controller.should render_template("landing/_menu1")
+	  controller.should render_template("landing/_menu_one")
 	end
 	it "should render the menu_two partial" do
 	  get :menu_two
-	  controller.should render_template("landing/_menu2")
+	  controller.should render_template("landing/_menu_two")
 	end
 	it "should render the menu_two partial" do
 	  get :menu_three
-	  controller.should render_template("landing/_menu3")
+	  controller.should render_template("landing/_menu_threes")
 	end
   end
 end
