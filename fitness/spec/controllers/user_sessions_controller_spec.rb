@@ -43,12 +43,12 @@ describe UserSessionsController do
 
   end
   describe "DELETE destroy" do
-	it "should destroy the user_session" do 	
-      #@user_session = UserSession.stub(:new).and_return(mock_user_session)
-      #@user_session.should_receive(:destroy)
-      #@controller.stub!(:current_user_session).and_return(@session)
-      #@controller.stub!(:require_user).and_return(true)
-	  delete :destroy, :id => 1
+    it "should destroy the session" do
+      @user_session = mock_model(UserSession)
+      @user_session.should_receive(:destroy)
+      @controller.stub(:current_user_session).and_return(@user_session)
+      @controller.stub(:require_user).and_return(true)
+      post :destroy
       flash[:notice].should == "Logout successful!"
     end
   end
