@@ -57,15 +57,7 @@ class WorkoutSessionsController < ApplicationController
 	    @workout_history.workout_session_id = @workout_session.id
 		if @workout_history.save
 			render :layout => false
-          #format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully created.') }
-          #format.xml  { render :xml => @workout_session, :status => :created, :location => @workout_session }
-		else
-		  #format.html { render :action => "new" }
-          #format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
-		end
-      else
-        #format.html { render :action => "new" }
-        #format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
+        end
       end
     
   end
@@ -76,12 +68,6 @@ class WorkoutSessionsController < ApplicationController
     @workout_session = @event.workout_sessions.find(params[:id])
       if @workout_session.update_attributes(params[:workout_session])
 		render :nothing => true
-        #format.html { redirect_to(event_workout_session_path(@event, @workout_session), :notice => 'WorkoutSession was successfully updated.') }
-        #format.xml  { head :ok }
-      else
-		#render :layout => false
-        #format.html { render :action => "edit" }
-        #format.xml  { render :xml => @workout_session.errors, :status => :unprocessable_entity }
       end
     
   end
@@ -91,10 +77,6 @@ class WorkoutSessionsController < ApplicationController
   def destroy
     @workout_session = @event.workout_sessions.find(params[:id])
     @workout_session.destroy
-	
-	#render :update do |page|
-	#	page.replace_html 'event_desc', :partial => 'new_session_form'
-	#end
   end
   
   
@@ -105,9 +87,6 @@ class WorkoutSessionsController < ApplicationController
   
   
   def render_show
-	#render :update do |page|
-	#	page.replace_html 'exercise_info', :partial => 'show_session_data'
-    #end
 	render :partial => 'show_session_data'
   end
   
