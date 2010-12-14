@@ -131,6 +131,9 @@ html, body {
 
 #menu a {
 	margin: 0px 5px;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: underline;
 }
 
 #new_user {

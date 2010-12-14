@@ -2,8 +2,10 @@ require 'spec_helper'
 
 
 describe LandingController do
-  describe "GET index" do
-    it "assigns all landings as @landings" do
-    end
+  describe "handling GET index" do
+	it "should render the index template" do
+	  get :index
+	  controller.should render_template("index" )
+	end
   end
 end
