@@ -13,6 +13,7 @@ Feature: User create workout session
 		When I follow "Calendar"
 		Then I should be on the calendar page
 	
+	@wip
 	Scenario: User creates a new event
 		Given I am the registered user "user1" with password "password"
 			And I am on the login page
@@ -24,6 +25,7 @@ Feature: User create workout session
 			And I press "Create"
 		Then I should see "Event was successfully created."
 		
+	@wip
 	Scenario: User creates workout session for existing event
 		Given I am the registered user "user1" with password "password"
 			And I am on the login page

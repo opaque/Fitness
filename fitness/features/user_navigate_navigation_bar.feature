@@ -5,6 +5,7 @@ Feature: User navigates using navigation bar
 	I can click links in the navigation bar
 	So that I can go to different pages of my account
 	
+	@wip
 	Scenario: User goes to graph page
 		Given I am the registered user "user1" with password "password"
 			And I am on the login page

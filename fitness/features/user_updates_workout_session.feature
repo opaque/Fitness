@@ -25,17 +25,7 @@ Feature: User update workout session
 			And I fill in "Estimated reps" with "20"
 		Then I will see "WorkoutSession was successfully updated."
 		
-	Scenario: User adds "actual" workout data
-		Given I am the registered user "user1" with password "password"
-			And I am on the login page
-		When I login with "user1" and "password"
-			And event 1 exists
-			And workout session 1 exists under event 1
-		When I am on the edit workout history page for workout session 1
-			And I fill in "20" for "Actual reps"
-			And I fill in "20" for "Actual sets"
-			And I press "Update"
-		Then I will see "WorkoutHistory was successfully created."
+	
 
 		
 				
