@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-workout_history_rb.html">app/models/workout_history.rb</a></td>
-            <td class='right_align'><tt>4</tt></td>
-            <td class='right_align'><tt>3</tt></td>
+            <td class='right_align'><tt>13</tt></td>
+            <td class='right_align'><tt>9</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -74,14 +74,68 @@
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line4">4</a>   validates_presence_of :workout_session_id</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>   validates_uniqueness_of :workout_session_id</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>   validates_numericality_of :actual_reps, :allow_nil =&gt; true, :greater_than =&gt; -1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>   validates_numericality_of :actual_sets, :allow_nil =&gt; true, :greater_than =&gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>   validates_numericality_of :actual_mins, :allow_nil =&gt; true</pre></td>
+          </tr>
+        
+          
+          
           <tr class="inferred">
-            <td><pre><a name="line4">4</a> end</pre></td>
+            <td><pre><a name="line9">9</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>   validates_numericality_of :calories, :allow_nil =&gt; true, :greater_than =&gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line11">11</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line12">12</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line13">13</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Nov 23 08:57:04 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Dec 13 21:56:26 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

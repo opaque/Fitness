@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-users_controller_rb.html">app/controllers/users_controller.rb</a></td>
-            <td class='right_align'><tt>92</tt></td>
-            <td class='right_align'><tt>67</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>40.22%</tt></div>
+            <td class='right_align'><tt>85</tt></td>
+            <td class='right_align'><tt>58</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>42.35%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:40px"></div>
-            <div class="uncovered" style="width:60px"></div>
+            <div class="covered" style="width:42px"></div>
+            <div class="uncovered" style="width:58px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>32.84%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>44.83%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:33px"></div>
-            <div class="uncovered" style="width:67px"></div>
+            <div class="covered" style="width:45px"></div>
+            <div class="uncovered" style="width:55px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -104,32 +104,32 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line9">9</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>   layout 'application'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a>  </pre></td>
+            <td><pre><a name="line10">10</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>   def new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     @user = User.new</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line12">12</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line13">13</a> </pre></td>
+            <td><pre><a name="line13">13</a>   end</pre></td>
           </tr>
         
           
@@ -141,475 +141,433 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>   def new</pre></td>
+            <td><pre><a name="line15">15</a>   def create</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line16">16</a>     @user = User.new</pre></td>
+            <td><pre><a name="line16">16</a>     @user = User.new(params[:user])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line17">17</a>   end</pre></td>
+            <td><pre><a name="line17">17</a> 	@profile = Profile.new(params[:profile])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line18">18</a> 	</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line19">19</a>     if @user.save </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line20">20</a> 	  @profile.user_id = @user.id</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line21">21</a> 	  if @profile.save</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line22">22</a>         flash[:notice] = &quot;Account registered!&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line23">23</a>         redirect_back_or_default root_url</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line24">24</a> 	  end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line25">25</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line26">26</a> 	  flash[:error] = &quot;Please try again!&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line27">27</a>       render :action =&gt; :new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line28">28</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line29">29</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>   </pre></td>
+            <td><pre><a name="line30">30</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>   def create</pre></td>
+            <td><pre><a name="line31">31</a>   def show</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line20">20</a>     @user = User.new(params[:user])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line21">21</a> 	@profile = Profile.new(params[:profile])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line22">22</a> 	</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line23">23</a>     if @user.save </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line24">24</a> 	  @profile.user_id = @user.id</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line25">25</a> 	  if @profile.save</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line26">26</a>         flash[:notice] = &quot;Account and profile registered!&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line27">27</a>         redirect_back_or_default root_url</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line28">28</a> 	  end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line29">29</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line30">30</a>       render :action =&gt; :new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line31">31</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line32">32</a>   end</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>     @user = @current_user</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>   def show</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>     @user = @current_user</pre></td>
+            <td><pre><a name="line33">33</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>   end</pre></td>
+            <td><pre><a name="line34">34</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>   def edit</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>     @user = @current_user</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>   def edit</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>     @user = @current_user</pre></td>
+            <td><pre><a name="line37">37</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>   end</pre></td>
+            <td><pre><a name="line38">38</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>   def update</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>     @user = @current_user # makes our views &quot;cleaner&quot; and more consistent</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>     if @user.update_attributes(params[:user])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>       flash[:notice] = &quot;Account updated!&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>       redirect_to root_url</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>   </pre></td>
+            <td><pre><a name="line44">44</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>   def update</pre></td>
+            <td><pre><a name="line45">45</a> 	  flash[:error] = &quot;Account failed to update. Please try again!&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>     @user = @current_user # makes our views &quot;cleaner&quot; and more consistent</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>     if @user.update_attributes(params[:user])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line45">45</a>       flash[:notice] = &quot;Account updated!&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>       redirect_to root_url</pre></td>
+            <td><pre><a name="line46">46</a>       render :action =&gt; :edit</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a>     else</pre></td>
+            <td><pre><a name="line47">47</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line48">48</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line49">49</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>       render :action =&gt; :edit</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line49">49</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line50">50</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line51">51</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line52">52</a>   def graph</pre></td>
+            <td><pre><a name="line50">50</a>   def graph</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line53">53</a> 	@user = @curret_user</pre></td>
+            <td><pre><a name="line51">51</a> 	@user = @curret_user</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line54">54</a> 	</pre></td>
+            <td><pre><a name="line52">52</a> 	</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line55">55</a> 	@events = Event.find(:all, :conditions =&gt; ['user_id = ?', current_user.id])</pre></td>
+            <td><pre><a name="line53">53</a> 	@events = Event.find(:all, :conditions =&gt; ['user_id = ?', @current_user.id])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line56">56</a> 	</pre></td>
+            <td><pre><a name="line54">54</a> 	if (@events.empty?)</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line57">57</a> 	@actual_data = Array.new</pre></td>
+            <td><pre><a name="line55">55</a> 		flash[:notification] = &quot;No workout sessions completed yet!--Please add data!&quot;</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line58">58</a> 	@actual_data.push(0)</pre></td>
+            <td><pre><a name="line56">56</a> 	end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line59">59</a> 	@estimated_data = Array.new</pre></td>
+            <td><pre><a name="line57">57</a> 	</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line60">60</a> 	@estimated_data.push(0)</pre></td>
+            <td><pre><a name="line58">58</a> 	@profile = Profile.find(:first, :conditions =&gt; ['user_id = ?', @current_user.id])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line61">61</a> 	</pre></td>
+            <td><pre><a name="line59">59</a> 	if (not @profile.weight)</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line62">62</a> 	@events.each do |event|</pre></td>
+            <td><pre><a name="line60">60</a> 		flash[:notification] = &quot;Please enter weight and height in my profile to view graphs!&quot;</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line63">63</a> 		@workout_sess = event.workout_sessions</pre></td>
+            <td><pre><a name="line61">61</a> 	end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line64">64</a> 		@workout_sess.each do |workout_sess|</pre></td>
+            <td><pre><a name="line62">62</a> 	</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line65">65</a> 			@estimated_data.push(workout_sess.estimated_reps)</pre></td>
+            <td><pre><a name="line63">63</a> 	@pie_graph = @current_user.exercise_pie_graph(@current_user)</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line66">66</a> 		end</pre></td>
+            <td><pre><a name="line64">64</a> 	</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line67">67</a> 		@workout_histories = event.workout_histories</pre></td>
+            <td><pre><a name="line65">65</a> 	@column_chart = @current_user.mets_graph</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line68">68</a> 		@workout_histories.each do |workout_history|</pre></td>
+            <td><pre><a name="line66">66</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line69">69</a> 			@actual_data.push(workout_history.actual_reps)</pre></td>
+            <td><pre><a name="line67">67</a> 	@calories_burned = @current_user.calories_graph(@current_user)</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line70">70</a> 		end</pre></td>
+            <td><pre><a name="line68">68</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line71">71</a> 	end</pre></td>
+            <td><pre><a name="line69">69</a> 	@pounds_lost = @current_user.pounds_graph(@current_user)</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line72">72</a> 	</pre></td>
+            <td><pre><a name="line70">70</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line73">73</a> 	@g = Gchart.line(:title =&gt; &quot;Actual vs Estimated Reps&quot;,</pre></td>
+            <td><pre><a name="line71">71</a> 	</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line74">74</a>                      :data =&gt; [@actual_data, @estimated_data],</pre></td>
+            <td><pre><a name="line72">72</a> 	respond_to do |format|</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line75">75</a>                      :line_colors =&gt; 'FF0000,00FF00',</pre></td>
+            <td><pre><a name="line73">73</a> 		format.html # graph.html.erb</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line76">76</a>                      :legend =&gt; [&quot;Actual Reps&quot;, &quot;Estimate Reps&quot;],</pre></td>
+            <td><pre><a name="line74">74</a> 		#format.xml  { render xml =&gt; @workout_histories }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line77">77</a>                      :axis_with_labels =&gt; ['x','y'],</pre></td>
+            <td><pre><a name="line75">75</a> 		format.xml  { render xml =&gt; @g }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line78">78</a> 					 :size =&gt; '600x400')</pre></td>
+            <td><pre><a name="line76">76</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line79">79</a> 	</pre></td>
+            <td><pre><a name="line77">77</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line80">80</a> 	if (@actual_data.size == 1 || @estimated_data.size == 1)</pre></td>
+            <td><pre><a name="line78">78</a>   </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line81">81</a> 		flash[:notification] = &quot;No data yet-- please add data!&quot;</pre></td>
+            <td><pre><a name="line79">79</a>   #def partial_test</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line82">82</a> 	end</pre></td>
+            <td><pre><a name="line80">80</a> #	@column_chart = params[:data]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line83">83</a> 	</pre></td>
+            <td><pre><a name="line81">81</a> #	render :partial =&gt; &quot;graph1&quot;, :locals =&gt; {:data =&gt; @column_chart}</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line84">84</a> 	respond_to do |format|</pre></td>
+            <td><pre><a name="line82">82</a> 	#render :inline =&gt; &quot;&lt;%= google_vizualisation_tag('#{@column_chart}') %&gt;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line85">85</a> 		format.html # graph.html.erb</pre></td>
+            <td><pre><a name="line83">83</a>  # end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line86">86</a> 		#format.xml  { render xml =&gt; @workout_histories }</pre></td>
+            <td><pre><a name="line84">84</a>   </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line87">87</a> 		format.xml  { render xml =&gt; @g }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line88">88</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line89">89</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line90">90</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line91">91</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line92">92</a> end</pre></td>
+            <td><pre><a name="line85">85</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Nov 23 08:57:04 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Dec 13 21:56:26 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
