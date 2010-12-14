@@ -11,12 +11,12 @@ if not @events
 else
   events = @events
   event = @params
-  event_series = @events[0].event_series
   events.each do |e|
     begin 
       #debugger
       st, et = e.starttime, e.endtime
       e.attributes = event
+      event_series = e.event_series
       e.validate
       if e.errors.full_messages.size > 0
         errors = e.errors.full_messages(',').join("\n")
