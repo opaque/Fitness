@@ -24,6 +24,11 @@ describe UsersController do
 	
   end
   
+  def mock_event(stubs={})
+    @mock_event ||= mock_model(Event, stubs)
+	
+  end
+  
   
 	
   describe "GET new" do
@@ -111,6 +116,42 @@ describe UsersController do
     end
 
   end
+  
+  describe "make graphs" do
+	it "should create the 4 graphs given all data entered" do
+		Event.stub(:find).and_return([mock_event])
+		Profile.stub(:find).and_return(mock_profile)
+		mock_profile.stub(:weight).and_return(100)
+		mock_user.stub(:exercise_pie_graph).and_return(true)
+		mock_user.stub(:mets_graph).and_return(true)
+		mock_user.stub(:calories_graph).and_return(true)
+		mock_user.stub(:pounds_graph).and_return(true)
+		get :graph
+	end
+	
+	it "should flash notification if weight not entered" do
+		Event.stub(:find).and_return([mock_event])
+		Profile.stub(:find).and_return(mock_profile)
+		mock_profile.stub(:weight).and_return(nil)
+		mock_user.stub(:exercise_pie_graph).and_return(true)
+		mock_user.stub(:mets_graph).and_return(true)
+		mock_user.stub(:calories_graph).and_return(true)
+		mock_user.stub(:pounds_graph).and_return(true)
+		get :graph
+	end
+	
+	it "should flash notification if no events entered" do
+		Event.stub(:find).and_return([])
+		Profile.stub(:find).and_return(mock_profile)
+		mock_profile.stub(:weight).and_return(100)
+		mock_user.stub(:exercise_pie_graph).and_return(true)
+		mock_user.stub(:mets_graph).and_return(true)
+		mock_user.stub(:calories_graph).and_return(true)
+		mock_user.stub(:pounds_graph).and_return(true)
+		get :graph
+	end
+  end
+
 
   /#describe "DELETE destroy" do
     it "destroys the requested user" do
