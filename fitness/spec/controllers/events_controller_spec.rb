@@ -53,30 +53,31 @@ describe EventsController do
   describe "POST create" do
 
     describe "with valid params" do
-      before(:each) do
-        @valid_mock_event = mock_event(:save => true, :period => "Does not repeat")
-        @valid_mock_series = mock_event_series(:save => true, :period => "Monthly")
-        Event.stub(:new).and_return(@valid_mock_event)
-        EventSeries.stub(:new).and_return(@valid_mock_series)
-      end
+      #before(:each) do
+        #@valid_mock_event = mock_event(:save => true, :period => "Does not repeat")
+        #@valid_mock_series = mock_event_series(:save => true, :period => "Monthly")
+        #Event.stub(:new).and_return(@valid_mock_event)
+        #EventSeries.stub(:new).and_return(@valid_mock_series)
+      #end
       
       it "assigns a newly created event as @event" do
-         @valid_mock_event.should_receive(:new).with(@params)
-         post :create, :event => @params.merge(:save => true, :period => "Does not repeat")
-         puts response.header
+		@params[:period] = "Does not repeat"
+        Event.stub(:new).and_return(mock_event) 
+        post :create, :event => @params
+        assigns[:event].should equal(mock_event)
       end
 
-      it "assigns a newly created event series as @event_series" do
-        #debugger
-        @valid_mock_series.should_receive(:new)
-        post :create, :event => @params.merge(:save => true, :period => "Monthly")
-        
+      it "assigns a newly created event series as @event_series if recurring" do
+        #@params[:period]="Monthly"
+		EventSeries.stub(:new).and_return(mock_event_series)
+        post :create, :event => @params.merge(:period => "Monthly")
+        assigns[:event_series].should equal(mock_event_series)
       end
     end
     describe "with invalid params" do
          it "assigns a newly created but unsaved event as @event" do
            Event.stub(:new).with(params).and_return(mock_event(:save => false, :period => "Does not repeat"))
-            post :create, :event => params
+           post :create, :event => params
 
          end
        end
