@@ -30,15 +30,15 @@
             <td class="left_align"><a href="app-controllers-users_controller_rb.html">app/controllers/users_controller.rb</a></td>
             <td class='right_align'><tt>85</tt></td>
             <td class='right_align'><tt>58</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>42.35%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>83.53%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:42px"></div>
-            <div class="uncovered" style="width:58px"></div>
+            <div class="covered" style="width:84px"></div>
+            <div class="uncovered" style="width:16px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>44.83%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>77.59%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:45px"></div>
-            <div class="uncovered" style="width:55px"></div>
+            <div class="covered" style="width:78px"></div>
+            <div class="uncovered" style="width:22px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -356,218 +356,218 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line51">51</a> 	@user = @curret_user</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line52">52</a> 	</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line53">53</a> 	@events = Event.find(:all, :conditions =&gt; ['user_id = ?', @current_user.id])</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line54">54</a> 	if (@events.empty?)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line55">55</a> 		flash[:notification] = &quot;No workout sessions completed yet!--Please add data!&quot;</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line56">56</a> 	end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line57">57</a> 	</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line58">58</a> 	@profile = Profile.find(:first, :conditions =&gt; ['user_id = ?', @current_user.id])</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line59">59</a> 	if (not @profile.weight)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line60">60</a> 		flash[:notification] = &quot;Please enter weight and height in my profile to view graphs!&quot;</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line61">61</a> 	end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line62">62</a> 	</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line63">63</a> 	@pie_graph = @current_user.exercise_pie_graph(@current_user)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line64">64</a> 	</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line65">65</a> 	@column_chart = @current_user.mets_graph</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line66">66</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line67">67</a> 	@calories_burned = @current_user.calories_graph(@current_user)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line68">68</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line69">69</a> 	@pounds_lost = @current_user.pounds_graph(@current_user)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line70">70</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line71">71</a> 	</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line72">72</a> 	respond_to do |format|</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line73">73</a> 		format.html # graph.html.erb</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line74">74</a> 		#format.xml  { render xml =&gt; @workout_histories }</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line75">75</a> 		format.xml  { render xml =&gt; @g }</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line76">76</a>     end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line77">77</a>   end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line78">78</a>   </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line79">79</a>   #def partial_test</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line80">80</a> #	@column_chart = params[:data]</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line81">81</a> #	render :partial =&gt; &quot;graph1&quot;, :locals =&gt; {:data =&gt; @column_chart}</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line82">82</a> 	#render :inline =&gt; &quot;&lt;%= google_vizualisation_tag('#{@column_chart}') %&gt;&quot;</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line83">83</a>  # end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line84">84</a>   </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line85">85</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Dec 13 21:56:26 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Dec 13 22:05:52 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
