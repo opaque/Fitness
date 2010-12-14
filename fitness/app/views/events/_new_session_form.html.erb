@@ -63,7 +63,7 @@
   <p>
 	
 	<label for="exercise_exercise_type">Exercise type</label><br />
-	<%= select :exercise, :exercise_type, @e_list, {:prompt=>'Please Select...'} %><br />
+	<%= select :exercise, :exercise_type, @e_list, {:prompt=>'Please Select...'}, :class => 'select' %><br />
 	<%= observe_field (:exercise_exercise_type, :url => {:action => :update_exercise_menu}, 
 					:update => :exercise_list_select_div,
 					:with => :exercise_type,
