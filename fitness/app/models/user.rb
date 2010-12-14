@@ -157,6 +157,7 @@ class User < ActiveRecord::Base
 	
 	@pounds = Array.new
 	@total_pounds = 0
+	@dates = Array.new
 	
 	if (not @profile.weight)
 		@pounds.push(0)

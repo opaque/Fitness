@@ -188,6 +188,57 @@ before { login }
 	@user.exercise_pie_graph(@user)
   end
   
+  it "should create a timeline for calories burned" do
+	activate_authlogic
+	Event.stub(:find).and_return([mock_event])
+	mock_event.stub(:workout_sessions).and_return([mock_workout_session])
+	@workout_sess = mock_event.workout_sessions
+	@workout_sess.stub(:find).and_return([mock_workout_session])
+	Profile.stub(:find).and_return(mock_profile)
+	mock_profile.stub(:weight).and_return(100)
+	mock_workout_session.stub(:estimated_mins).and_return(6)
+	mock_workout_session.stub(:exercise_id).and_return("1")
+	Exercise.stub(:find).and_return(mock_exercise)
+	mock_exercise.stub(:mets).and_return(5)
+	mock_event.stub(:starttime).and_return(DateTime.now)
+	@user = User.create!(:login => "test", :password => "password", :password_confirmation => "password")
+	@user.calories_graph(@user)
+  end
+  
+  it "should display empty graph for calories burned when weight not entered" do
+	activate_authlogic
+	Event.stub(:find).and_return([mock_event])
+	mock_event.stub(:workout_sessions).and_return([mock_workout_session])
+	@workout_sess = mock_event.workout_sessions
+	@workout_sess.stub(:find).and_return([mock_workout_session])
+	Profile.stub(:find).and_return(mock_profile)
+	mock_profile.stub(:weight).and_return(nil)
+	mock_workout_session.stub(:estimated_mins).and_return(6)
+	mock_workout_session.stub(:exercise_id).and_return("1")
+	Exercise.stub(:find).and_return(mock_exercise)
+	mock_exercise.stub(:mets).and_return(5)
+	mock_event.stub(:starttime).and_return(DateTime.now)
+	@user = User.create!(:login => "test", :password => "password", :password_confirmation => "password")
+	@user.calories_graph(@user)
+  end
+  
+  it "should display empty graph for calories burned when no events are entered" do
+	activate_authlogic
+	Event.stub(:find).and_return([])
+	mock_event.stub(:workout_sessions).and_return([])
+	@workout_sess = mock_event.workout_sessions
+	@workout_sess.stub(:find).and_return([mock_workout_session])
+	Profile.stub(:find).and_return(mock_profile)
+	mock_profile.stub(:weight).and_return(100)
+	mock_workout_session.stub(:estimated_mins).and_return(6)
+	mock_workout_session.stub(:exercise_id).and_return("1")
+	Exercise.stub(:find).and_return(mock_exercise)
+	mock_exercise.stub(:mets).and_return(5)
+	mock_event.stub(:starttime).and_return(DateTime.now)
+	@user = User.create!(:login => "test", :password => "password", :password_confirmation => "password")
+	@user.calories_graph(@user)
+  end
+  
   it "should create a timeline for pounds lost" do
 	activate_authlogic
 	Event.stub(:find).and_return([mock_event])
@@ -195,15 +246,55 @@ before { login }
 	@workout_sess = mock_event.workout_sessions
 	@workout_sess.stub(:find).and_return([mock_workout_session])
 	Profile.stub(:find).and_return(mock_profile)
-	mock_profile.stub(:weight).and_return("100")
+	mock_profile.stub(:weight).and_return(100)
+	mock_workout_session.stub(:estimated_mins).and_return(6)
+	mock_workout_session.stub(:exercise_id).and_return("1")
+	Exercise.stub(:find).and_return(mock_exercise)
+	mock_exercise.stub(:mets).and_return(5)
+	mock_event.stub(:starttime).and_return(DateTime.now)
 	@user = User.create!(:login => "test", :password => "password", :password_confirmation => "password")
 	@user.pounds_graph(@user)
-	mock_workout_session.stub(:estimated_mins).and_return("6")
+  end
+  
+  it "should display empty graph when making timeline for pounds lost with no weight entered" do
+	activate_authlogic
+	Event.stub(:find).and_return([mock_event])
+	mock_event.stub(:workout_sessions).and_return([mock_workout_session])
+	@workout_sess = mock_event.workout_sessions
+	@workout_sess.stub(:find).and_return([mock_workout_session])
+	Profile.stub(:find).and_return(mock_profile)
+	mock_profile.stub(:weight).and_return(nil)
+	mock_workout_session.stub(:estimated_mins).and_return(6)
+	mock_workout_session.stub(:exercise_id).and_return("1")
+	Exercise.stub(:find).and_return(mock_exercise)
+	mock_exercise.stub(:mets).and_return(5)
+	mock_event.stub(:starttime).and_return(DateTime.now)
+	@user = User.create!(:login => "test", :password => "password", :password_confirmation => "password")
+	@user.pounds_graph(@user)
+  end
+  
+    it "should display empty graph when making timeline for pounds lost with no events entered" do
+	activate_authlogic
+	Event.stub(:find).and_return([])
+	mock_event.stub(:workout_sessions).and_return([mock_workout_session])
+	@workout_sess = mock_event.workout_sessions
+	@workout_sess.stub(:find).and_return([mock_workout_session])
+	Profile.stub(:find).and_return(mock_profile)
+	mock_profile.stub(:weight).and_return(100)
+	mock_workout_session.stub(:estimated_mins).and_return(6)
+	mock_workout_session.stub(:exercise_id).and_return("1")
+	Exercise.stub(:find).and_return(mock_exercise)
+	mock_exercise.stub(:mets).and_return(5)
+	mock_event.stub(:starttime).and_return(DateTime.now)
+	@user = User.create!(:login => "test", :password => "password", :password_confirmation => "password")
+	@user.pounds_graph(@user)
   end
   
   it "should create a METs bar graph for the exercises" do
 	activate_authlogic
-	
+	Exercise.stub(:find).and_return([mock_exercise])
+	mock_exercise.stub(:name).and_return("curls")
+	mock_exercise.stub(:mets).and_return(5)
 	@user = User.create!(:login => "test", :password => "password", :password_confirmation => "password")
 	@user.mets_graph
   end
