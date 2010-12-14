@@ -30,15 +30,15 @@
             <td class="left_align"><a href="app-controllers-events_controller_rb.html">app/controllers/events_controller.rb</a></td>
             <td class='right_align'><tt>147</tt></td>
             <td class='right_align'><tt>101</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>68.71%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>97.28%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:69px"></div>
-            <div class="uncovered" style="width:31px"></div>
+            <div class="covered" style="width:97px"></div>
+            <div class="uncovered" style="width:3px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>62.38%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>96.04%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:62px"></div>
-            <div class="uncovered" style="width:38px"></div>
+            <div class="covered" style="width:96px"></div>
+            <div class="uncovered" style="width:4px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -314,49 +314,49 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line44">44</a>     @event = Event.find_by_id params[:id]</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line45">45</a>     if @event</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line46">46</a>       @event.starttime = (params[:minute_delta].to_i).minutes.from_now((params[:day_delta].to_i).days.from_now(@event.starttime))</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line47">47</a>       @event.endtime = (params[:minute_delta].to_i).minutes.from_now((params[:day_delta].to_i).days.from_now(@event.endtime))</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line48">48</a>       @event.all_day = params[:all_day]</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line49">49</a>       @event.save</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line50">50</a>     end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line51">51</a>   end</pre></td>
           </tr>
         
@@ -380,37 +380,37 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line55">55</a>     @event = Event.find_by_id params[:id]</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line56">56</a>     if @event</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line57">57</a>       @event.endtime = (params[:minute_delta].to_i).minutes.from_now((params[:day_delta].to_i).days.from_now(@event.endtime))</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line58">58</a>       @event.save</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line59">59</a>     end    </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line60">60</a>   end</pre></td>
           </tr>
         
@@ -704,13 +704,13 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line109">109</a>     @event = Event.find(params[:id])</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line110">110</a>   end</pre></td>
           </tr>
         
@@ -728,19 +728,19 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line113">113</a> 	@exercises = Exercise.find(:all, :conditions =&gt; ['exercise_type = ?', params[:exercise_type]])</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line114">114</a> 	render :layout =&gt; false</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line115">115</a>   end</pre></td>
           </tr>
         
@@ -758,19 +758,19 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line118">118</a> 	@event = Event.find(params[:id])</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line119">119</a> 	@workout_session = @event.workout_sessions.build</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line120">120</a>   end</pre></td>
           </tr>
         
@@ -794,13 +794,13 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line124">124</a> 	@event = Event.find(params[:id])</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line125">125</a> 	if params[:workout_session][:commit_button] == &quot;Add to All Occurences&quot;</pre></td>
           </tr>
         
@@ -830,116 +830,116 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line130">130</a>     elsif params[:workout_session][:commit_button] == &quot;Add to Following Occurrences&quot;</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line131">131</a>       @events = @event.event_series.events.find(:all, :conditions =&gt; [&quot;starttime &gt; '#{@event.starttime.to_formatted_s(:db)}' &quot;])</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line132">132</a>       @events.each do |event_x|</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line133">133</a> 		  event_x.add_workout_session_and_history(params[:workout_session])</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line134">134</a> 	  end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line135">135</a>     else</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line136">136</a> 	  @event.add_workout_session_and_history(params[:workout_session])</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line137">137</a>     end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line138">138</a> 	</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line139">139</a> 	#render :update do |page|</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line140">140</a> 	#	page.replace_html 'event_desc', :partial =&gt; 'new_session_form'</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line141">141</a> 	#end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line142">142</a> 	 </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line143">143</a>   end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line144">144</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line145">145</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line146">146</a>   </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line147">147</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Dec 14 01:44:48 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Dec 14 02:26:31 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
