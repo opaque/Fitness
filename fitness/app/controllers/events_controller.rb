@@ -65,13 +65,13 @@ class EventsController < ApplicationController
   end
   
   def update
-    debugger
+    #debugger
     @event = Event.find_by_id(params[:event][:id])
-    if params[:event][:commit_button] == "Update All Occurrence"
+    if params[:event][:commit_button] == "Update All Occurrences"
       @events = @event.event_series.events #.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
       @params = params[:event]
      # @event.update_events(@events, params[:event])
-    elsif params[:event][:commit_button] == "Update All Following Occurrence"
+    elsif params[:event][:commit_button] == "Update All Following Occurrences"
       @events = @event.event_series.events.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
       @params = params[:event]
      # @event.update_events(@events, params[:event])
