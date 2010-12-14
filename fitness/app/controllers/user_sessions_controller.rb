@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Login successful!"
       redirect_back_or_default root_path
     else
-	  login_failed
+	  flash[:error] = "Please check your username or password and try again."
       render :action => :new
     end
   end
@@ -23,7 +23,4 @@ class UserSessionsController < ApplicationController
     redirect_back_or_default root_path
   end
   
-  def login_failed
-	flash[:error] = "Please check your username or password and try again."
-  end
 end
