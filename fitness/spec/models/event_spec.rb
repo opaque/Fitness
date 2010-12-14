@@ -22,6 +22,17 @@ describe Event do
       :period => "monthly"
     }
     
+    @valid_workout = {
+      :estimated_reps => 5,
+      :estimated_sets => 5,
+  	  :estimated_weight => 15,
+  	  :event_id => 5,
+  	  :exercise_id => 5,
+
+  	  :estimated_mins => 10
+    }
+    
+    
   end
 
   it "should create a new instance given valid attributes" do
@@ -41,8 +52,33 @@ describe Event do
     Event.find(:all).should_not include(nonvalid)
   end
   
-  it "should update a current event" do
-  validEvent = Event.create(@recurring_event)
-  puts validEvent, EventSeries.find(:all)
+  context "testing add_workout_session_and_history" do
+    before(:each) do
+      @valid = Event.create(@valid_attributes)
+      @session = WorkoutSession.new(@valid_workout)
+      @session_mock = mock_model(WorkoutSession, :estimate_time => false, :delete =>'hi', :save => true)
+      @session_mock.stub(:build).and_return(@session_mock)
+    end
+    it "should add workout session and history given a valid session" do 
+      @history_mock = mock_model(WorkoutHistory, :workout_session_id= => 5, :save => true)
+      WorkoutHistory.stub(:new).and_return(@history_mock)
+      @valid.stub(:workout_sessions).and_return(@session_mock)
+      @history_mock.should_receive(:save) and @session_mock.should_receive(:save)
+      @valid.add_workout_session_and_history(@session_mock)
+    end
+  
+    it "should not add workout session or history given a valid session but invalid history" do
+      @history_mock = mock_model(WorkoutHistory, :workout_session_id= => 5, :save => false)
+      WorkoutHistory.stub(:new).and_return(@history_mock)
+      @valid.stub(:workout_sessions).and_return(@session_mock)
+      @history_mock.should_receive(:save) and @session_mock.should_receive(:save) and @session_mock.should_receive(:destroy)
+      @valid.add_workout_session_and_history(@session_mock)
+      
+      
+      
+    end
   end
+  
+  
+  
 end
