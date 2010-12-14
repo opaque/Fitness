@@ -1,4 +1,5 @@
-<% remote_form_for([@workout_session, @workout_history], :url => {:controller => "workout_histories", :action => :update, :workout_session_id => @workout_session.id, :id => @workout_history.id},  :complete => "addSession('#{@event.id}'); $( '#desc_dialog' ).dialog( 'option', 'width', 700 );$( '#desc_dialog' ).dialog( 'option', 'position', ['top','center']);") do |f| %>
+<% @div_id = "exercise_%d" % @workout_session.id %>
+<% remote_form_for([@workout_session, @workout_history], :url => {:controller => "workout_histories", :action => :update, :workout_session_id => @workout_session.id, :id => @workout_history.id},  :complete => "$('##{@div_id}').effect('pulsate', { times:1 }, 200);return false") do |f| %>
   <%= f.error_messages %>
 	<% @type = Exercise.find(@workout_session.exercise_id).exercise_type %>
 

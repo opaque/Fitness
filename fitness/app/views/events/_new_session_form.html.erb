@@ -40,9 +40,12 @@
 	
 </Table>
 </div>
-<a href ='javascript:void(0);' onclick="addSession(<%= @event.id %>);$( '#desc_dialog' ).dialog( 'option', 'width', 700 );$( '#desc_dialog' ).dialog( 'option', 'position', ['top','center']);return false">Back</a>
+<div id="back_button" style="display:none">
+<a href ='javascript:void(0);' onclick="addSession(<%= @event.id %>);$( '#desc_dialog' ).dialog( 'option', 'width', 700 );$( '#desc_dialog' ).dialog( 'option', 'position', ['top','center']);$('#back_button').hide();return false">Back</a>
+</div>
+
 <%= link_to_remote 'Show Info', :update => 'exercise_info', :url => {:controller => 'workout_sessions', :action => 'render_show', :event_id => @event.id},
-		:before => "$('#adding_to_session').show();",
+		:before => "$('#adding_to_session').show();$('#back_button').show();",
 		:success => "$( '#desc_dialog' ).dialog( 'option', 'width', 1150 );$( '#desc_dialog' ).dialog( 'option', 'position', ['top','center']);",
 		:complete =>"$('#adding_to_session').hide();" %>
   

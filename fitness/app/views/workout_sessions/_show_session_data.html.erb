@@ -15,15 +15,24 @@
 <% @exercise_list = @event.workout_sessions.find(:all, :joins => :exercise, :order => "name ASC")  %> 
 	<% @exercise_list.each do |exercise| %>
 		<tr>
+		<% @type = Exercise.find(exercise.exercise_id).exercise_type %>
 		<td><%=  Exercise.find(exercise.exercise_id).name %></td>
-		<% if Exercise.find(exercise.exercise_id).exercise_type != 'cardio' %>
+		<% if @type != 'cardio' %>
 			<td><%= exercise.estimated_reps %></td>
 			<td><%= exercise.estimated_sets %></td>
-			<td><%= exercise.estimated_weight %></td>
+			<% if @type != 'calisthenics' %>
+				<td><%= exercise.estimated_weight %></td>
+			<% else %>
+				<td><%= "n/a" %> </td>
+			<% end %>
 			<td><%= "n/a" %> </td>
 			<td><%= exercise.workout_history.actual_reps %></td>
 			<td><%= exercise.workout_history.actual_sets %></td>
-			<td><%= exercise.workout_history.actual_weight %></td>
+			<% if @type != 'calisthenics' %>
+				<td><%= exercise.workout_history.actual_weight %></td>
+			<% else %>
+				<td><%= "n/a" %> </td>
+			<% end %>
 			<td><%= "n/a" %> </td>
 		<% else %>
 			<td><%= "n/a" %> </td>
