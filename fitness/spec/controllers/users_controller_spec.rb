@@ -26,11 +26,11 @@ describe UsersController do
   
   
 	
-  describe "GET index" do
-	
-    it "assigns all users as @users" 
-    
-    
+  describe "GET new" do
+    it "should render the new page" do
+      get :new
+      response.should render_template("new")
+    end
   end
 
   describe "GET show" do
@@ -39,10 +39,6 @@ describe UsersController do
       get :show, :id => "37"
       assigns[:user].should equal(mock_user)
     end
-  end
-
-  describe "GET new" do
-    it "assigns a new user as @user" 
   end
 
   describe "GET edit" do
@@ -56,15 +52,20 @@ describe UsersController do
   describe "POST create" do
 
     describe "with valid params" do
-      it "assigns a newly created user as @user" 
-
-      it "redirects to the created user" 
+      it "redirects to the root" do
+        User.stub(:new).and_return(mock_user(:save => true))
+        post :create, :user => {}, :profile => {}
+		Profile.stub(:new).and_return(mock_user(:save => true))
+        response.should redirect_to(root_path)
+		flash[:notice] = "Account registered!"
+      end
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved user as @user" 
-
-      it "re-renders the 'new' template" 
+      it "redirects to the same page" do
+        User.stub(:new).and_return(mock_user(:save => false))
+		flash[:error] = "Please try again!"
+      end
     end
 
   end
@@ -72,7 +73,6 @@ describe UsersController do
   describe "PUT update" do
 
     describe "with valid params" do
-      it "updates the requested user" 
 
       it "assigns the requested user as @user" do
         mock_user.stub(:update_attributes).and_return(true)
