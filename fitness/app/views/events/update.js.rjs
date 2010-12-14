@@ -45,8 +45,7 @@ else
   else
     event_series.attributes = event
     event_series.save
-    page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
-    page<<"$('#desc_dialog').dialog('close')"
-
+	page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
+	page<<"$('#desc_dialog').dialog('close')"
   end
 end
