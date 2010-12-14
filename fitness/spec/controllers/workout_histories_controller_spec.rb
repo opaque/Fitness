@@ -4,7 +4,7 @@ describe WorkoutHistoriesController do
 
   before(:each) do
 	login
-	Event.stub(:find).with(:all, :conditions => ['id = ?', "1"]).and_return(mock_event)
+	Event.stub(:find).with(:first, :conditions => ['id = ?', "1"]).and_return(mock_event)
 	WorkoutSession.stub(:find).with("2").and_return(mock_workout_session)
 	mock_workout_session.stub(:event_id).and_return("1")
 	mock_workout_session.stub(:workout_history).and_return(mock_workout_history)
@@ -76,7 +76,7 @@ describe WorkoutHistoriesController do
         assigns[:workout_history].should equal(mock_workout_history)
       end
 
-      it "redirects to the created workout_history" 
+     
     end
 
     describe "with invalid params" do
@@ -155,7 +155,6 @@ describe WorkoutHistoriesController do
 
   describe "DELETE destroy" do
     it "destroys the requested workout_history" do
-      
       mock_workout_history.should_receive(:destroy)
 	  WorkoutSession.stub(:find).and_return(mock_workout_session)
 	  Event.stub(:find).and_return([mock_event])
@@ -170,5 +169,11 @@ describe WorkoutHistoriesController do
       response.should redirect_to(workout_histories_url)
     end
   end
-
+   describe "RENDER partial" do
+	it "renders complete_exercise_form" do
+	WorkoutSession.stub(:find).and_return(mock_workout_session)
+	  get :render_update_actual
+	  response.should render_template("workout_histories/_complete_exercise_form")
+	end
+  end
 end

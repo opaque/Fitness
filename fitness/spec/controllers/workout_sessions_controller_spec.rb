@@ -168,5 +168,21 @@ describe WorkoutSessionsController do
       delete :destroy, :event_id => "1", :id => "1"
     end
   end
-
+  describe "UPDATE exercise menu" do
+	it "updates exercise menu" do
+	  
+	end
+  end
+  describe "RENDER partial" do
+	it "renders show_session_data" do
+	  get :render_show, :event_id => "1"  
+	  response.should render_template("workout_sessions/_show_session_data")
+	end
+	it "renders edit_session_data" do
+	WorkoutSession.stub(:find).with("37").and_return(mock_workout_session)
+	  get :render_edit, :event_id => "1", :id => "37"
+	  
+	  response.should render_template("workout_sessions/_edit_session_data")
+	end
+  end
 end
