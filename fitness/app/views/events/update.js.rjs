@@ -3,7 +3,7 @@ errors = []
 if not @events
   if @event.save
     page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
-    page<<"$('#desc_dialog').dialog('destroy')"
+    page<<"$('#desc_dialog').dialog('close')"
   else
     page.alert @event.errors.full_messages(',').join("\n")
   end
@@ -46,7 +46,7 @@ else
     event_series.attributes = event
     event_series.save
     page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
-    page<<"$('#desc_dialog').dialog('destroy')"
+    page<<"$('#desc_dialog').dialog('close')"
 
   end
 end
