@@ -1,4 +1,3 @@
-#debugger
 errors = []
 if not @events
   if @event.save
@@ -7,46 +6,48 @@ if not @events
   else
     page.alert @event.errors.full_messages(',').join("\n")
   end
-#debugger
 else
   events = @events
   event = @params
-  events.each do |e|
-    begin 
-      #debugger
-      st, et = e.starttime, e.endtime
-      e.attributes = event
-      event_series = e.event_series
-      e.validate
-      if e.errors.full_messages.size > 0
-        errors = e.errors.full_messages(',').join("\n")
-        break
-      end
-      if event_series.period.downcase == 'monthly' or event_series.period.downcase == 'yearly'
-        nst = DateTime.parse("#{e.starttime.hour}:#{e.starttime.min}:#{e.starttime.sec}, #{e.starttime.day}-#{st.month}-#{st.year}")  
-        net = DateTime.parse("#{e.endtime.hour}:#{e.endtime.min}:#{e.endtime.sec}, #{e.endtime.day}-#{et.month}-#{et.year}")
-      else
-        nst = DateTime.parse("#{e.starttime.hour}:#{e.starttime.min}:#{e.starttime.sec}, #{st.day}-#{st.month}-#{st.year}")  
-        net = DateTime.parse("#{e.endtime.hour}:#{e.endtime.min}:#{e.endtime.sec}, #{et.day}-#{et.month}-#{et.year}")
-      end
-      #puts "#{nst}           :::::::::          #{net}"
-    rescue
-      nst = net = nil
-    end
-    if nst and net
-      #          e.attributes = event
-      e.starttime, e.endtime = nst, net
-      e.save       
-    end
-  end
-  
-  if not errors.empty?
-    page.alert errors
+  if events.size == 0 
+    page.alert("Update has no effect.")
   else
-    event_series.attributes = event
-    event_series.save
-    page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
-    page<<"$('#desc_dialog').dialog('close')"
-
+    event_series = events[0].event_series 
+    events.each do |e|
+      begin 
+        st, et = e.starttime, e.endtime
+        e.attributes = event
+        event_series = e.event_series
+        e.validate
+        if e.errors.full_messages.size > 0
+          errors = e.errors.full_messages(',').join("\n")
+          break
+        end
+        if event_series.period.downcase == 'monthly' or event_series.period.downcase == 'yearly'
+          nst = DateTime.parse("#{e.starttime.hour}:#{e.starttime.min}:#{e.starttime.sec}, #{e.starttime.day}-#{st.month}-#{st.year}")  
+          net = DateTime.parse("#{e.endtime.hour}:#{e.endtime.min}:#{e.endtime.sec}, #{e.endtime.day}-#{et.month}-#{et.year}")
+        else
+          nst = DateTime.parse("#{e.starttime.hour}:#{e.starttime.min}:#{e.starttime.sec}, #{st.day}-#{st.month}-#{st.year}")  
+          net = DateTime.parse("#{e.endtime.hour}:#{e.endtime.min}:#{e.endtime.sec}, #{et.day}-#{et.month}-#{et.year}")
+        end
+        #puts "#{nst}           :::::::::          #{net}"
+      rescue
+        nst = net = nil
+      end
+      if nst and net
+        #          e.attributes = event
+        e.starttime, e.endtime = nst, net
+        e.save       
+      end
+    end
+  
+    if not errors.empty?
+      page.alert errors
+    else
+      event_series.attributes = event
+      event_series.save
+      page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
+      page<<"$('#desc_dialog').dialog('close')"
+    end
   end
 end
