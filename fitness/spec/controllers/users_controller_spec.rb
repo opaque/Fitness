@@ -27,6 +27,9 @@ describe UsersController do
   
 	
   describe "GET new" do
+   before(:each) do
+	 @controller.stub!(:require_no_user).and_return(true)
+   end
     it "should render the new page" do
       get :new
       response.should render_template("new")
@@ -54,17 +57,17 @@ describe UsersController do
     describe "with valid params" do
       it "redirects to the root" do
         User.stub(:new).and_return(mock_user(:save => true))
-        post :create, :user => {}, :profile => {}
-		Profile.stub(:new).and_return(mock_user(:save => true))
+        Profile.stub(:new).and_return(mock_user(:save => true))
+		post :create, :user => {}, :profile => {}
         response.should redirect_to(root_path)
-		flash[:notice] = "Account registered!"
+		flash[:notice].should == "Account registered"
       end
     end
 
     describe "with invalid params" do
       it "redirects to the same page" do
         User.stub(:new).and_return(mock_user(:save => false))
-		flash[:error] = "Please try again!"
+		flash[:error].should == "Please try again!"
       end
     end
 
