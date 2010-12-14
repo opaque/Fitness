@@ -82,8 +82,8 @@
   <%=f.hidden_field :commit_button, :value => ""%>
   <p>
       <%if @event.event_series -%>
-		  <%=f.submit 'Add Exercise to Only This Occurence', :onclick => "document.getElementById('workout_session_commit_button').value = this.value"%>
-		  <%=f.submit 'Add to All Occurences', :onclick => "document.getElementById('workout_session_commit_button').value = this.value"%>
+		  <%=f.submit 'Add Exercise to Only This Occurrence', :onclick => "document.getElementById('workout_session_commit_button').value = this.value"%>
+		  <%=f.submit 'Add to All Occurrences', :onclick => "document.getElementById('workout_session_commit_button').value = this.value"%>
 		  <%=f.submit 'Add to Following Occurrences', :onclick => "document.getElementById('workout_session_commit_button').value = this.value"%>
 		  <%else-%>
 		  <%=f.submit 'Add Exercise', :onclick => "document.getElementById('workout_session_commit_button').value = this.value"%>
