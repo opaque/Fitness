@@ -48,6 +48,6 @@ describe UserSessionsController do
     #  @controller.stub!(:require_user).and_return(true)
     #  delete :destroy
     #  flash[:notice].should == "Logout successful!"
-    end
+    #end
   end
 end
