@@ -10,7 +10,7 @@ else
   events = @events
   event = @params
   if events.size == 0 
-    page.alert("Update has no effect.")
+    page.alert("There are no following occurrences.")
   else
     event_series = events[0].event_series 
     events.each do |e|
