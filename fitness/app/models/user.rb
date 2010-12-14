@@ -30,7 +30,8 @@ class User < ActiveRecord::Base
 		@events.each do |event|
 			@workout_sess = event.workout_sessions.find(:all, :conditions => ['event_id = ?', event.id])
 			@workout_sess.each do |workout_sess|
-				@exercise = Exercise.find(:first, :conditions => ['id = ?', workout_sess.exercise_id])
+				@ex_id = workout_sess.exercise_id
+				@exercise = Exercise.find(:first, :conditions => ['id = ?', @ex_id])
 				@type = @exercise.exercise_type
 				if @type == 'bicep'
 					@bicep += 1
@@ -49,7 +50,7 @@ class User < ActiveRecord::Base
 				elsif @type == 'back'
 					@back += 1
 				elsif @type == 'calisthenics'
-					@calistenics += 1
+					@calisthenics += 1
 				elsif @type == 'abdominal'
 					@abdominal += 1
 				else
