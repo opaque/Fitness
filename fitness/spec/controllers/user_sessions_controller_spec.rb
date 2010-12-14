@@ -33,21 +33,23 @@ describe UserSessionsController do
     end
 
     describe "with invalid params" do
-      it "redirects to the session_new"# do
-        #UserSession.stub(:new).and_return(mock_user_session(:save => false))
-#		flash[:error].should == "Please check your username or password and try again."
- #     end
+      it "redirects to the session_new" do
+		mock_user_session.stub(:build).with({'these' => 'params'}).and_return(mock_user_session(:save => false))
+		mock_user_session.stub(:save).and_return(false)
+		post :create, :user_session => {:these => 'params'}
+		flash[:error].should == "Please check your username or password and try again."
+      end
     end
 
   end
   describe "DELETE destroy" do
-  #  it "should destroy the user_session" do 	
-  #    @user_session = UserSession.stub(:new).and_return(mock_user_session)
-  #    @user_session.should_receive(:destroy)
-   #   @controller.stub!(:current_user_session).and_return(@session)
-    #  @controller.stub!(:require_user).and_return(true)
-    #  delete :destroy
-    #  flash[:notice].should == "Logout successful!"
-    #end
+	it "should destroy the user_session" do 	
+      #@user_session = UserSession.stub(:new).and_return(mock_user_session)
+      #@user_session.should_receive(:destroy)
+      #@controller.stub!(:current_user_session).and_return(@session)
+      #@controller.stub!(:require_user).and_return(true)
+	  delete :destroy, :id => 1
+      flash[:notice].should == "Logout successful!"
+    end
   end
 end
