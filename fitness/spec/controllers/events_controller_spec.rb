@@ -25,6 +25,17 @@ describe EventsController do
     @mock_event_series ||= mock_model(EventSeries, @params.merge(stubs))
   end
 
+  def mock_exercise(stubs={})
+	@mock_exercise ||= mock_model(Exercise, stubs)
+  end
+  
+  def mock_workout_session(stubs={})
+	@mock_exercise ||= mock_model(WorkoutSession, stubs)
+  end
+  
+    def mock_workout_history(stubs={})
+	@mock_exercise ||= mock_model(WorkoutHistory, stubs)
+  end
 
   describe "GET show" do
     it "makes an html call" do
@@ -171,13 +182,124 @@ describe EventsController do
 	  end
 
       it "renders update to page" do
-		page = double('page')
-		#controller.stub(:render)
-		controller.stub(:render).with(:update).and_yield(page)
-		page.should_receive(:<<)
+		mock_event.should_receive(:destroy)
+		page = mock("page")
+		controller.should_receive(:render).with(:update).and_yield(page)
+		page.should_receive(:<<).with("$('#calendar').fullCalendar( 'refetchEvents' )")
+		page.should_receive(:<<).with("$('#desc_dialog').dialog('destroy')")
+		delete :destroy, :id => "1", :delete_all => 'false'
       end
-    end
-  
+	end
+	
+	describe "GET event_workout_history" do
+		
+		it "assigns to @event" do
+			Event.stub(:find).with("1").and_return(mock_event)
+			get :event_workout_history, :id => "1"
+			assigns[:event].should equal(mock_event)
+		end
+	end
+    
+	describe "GET update_exercise_menu" do
+	
+		before(:each) do
+			Exercise.stub(:find).with(:all, :conditions =>['exercise_type = ?', "string"]).and_return([mock_exercise])
+		end
+		
+		it "assigns to @exercises a list of exercises" do
+			get :update_exercise_menu, :exercise_type => "string"
+			assigns[:exercises].should ==([mock_exercise])
+		end
+		
+		it "should not render a layout" do
+			controller.should_receive(:render).with(:layout => false)
+			get :update_exercise_menu, :exercise_type => "string"
+			
+		end
+	end
+	
+	describe "GET new_session" do
+		before(:each) do
+			Event.stub(:find).with("1").and_return(mock_event)
+			mock_event.stub(:workout_sessions).and_return(mock_workout_session)
+			mock_workout_session.stub(:build).and_return(mock_workout_session)
+		end
+		
+		it "assigns to @event" do
+			get :new_session, :id => "1"
+			assigns[:event].should equal(mock_event)
+		end
+		
+		it "assigns to @workout_session" do
+			get :new_session, :id => "1"
+			assigns[:workout_session].should equal(mock_workout_session)
+		end
+	end
+	
+	
+	describe "GET make_session" do
+		before(:each) do
+			Event.stub(:find).with("1").and_return(mock_event)
+			mock_event.stub(:event_series).and_return(mock_event_series)
+			mock_event_series.stub(:events).and_return([mock_event])
+			
+			@session_params = {}
+		end
+		
+		it "should create a workout session and history for a signle event given valid params" do
+			@session_params["commit_button"] = "add only to this event"
+			mock_event.should_receive(:add_workout_session_and_history).with(@session_params)
+			get :make_session,:id => "1", :workout_session => @session_params
+		end
+	
+		it "should create a session and history for each requested event for recurring events" do
+			@session_params["commit_button"] = "Add to All Occurrences"
+			mock_event.should_receive(:add_workout_session_and_history).with(@session_params)
+			get :make_session,:id => "1", :workout_session => @session_params
+		end
+		
+		it "should create a session and history for each following event for recurring events" do
+			@session_params["commit_button"] = "Add to Following Occurrences"
+			
+			mock_event_series.stub(:events).and_return(mock_event)
+			mock_event.stub(:find).and_return([mock_event])
+			mock_datetime.stub(:to_formatted_s).and_return("string")
+			mock_event.should_receive(:add_workout_session_and_history).with(@session_params)
+			get :make_session, :id => "1", :workout_session => @session_params
+		end
+		
+		
+	end
+	
+	describe "GET move" do
+		before(:each) do
+			Event.stub(:find_by_id).with("1").and_return(mock_event(:save => true))
+		end
+		
+		it "should update the starttime and endtime" do
+			mock_event.should_receive(:starttime=)
+			mock_event.should_receive(:endtime=)
+			mock_event.should_receive(:all_day=).with(false)
+			mock_event.stub(:starttime).and_return(Time.now)
+			mock_event.stub(:endtime).and_return(Time.now)
+			get :move, :id => "1", :minute_delta => "15", :day_delta => "1", :all_day => false
+		end
+	end
+	
+	describe "GET resize" do
+		before(:each) do
+			Event.stub(:find_by_id).with("1").and_return(mock_event(:save => true))
+		end
+		
+		it "should update the endtime" do
+			mock_event.should_receive(:endtime=)
+			mock_event.stub(:endtime).and_return(Time.now)
+			get :resize, :id => "1", :minute_delta => "15", :day_delta => "1", :all_day => false
+		end
+		
+			
+	end
+	
 
    
 end
