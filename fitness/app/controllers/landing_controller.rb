@@ -1,13 +1,13 @@
 class LandingController < ApplicationController
 	layout 'application'
   def menu_one
-    render :partial => "menu1"
+    render :partial => "menu_one"
   end 
   
   def menu_two
-    render :partial => "menu2"
+    render :partial => "menu_two"
   end
   def menu_three
-    render :partial => "menu3"
+    render :partial => "menu_three"
   end
 end
