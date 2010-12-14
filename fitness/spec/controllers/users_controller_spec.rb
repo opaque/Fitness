@@ -62,10 +62,12 @@ describe UsersController do
     describe "with valid params" do
       it "redirects to the root" do
         User.stub(:new).and_return(mock_user(:save => true))
-        Profile.stub(:new).and_return(mock_user(:save => true))
+        Profile.stub(:new).and_return(mock_profile(:save => true))
+		mock_user.stub(:save).and_return(true)
+		mock_profile.stub(:save).and_return(true)
 		post :create, :user => {}, :profile => {}
+		flash[:notice].should == "Account registered!"
         response.should redirect_to(root_path)
-		flash[:notice].should == "Account registered"
       end
     end
 

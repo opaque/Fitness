@@ -1,4 +1,4 @@
-require 'gchart'
+#require 'gchart'
 
 class WorkoutHistoriesController < ApplicationController
    before_filter :require_user, :get_event

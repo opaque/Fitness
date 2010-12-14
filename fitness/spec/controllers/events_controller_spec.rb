@@ -46,14 +46,13 @@ describe EventsController do
 
     describe "with valid params" do
       it "assigns a newly created event as @event" do
-        Event.stub(:new).with(params).and_return(mock_event(:save => true))
-         post :create, :event => params
-         
+        Event.stub(:new).with(@params).and_return(mock_event(:save => true))
+		@params[:period] = true
+        post :create, :event => @params
+        assigns[:event].should equal(mock_event)
       end
 
-      it "redirects to the created event" do
-
-      end
+     
     end
 
     describe "with invalid params" do

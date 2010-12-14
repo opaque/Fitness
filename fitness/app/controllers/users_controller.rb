@@ -1,5 +1,5 @@
 
-require 'gchart'
+#require 'gchart'
 
 
 class UsersController < ApplicationController
@@ -48,7 +48,6 @@ class UsersController < ApplicationController
   end
   
   def graph
-	@user = @curret_user
 	
 	@events = Event.find(:all, :conditions => ['user_id = ?', @current_user.id])
 	if (@events.empty?)
