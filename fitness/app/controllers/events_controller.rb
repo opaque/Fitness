@@ -122,7 +122,7 @@ class EventsController < ApplicationController
   
   def make_session
 	@event = Event.find(params[:id])
-	if params[:workout_session][:commit_button] == "Add to All Occurences"
+	if params[:workout_session][:commit_button] == "Add to All Occurrences"
       @events = @event.event_series.events #.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
       @events.each do |event_x|
 		  event_x.add_workout_session_and_history(params[:workout_session])
