@@ -20,6 +20,10 @@ describe WorkoutSessionsController do
    def mock_workout_history(stubs={})
     @mock_workout_history ||= mock_model(WorkoutHistory, stubs)
   end
+  
+  def mock_exercise(stubs={})
+    @mock_exercise ||= mock_model(Exercise, stubs) # make the user_id default at 1
+  end
 
   describe "GET index" do
     it "assigns all workout_sessions as @workout_sessions" do
@@ -183,6 +187,13 @@ describe WorkoutSessionsController do
 	  get :render_edit, :event_id => "1", :id => "37"
 	  
 	  response.should render_template("workout_sessions/_edit_session_data")
+	end
+  end
+  
+  describe "UPDATE exercise menu" do
+	it "updates the exercise menu" do
+		Exercise.stub(:find).and_return([mock_exercise])
+		get :update_exercise_menu
 	end
   end
 end
