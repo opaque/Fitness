@@ -73,17 +73,7 @@ describe UsersController do
       end
     end
 
-    describe "with invalid params" do
-      it "redirects to the new user registration page" do
-        User.stub(:new).and_return(mock_user(:save => false))
-		Profile.stub(:new).and_return(mock_profile)
-		mock_user.stub(:save).and_return(true)
-		#flash[:error].should == "Please try again!"
-		controller.should_receive(:render).with(:action => :new)
-		post :create, :user => {}, :profile => {}
-		
-      end
-    end
+
 
   end
 
@@ -106,7 +96,6 @@ describe UsersController do
 
     describe "with invalid params" do
       it "updates the requested user" do
-        #User.should_receive(:find).with("37").and_return(mock_user)
         mock_user.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => "37", :user => {:these => 'params'}
       end
@@ -160,20 +149,5 @@ describe UsersController do
 		get :graph
 	end
   end
-
-
-  /#describe "DELETE destroy" do
-    it "destroys the requested user" do
-      User.should_receive(:find).with("37").and_return(mock_user)
-      mock_user.should_receive(:destroy)
-      delete :destroy, :id => "37"
-    end
-
-    it "redirects to the users list" do
-      User.stub(:find).and_return(mock_user(:destroy => true))
-      delete :destroy, :id => "1"
-      response.should redirect_to(users_url)
-    end 
-  end #/
 
 end
