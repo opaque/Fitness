@@ -5,6 +5,7 @@ Feature: User login
 	I can navigate to the graph page
 	And view the graph of my data 
 	
+	@wip
 	Scenario: User views graph
 		Given I am the registered user "user1" with password "password"
 			And I am on the login page

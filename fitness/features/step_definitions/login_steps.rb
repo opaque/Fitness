@@ -9,9 +9,9 @@ Given /^I am the registered user "([^"]*)" with password "([^"]*)"$/ do |login,p
 end
 
 When /^I login with "([^"]*)" and "([^"]*)"$/ do |login,password|
-  fill_in('Login', :with => login)
+  fill_in('user_session_login', :with => login)
   fill_in('Password', :with => password)
-  click_button("Login")
+  click_button("user_session_submit")
 end
 
 Then /^I should not be logged in$/ do
